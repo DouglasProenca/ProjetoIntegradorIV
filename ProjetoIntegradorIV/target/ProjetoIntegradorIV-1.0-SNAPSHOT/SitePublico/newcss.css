@@ -1,0 +1,9 @@
+/* 
+    Created on : 20/02/2022, 21:25:19
+    Author     : Douglas
+*/
+.myBackground{
+    background-image: url('Resources/bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

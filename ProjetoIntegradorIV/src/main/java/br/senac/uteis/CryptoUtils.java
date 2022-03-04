@@ -3,8 +3,8 @@ package br.senac.uteis;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 /**
- *
  * @author Douglas
+ * 04/03/2021
  */
 public class CryptoUtils {
 
@@ -16,5 +16,4 @@ public class CryptoUtils {
         BCrypt.Result resultado = BCrypt.verifyer().verify(senhaAberta.toCharArray(), senhaFechada);
         return resultado.verified;
     }
-    
 }
