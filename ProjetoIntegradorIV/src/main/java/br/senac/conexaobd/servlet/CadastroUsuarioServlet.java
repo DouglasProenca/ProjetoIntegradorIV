@@ -49,8 +49,11 @@ public class CadastroUsuarioServlet extends HttpServlet {
                 }
                 response.sendRedirect(request.getContextPath() + "/protegido/uteis/sucesso.jsp");
             } catch (SQLException ex) {
-                System.out.println(ex);
-                response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
+                if (ex.getErrorCode() == 1062) {
+                    response.sendRedirect(request.getContextPath() + "/protegido/usuario/cadastro.jsp?mailInvalido=true");
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
+                }
             } catch (ClassNotFoundException | ParseException ex) {
                 Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
             }

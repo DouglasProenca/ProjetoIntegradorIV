@@ -27,6 +27,11 @@
                         CPF Inválido!
                     </div>  
                 </c:if>
+                <c:if test="${param.mailInvalido != null}">
+                    <div class="alert alert-danger" role="alert">
+                        Esse e-mail já esta cadastrado no Sistema!
+                    </div>  
+                </c:if>
                 <c:if test="${not empty clienteAtualizacao}">
                     <input type="hidden" name="ope" value="1"/>
                 </c:if>
@@ -77,13 +82,13 @@
                         </select>
                     </c:if>
                 </div>
-                           <c:if test="${not empty clienteAtualizacao}">
-                               <input type="hidden" name="CPFCliente"
-                                      value="${clienteAtualizacao.CPF}" 
-                                      required
-                                      class="form-control"
-                                      />
-                           </c:if>
+                <c:if test="${not empty clienteAtualizacao}">
+                    <input type="hidden" name="CPFCliente"
+                           value="${clienteAtualizacao.CPF}" 
+                           required
+                           class="form-control"
+                           />
+                </c:if>
                 <br/>
                 <div class="form-group">
                     <label>Senha</label>
