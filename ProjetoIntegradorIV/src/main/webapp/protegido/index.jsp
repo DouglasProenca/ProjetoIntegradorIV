@@ -25,7 +25,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuários</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <button class="dropdown-item"><a href="produto/cadastro.jsp">Cadastrar Usuário</a></button>
+                            <button class="dropdown-item"><a href="usuario/cadastro.jsp">Cadastrar Usuário</a></button>
                             <button class="dropdown-item"><a href="../cliente/ListarClienteServlet">Listar Usuário</a></button>
                             <button class="dropdown-item"><a href="produto/busca.jsp">Buscar Usuário</a></button>
                         </div>
