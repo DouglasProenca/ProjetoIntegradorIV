@@ -30,6 +30,11 @@
                         Usuário/Senha inválidos
                     </div>  
                 </c:if>
+                <c:if test="${param.usuarioInativo != null}">
+                    <div class="alert alert-danger" role="alert">
+                        Usuário Inativo no Sistema
+                    </div>  
+                </c:if>
                 <div style="margin-bottom: 50px" class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                     <input type="text" class="form-control" name="nomeUsuario" placeholder="E-mail">

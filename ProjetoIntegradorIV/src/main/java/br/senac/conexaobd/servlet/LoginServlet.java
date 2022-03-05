@@ -27,23 +27,24 @@ public class LoginServlet extends HttpServlet {
         try {
             String nomeUsuario = request.getParameter("nomeUsuario");
             String senhaUsuario = request.getParameter("senhaUsuario");
-            System.out.println(senhaUsuario);
             Usuario usuario = UsuarioDAO.getUsuario(nomeUsuario);
             if (usuario == null) {
                 response.sendRedirect(request.getContextPath() + "/Login.jsp?loginInvalido=true");
             } else {
-                boolean senhaOk = CryptoUtils.verificarSenha(senhaUsuario, usuario.getSenha());
-                if (senhaOk) {
-                    HttpSession sessao = request.getSession();
-                    sessao.setAttribute("usuario", usuario);
-                    response.sendRedirect(request.getContextPath() + "/protegido/index.jsp");
+                if (usuario.getAtivo() == 1) {
+                    boolean senhaOk = CryptoUtils.verificarSenha(senhaUsuario, usuario.getSenha());
+                    if (senhaOk) {
+                        HttpSession sessao = request.getSession();
+                        sessao.setAttribute("usuario", usuario);
+                        response.sendRedirect(request.getContextPath() + "/protegido/index.jsp");
+                    } else {
+                        response.sendRedirect(request.getContextPath() + "/Login.jsp?loginInvalido=true");
+                    }
                 } else {
-                    response.sendRedirect(request.getContextPath() + "/Login.jsp?loginInvalido=true");
+                    response.sendRedirect(request.getContextPath() + "/Login.jsp?usuarioInativo=true");
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -41,6 +41,7 @@ public class UsuarioDAO {
             usuario.setEmail(rs.getString("email"));
             usuario.setSenha(rs.getString("senha"));
             usuario.setCategoria(rs.getString("categoria"));
+            usuario.setAtivo(rs.getInt("ativo"));
         }
         return usuario;
     }
