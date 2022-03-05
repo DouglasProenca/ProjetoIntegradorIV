@@ -22,7 +22,11 @@
             <h1><center>Cadastro de Usuários</center></h1>
             <br><br>
             <form class="col-md-6 offset-md-3 jumbotron" action="CadastroUsuarioServlet" method="POST">
-
+                <c:if test="${param.cpfInvalido != null}">
+                    <div class="alert alert-danger" role="alert">
+                        CPF Inválido!
+                    </div>  
+                </c:if>
                 <c:if test="${not empty clienteAtualizacao}">
                     <input type="hidden" name="ope" value="1"/>
                 </c:if>

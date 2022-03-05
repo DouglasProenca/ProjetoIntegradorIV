@@ -2,6 +2,7 @@ package br.senac.conexaobd.servlet;
 
 import br.senac.conexaobd.dao.UsuarioDAO;
 import br.senac.conexaobd.entidades.Usuario;
+import br.senac.uteis.ValidaCPF;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -24,17 +25,17 @@ public class CadastroUsuarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String ope = request.getParameter("ope");
-         
-            Usuario usuario = new Usuario();
-            usuario.setNome(request.getParameter("nomeUsuario"));
-            usuario.setCpf(request.getParameter("CPFUsuario"));
-            usuario.setEmail(request.getParameter("emailUsuario"));
-            usuario.setTelefone(request.getParameter("CelularUsuario"));
-            usuario.setCategoria(request.getParameter("categoriaUsuario"));
-            usuario.setNascimento(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("NascimentoUsuario")));
-            usuario.setSenha(request.getParameter("senhaUsuario"));
+        if (ValidaCPF.isCPF(request.getParameter("CPFUsuario")) == true) {
+            try {
+                String ope = request.getParameter("ope");
+                Usuario usuario = new Usuario();
+                usuario.setNome(request.getParameter("nomeUsuario"));
+                usuario.setCpf(request.getParameter("CPFUsuario"));
+                usuario.setEmail(request.getParameter("emailUsuario"));
+                usuario.setTelefone(request.getParameter("CelularUsuario"));
+                usuario.setCategoria(request.getParameter("categoriaUsuario"));
+                usuario.setNascimento(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("NascimentoUsuario")));
+                usuario.setSenha(request.getParameter("senhaUsuario"));
                 // ope = 1 => Update
                 if ("1".equals(ope)) {
                     try {
@@ -53,9 +54,13 @@ public class CadastroUsuarioServlet extends HttpServlet {
             } catch (ClassNotFoundException | ParseException ex) {
                 Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            response.sendRedirect(request.getContextPath() + "/protegido/usuario/cadastro.jsp?cpfInvalido=true");
+        }
+
     }
-        
-/*
+
+    /*
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String cpf = req.getParameter("CPFUsuario");
@@ -88,5 +93,5 @@ public class CadastroUsuarioServlet extends HttpServlet {
         }
 
     }
-*/
+     */
 }
