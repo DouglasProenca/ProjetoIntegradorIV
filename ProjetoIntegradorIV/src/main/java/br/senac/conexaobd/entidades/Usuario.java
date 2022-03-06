@@ -29,4 +29,12 @@ public class Usuario {
     public boolean isEST() {
         return "estoquista".equalsIgnoreCase(this.getCategoria());
     }
+    
+    public boolean isAtivo() {
+        return "1".equalsIgnoreCase(String.valueOf(this.getAtivo()));
+    }
+
+    public boolean isNotAtivo() {
+        return "0".equalsIgnoreCase(String.valueOf(this.getAtivo()));
+    }
 }

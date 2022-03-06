@@ -86,6 +86,12 @@
                         <td>${usuario.ativo}</td>
                         <td><a href="../usuario/CadastroUsuarioServlet?CPFUsuario=${usuario.cpf}&ope=1" >Alterar</a></td>
                         <td><button onclick="confirmarRemocao('${usuario.nome}', '${usuario.cpf}')" class="btn btn-link">Deletar</button></td>
+                        <c:if test="${usuario.isAtivo()}">
+                        <td><button onclick="confirmarRemocao('${usuario.nome}', '${usuario.cpf}')" class="btn btn-link">Desativar</button></td>
+                        </c:if>
+                        <c:if test="${usuario.isNotAtivo()}">
+                        <td><button onclick="confirmarRemocao('${usuario.nome}', '${usuario.cpf}')" class="btn btn-link">Reativar</button></td>
+                        </c:if>
                     </tr>
                 </c:forEach>
             </tbody>
