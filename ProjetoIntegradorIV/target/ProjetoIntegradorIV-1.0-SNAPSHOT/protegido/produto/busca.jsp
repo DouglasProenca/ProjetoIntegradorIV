@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Buscar Cliente
-    Created on : 31/10/2021, 21:00:14
+    Document   : Buscar Usuario
+    Created on : 06/03/2022, 21:00:14
     Author     : Douglas Proença
 --%>
 
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Buscar Pessoas</title>
+        <title>Buscar Usuário</title>
     </head>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
@@ -24,11 +24,9 @@
         <table id="tabelaClientes" class="table">
             <thead>
             <th>Nome</th>
-            <th>Email</th>
+            <th>Categoria</th>
             <th>CPF</th>
-            <th>Sexo</th>
-            <th>Celular</th>
-            <th>Fixo</th>
+            <th>Ativo</th>
         </thead>
         <tbody></tbody>
     </table>

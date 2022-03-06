@@ -25,7 +25,6 @@ public class CadastroUsuarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println(request.getParameter("CPFUsuario"));
         if (ValidaCPF.isCPF(request.getParameter("CPFUsuario")) == true) {
             try {
                 String ope = request.getParameter("ope");

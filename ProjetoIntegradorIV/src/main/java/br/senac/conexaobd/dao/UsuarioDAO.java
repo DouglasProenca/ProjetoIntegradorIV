@@ -196,4 +196,46 @@ public class UsuarioDAO {
         }
         return usuario;
     }
+    
+    public static List<Usuario> buscarUsuario(String nomeParam) throws ClassNotFoundException, SQLException {
+        nomeParam = nomeParam.toUpperCase();
+        List<Usuario> clientes = new ArrayList<>();
+        String query = "select u.id\n"
+                + "       ,u.nome\n"
+                + "       ,u.telefone\n"
+                + "       ,u.nascimento\n"
+                + "       ,u.email\n"
+                + "       ,c.categoria\n"
+                + "       ,u.cpf\n"
+                + "       ,u.senha\n"
+                + "       ,u.ativo\n"
+                + "from usuario u\n"
+                + "inner join categoria c\n"
+                + "on c.id = u.id_categoria\n"
+                + "where u.nome like ?";
+
+        Connection con = Conexao.abrirConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, nomeParam + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                 Usuario usuario = new Usuario();
+                usuario = new Usuario();
+                usuario.setId(rs.getInt("id"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setTelefone(rs.getString("telefone"));
+                usuario.setNascimento(rs.getDate("nascimento"));
+                usuario.setCpf(rs.getString("cpf"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setSenha(rs.getString("senha"));
+                usuario.setCategoria(rs.getString("categoria"));
+                usuario.setAtivo(rs.getInt("ativo"));
+                clientes.add(usuario);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return clientes;
+    }
 }
