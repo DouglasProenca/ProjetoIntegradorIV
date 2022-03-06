@@ -75,19 +75,16 @@
     <fildset>
         <table class="table" aling="center">
             <thead>
-            <td>ID</td><td>Nome</td><td>Telefone</td><td>E-mail</td><td>Nascimento</td><td>Categoria</td><td>CPF</td>
+            <td>Nome</td><td>Categoria</td><td>CPF</td><td>Status</td>
             </thead>
             <tbody>
                 <c:forEach var="usuario" items="${listaUsuarios}">
                     <tr>
-                        <td>${usuario.id}</td>
                         <td>${usuario.nome}</td>
-                        <td>${usuario.telefone}</td>
-                        <td>${usuario.email}</td>
-                        <td>${usuario.nascimento}</td>
                         <td>${usuario.categoria}</td>
-                        <td>${usuario.cpf}</td>                  
-                        <td><a href="../protegido/cliente/CadastroColaboradorServlet?id=${usuario.cpf}&ope=1" >Atualizar</a></td>
+                        <td>${usuario.cpf}</td>
+                        <td>${usuario.ativo}</td>
+                        <td><a href="../usuario/CadastroUsuarioServlet?CPFUsuario=${usuario.cpf}&ope=1" >Alterar</a></td>
                         <td><button onclick="confirmarRemocao('${usuario.nome}', '${usuario.cpf}')" class="btn btn-link">Deletar</button></td>
                     </tr>
                 </c:forEach>

@@ -41,17 +41,19 @@
                            required class="form-control"/>
                 </div>
                 <br/>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" name="emailUsuario" value="${clienteAtualizacao.email}"
-                           required class="form-control"/>
-                </div>
+                <c:if test="${empty clienteAtualizacao}">
+                    <div class="form-group">
+                         <label>Email</label>
+                        <input type="text" name="emailUsuario" value="${clienteAtualizacao.email}"
+                               required class="form-control"/>
+                    </div>
+                </c:if>
                 <br/>
                 <c:if test="${empty clienteAtualizacao}">
                     <div class="form-group">
                         <label>CPF</label>
                         <input type="text" name="CPFUsuario"
-                               value="${clienteAtualizacao.CPF}" placeholder="000.000.000-00"
+                               value="${clienteAtualizacao.cpf}" placeholder="000.000.000-00"
                                required class="form-control"/>
                     </div>
                 </c:if>
@@ -59,7 +61,7 @@
                 <div class="form-group">
                     <label>Celular</label>
                     <input type="text" name="CelularUsuario"
-                           value="${clienteAtualizacao.celular}" placeholder="(00)00000-0000"
+                           value="${clienteAtualizacao.telefone}" placeholder="(00)00000-0000"
                            required
                            class="form-control"/>        
                 </div>
@@ -67,34 +69,32 @@
                 <div class="form-group">
                     <label>Data de Nascimento</label>
                     <input type="date" name="NascimentoUsuario"
-                           value="${clienteAtualizacao.telResidencial}" placeholder="(00)0000-0000"
+                           value="${clienteAtualizacao.nascimento}" placeholder="(00)0000-0000"
                            required
                            class="form-control"/>
                 </div>
                 <br>
                 <div class="form-group">
-                    <c:if test="${empty clienteAtualizacao}">
-                        <label>Tipo de Usuário</label>
-                        <select name="categoriaUsuario" value="${clienteAtualizacao.sexo}"
-                                class="form-control">
-                            <option value="administrador">Administrador</option>
-                            <option value="Estoquista">Estoquista</option>
-                        </select>
-                    </c:if>
+                    <label>Tipo de Usuário</label>
+                    <select name="categoriaUsuario" value="${clienteAtualizacao.categoria}"
+                            class="form-control">
+                        <option value="administrador">Administrador</option>
+                        <option value="Estoquista">Estoquista</option>
+                    </select>
                 </div>
-                <c:if test="${not empty clienteAtualizacao}">
-                    <input type="hidden" name="CPFCliente"
-                           value="${clienteAtualizacao.CPF}" 
-                           required
-                           class="form-control"
-                           />
-                </c:if>
                 <br/>
                 <div class="form-group">
                     <label>Senha</label>
-                    <input type="text" name="senhaUsuario" value="${clienteAtualizacao.email}"
+                    <input type="text" name="senhaUsuario" value="${clienteAtualizacao.senha}"
                            required class="form-control"/>
                 </div>
+                           <c:if test="${not empty clienteAtualizacao}">
+                               <input type="hidden" name="CPFUsuario"
+                                      value="${clienteAtualizacao.cpf}" 
+                                      required
+                                      class="form-control"
+                                      />
+                           </c:if>
                 <br/>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>

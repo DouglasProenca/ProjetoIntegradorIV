@@ -74,16 +74,22 @@ public class UsuarioDAO {
 
     public static boolean atualizarUsuario(Usuario usuario) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "update rc_aluno set nome=?,email=?,celular=?,tel_residencial=?"
-                + "where cpf=?";
+        String query = "update usuario set nome=?,telefone=?,nascimento=?,id_categoria=?,senha=?"
+                + " where cpf=?";
         Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
-            /* ps.setString(1, cliente.getNome());
-            ps.setString(2, cliente.getEmail());
-            ps.setString(3, cliente.getCelular());
-            ps.setString(4, cliente.getTelResidencial());
-            ps.setString(5, cliente.getCPF());*/
+            ps.setString(1, usuario.getNome());
+            ps.setString(2, usuario.getTelefone());
+            ps.setDate(3, new java.sql.Date(usuario.getNascimento().getTime()));
+            if (usuario.getCategoria().equals("administrador")) {
+                ps.setInt(4, 1);
+            } else {
+                ps.setInt(4, 2);
+            }
+            ps.setString(5, usuario.getSenha());
+            ps.setString(6, usuario.getCpf());
+            System.out.println(usuario.getCpf());
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -135,8 +141,8 @@ public class UsuarioDAO {
         }
         return clientes;
     }
-    
-     public static boolean deletarUsuario(String cpf) throws ClassNotFoundException, SQLException {
+
+    public static boolean deletarUsuario(String cpf) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         String query = "delete from usuario where cpf=?";
         Connection con = Conexao.abrirConexao();
@@ -151,8 +157,8 @@ public class UsuarioDAO {
         }
         return ok;
     }
-     
-     public static Usuario getUsuarioPorCPF(String cpf) throws ClassNotFoundException, SQLException {
+
+    public static Usuario getUsuarioPorCPF(String cpf) throws ClassNotFoundException, SQLException {
         Usuario usuario = null;
         String query = "select u.id\n"
                 + "       ,u.nome\n"
@@ -174,7 +180,7 @@ public class UsuarioDAO {
             ps.setString(1, cpf);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-               usuario = new Usuario();
+                usuario = new Usuario();
                 usuario.setId(rs.getInt("id"));
                 usuario.setNome(rs.getString("nome"));
                 usuario.setTelefone(rs.getString("telefone"));
