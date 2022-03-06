@@ -1,4 +1,3 @@
-C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\uteis\ValidaEmail.java
 C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\conexaobd\Conexao.java
 C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\uteis\CryptoUtils.java
 C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\uteis\ValidaCPF.java
@@ -8,3 +7,4 @@ C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\ma
 C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\conexaobd\servlet\CadastroUsuarioServlet.java
 C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\conexaobd\dao\filter\AutorizacaoFilter.java
 C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\conexaobd\entidades\Usuario.java
+C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\conexaobd\servlet\ListarUsuarioServlet.java

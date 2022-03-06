@@ -26,7 +26,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuários</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
                             <button class="dropdown-item"><a href="usuario/cadastro.jsp">Cadastrar Usuário</a></button>
-                            <button class="dropdown-item"><a href="../cliente/ListarClienteServlet">Listar Usuário</a></button>
+                            <button class="dropdown-item"><a href="../protegido/usuario/ListarUsuarioServlet">Listar Usuário</a></button>
                             <button class="dropdown-item"><a href="produto/busca.jsp">Buscar Usuário</a></button>
                         </div>
                     </li>
@@ -36,7 +36,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filial</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
                             <button class="dropdown-item"><a href="filial/cadastroFilial.jsp">Cadastrar Produto</a></button>
-                            <button class="dropdown-item"><a href="../cliente/ListarFilialServlet">Listar Produto</a></button>
+                            <button class="dropdown-item"><a href="../usuario/ListarFilialServlet">Listar Produto</a></button>
                             <button class="dropdown-item"><a href="filial/buscaFilial.jsp">Buscar Produto</a></button>
                         </div>
                     </li>

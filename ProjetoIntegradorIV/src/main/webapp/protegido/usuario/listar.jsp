@@ -11,14 +11,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/estilo.css">
-        <title>Listar colaboradores</title>
+        <title>Listar usuários</title>
         <script type="text/javascript">
             var colaboradorRemocao;
-            function confirmarRemocao(nome, id) {
-                console.log("Confirmar exclusao ", nome, id);
-                idColaborador = id;
+            function confirmarRemocao(nome, cpf) {
+                console.log("Confirmar exclusao ", nome, cpf);
+                idColaborador = cpf;
                 var paragrafoCliente = $("#campoTextoExclusao");
-                paragrafoCliente.html(nome + " - " + id);
+                paragrafoCliente.html(nome + " - " + cpf);
 
                 var modalConfirmacao = $("#modalExclusao");
                 modalConfirmacao.show();
@@ -30,11 +30,11 @@
             }
 
             function deletar() {
-                console.log("Excluindo colaborador(a) ", idColaborador);
+                console.log("Excluindo usuário(a) ", idColaborador);
                 fecharModal();
-                var url = "../protegido/cliente/CadastroColaboradorServlet?id=" + idColaborador;
+                var url = "CadastroUsuarioServlet?CPFUsuario=" + idColaborador;
                 $.ajax(url).done(function () {
-                    console.log("Colaborador(a) removido!");
+                    console.log("Usuário(a) removido!");
                     var alerta = $("#alerta");
                     alerta.css("display", "block");
                     setTimeout(function () {
@@ -42,7 +42,7 @@
                         location.reload();
                     }, 1000)
                 }).fail(function () {
-                    console.log("Erro ao remover o colaborador!");
+                    console.log("Erro ao remover o usuário!");
                 })
             }
         </script>
@@ -53,7 +53,7 @@
             Colaborador(a) removido(a) com sucesso!
         </div>
         <br><br><br>
-        <h1><center>Colaboradores</center></h1>
+        <h1><center>Usuários</center></h1>
         <br>
         <div class="modal" tabindex="-1" role="dialog" id="modalExclusao">
             <div class="modal-dialog" role="document">
@@ -62,7 +62,7 @@
                         <h5 class="modal-title">Confirmar Exclusão</h5>                       
                     </div>
                     <div class="modal-body">
-                        <p>Confirmar exclusão de colaborador abaixo?</p>
+                        <p>Confirmar exclusão do usuário abaixo?</p>
                         <p id="campoTextoExclusao"></p>
                     </div>
                     <div class="modal-footer">
@@ -75,20 +75,20 @@
     <fildset>
         <table class="table" aling="center">
             <thead>
-            <td>empr_id</td><td>ID</td><td>Nome</td><td>Cargo</td><td>Setor</td><td>Salário</td><td>Data de admissão</td>
+            <td>ID</td><td>Nome</td><td>Telefone</td><td>E-mail</td><td>Nascimento</td><td>Categoria</td><td>CPF</td>
             </thead>
             <tbody>
-                <c:forEach var="colaborador" items="${listaColaboradores}">
+                <c:forEach var="usuario" items="${listaUsuarios}">
                     <tr>
-                        <td>${colaborador.empr_id}</td>
-                        <td>${colaborador.id}</td>
-                        <td>${colaborador.nome}</td>
-                        <td>${colaborador.cargo}</td>
-                        <td>${colaborador.setor}</td>
-                        <td>${colaborador.salario}</td>
-                        <td>${colaborador.data_ingresso}</td>                           
-                        <td><a href="../protegido/cliente/CadastroColaboradorServlet?id=${colaborador.id}&ope=1" >Atualizar</a></td>
-                        <td><button onclick="confirmarRemocao('${colaborador.nome}', '${colaborador.id}')" class="btn btn-link">Deletar</button></td>
+                        <td>${usuario.id}</td>
+                        <td>${usuario.nome}</td>
+                        <td>${usuario.telefone}</td>
+                        <td>${usuario.email}</td>
+                        <td>${usuario.nascimento}</td>
+                        <td>${usuario.categoria}</td>
+                        <td>${usuario.cpf}</td>                  
+                        <td><a href="../protegido/cliente/CadastroColaboradorServlet?id=${usuario.cpf}&ope=1" >Atualizar</a></td>
+                        <td><button onclick="confirmarRemocao('${usuario.nome}', '${usuario.cpf}')" class="btn btn-link">Deletar</button></td>
                     </tr>
                 </c:forEach>
             </tbody>

@@ -63,38 +63,25 @@ public class CadastroUsuarioServlet extends HttpServlet {
 
     }
 
-    /*
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String cpf = req.getParameter("CPFUsuario");
         String ope = req.getParameter("ope");
         //OPE = 1 => Atualização
         System.out.println(ope);
-        if ("1".equals(ope)) {
-            try {
-                Cliente cliente = ClienteDAO.getClientePorCPF(cpf);
-                req.setAttribute("clienteAtualizacao", cliente);
-                req.getRequestDispatcher("/protegido/cliente/cadastro.jsp").forward(req, resp);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            try {
-                ClienteDAO.deletarCliente(cpf);
-                resp.sendRedirect(req.getContextPath() + "/cliente/ListarClienteServlet");
-
-                //resp.sendRedirect(req.getContextPath() + "/cliente/BuscarClienteServlet");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
-
-            } catch (SQLException ex) {
-                Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            if ("1".equals(ope)) {
+                Usuario usuario = UsuarioDAO.getUsuarioPorCPF(cpf);
+                req.setAttribute("clienteAtualizacao", usuario);
+                req.getRequestDispatcher("/protegido/usuario/cadastro.jsp").forward(req, resp);
+            } else {
+                UsuarioDAO.deletarUsuario(cpf);
+                resp.sendRedirect(req.getContextPath() + "/protegido/usuario/ListarUsuarioServlet");
 
             }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+
         }
-
     }
-     */
 }

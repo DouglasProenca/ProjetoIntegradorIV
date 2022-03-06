@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -69,7 +71,7 @@ public class UsuarioDAO {
 
         ps.execute();
     }
-    
+
     public static boolean atualizarUsuario(Usuario usuario) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         String query = "update rc_aluno set nome=?,email=?,celular=?,tel_residencial=?"
@@ -77,7 +79,7 @@ public class UsuarioDAO {
         Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
-           /* ps.setString(1, cliente.getNome());
+            /* ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getEmail());
             ps.setString(3, cliente.getCelular());
             ps.setString(4, cliente.getTelResidencial());
@@ -89,5 +91,103 @@ public class UsuarioDAO {
             ok = false;
         }
         return ok;
+    }
+
+    public static List<Usuario> getClientes() throws ClassNotFoundException, SQLException {
+
+        List<Usuario> clientes = new ArrayList<>();
+        String query = "select u.id\n"
+                + "       ,u.nome\n"
+                + "       ,u.telefone\n"
+                + "       ,u.nascimento\n"
+                + "       ,u.email\n"
+                + "       ,c.categoria\n"
+                + "       ,u.cpf\n"
+                + "       ,u.senha\n"
+                + "       ,u.ativo\n"
+                + "from usuario u\n"
+                + "inner join categoria c\n"
+                + "on c.id = u.id_categoria\n"
+                + "order by u.nome";
+
+        Connection con = Conexao.abrirConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario = new Usuario();
+                usuario.setId(rs.getInt("id"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setTelefone(rs.getString("telefone"));
+                usuario.setNascimento(rs.getDate("nascimento"));
+                usuario.setCpf(rs.getString("cpf"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setSenha(rs.getString("senha"));
+                usuario.setCategoria(rs.getString("categoria"));
+                usuario.setAtivo(rs.getInt("ativo"));
+                clientes.add(usuario);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return clientes;
+    }
+    
+     public static boolean deletarUsuario(String cpf) throws ClassNotFoundException, SQLException {
+        boolean ok = true;
+        String query = "delete from usuario where cpf=?";
+        Connection con = Conexao.abrirConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, cpf);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ok = false;
+        }
+        return ok;
+    }
+     
+     public static Usuario getUsuarioPorCPF(String cpf) throws ClassNotFoundException, SQLException {
+        Usuario usuario = null;
+        String query = "select u.id\n"
+                + "       ,u.nome\n"
+                + "       ,u.telefone\n"
+                + "       ,u.nascimento\n"
+                + "       ,u.email\n"
+                + "       ,c.categoria\n"
+                + "       ,u.cpf\n"
+                + "       ,u.senha\n"
+                + "       ,u.ativo\n"
+                + "from usuario u\n"
+                + "inner join categoria c\n"
+                + "on c.id = u.id_categoria\n"
+                + "where u.cpf = ?";
+
+        Connection con = Conexao.abrirConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, cpf);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+               usuario = new Usuario();
+                usuario.setId(rs.getInt("id"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setTelefone(rs.getString("telefone"));
+                usuario.setNascimento(rs.getDate("nascimento"));
+                usuario.setCpf(rs.getString("cpf"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setSenha(rs.getString("senha"));
+                usuario.setCategoria(rs.getString("categoria"));
+                usuario.setAtivo(rs.getInt("ativo"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return usuario;
     }
 }
