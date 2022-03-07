@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
             if (usuario == null) {
                 response.sendRedirect(request.getContextPath() + "/Login.jsp?loginInvalido=true");
             } else {
-                if (usuario.getAtivo() == 1) {
+                if (usuario.getAtivo().equals("Ativo")) {
                     boolean senhaOk = CryptoUtils.verificarSenha(senhaUsuario, usuario.getSenha());
                     if (senhaOk) {
                         HttpSession sessao = request.getSession();

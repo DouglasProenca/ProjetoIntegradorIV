@@ -57,28 +57,30 @@ public class CadastroUsuarioServlet extends HttpServlet {
             } catch (ClassNotFoundException | ParseException ex) {
                 Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            } else {
-                    response.sendRedirect(request.getContextPath() + "/protegido/usuario/cadastro.jsp?cpfInvalido=true");
-                }
-        }
-
-        @Override
-        protected void doGet
-        (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            String cpf = req.getParameter("CPFUsuario");
-            String ope = req.getParameter("ope");
-            //OPE = 1 => Atualização
-            try {
-                if ("1".equals(ope)) {
-                    Usuario usuario = UsuarioDAO.getUsuarioPorCPF(cpf);
-                    req.setAttribute("clienteAtualizacao", usuario);
-                    req.getRequestDispatcher("/protegido/usuario/cadastro.jsp").forward(req, resp);
-                } else {
-                    UsuarioDAO.deletarUsuario(cpf);
-                    resp.sendRedirect(req.getContextPath() + "/protegido/usuario/ListarUsuarioServlet");
-                }
-            } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } else {
+            response.sendRedirect(request.getContextPath() + "/protegido/usuario/cadastro.jsp?cpfInvalido=true");
         }
     }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String cpf = req.getParameter("CPFUsuario");
+        String ope = req.getParameter("ope");
+        //OPE = 1 => Atualização
+        try {
+            if ("1".equals(ope)) {
+                Usuario usuario = UsuarioDAO.getUsuarioPorCPF(cpf);
+                req.setAttribute("clienteAtualizacao", usuario);
+                req.getRequestDispatcher("/protegido/usuario/cadastro.jsp").forward(req, resp);
+            } else if (("2".equals(ope))) {
+                UsuarioDAO.statusUsuario(cpf);
+                resp.sendRedirect(req.getContextPath() + "/protegido/usuario/ListarUsuarioServlet");
+            } else {
+                UsuarioDAO.deletarUsuario(cpf);
+                resp.sendRedirect(req.getContextPath() + "/protegido/usuario/ListarUsuarioServlet");
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}

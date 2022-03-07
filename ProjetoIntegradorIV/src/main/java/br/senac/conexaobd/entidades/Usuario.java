@@ -19,7 +19,7 @@ public class Usuario {
     private Date nascimento;
     private String categoria;
     private String senha;
-    private int ativo;
+    private String ativo;
     private String cpf;
 
     public boolean isADM() {
@@ -30,11 +30,11 @@ public class Usuario {
         return "estoquista".equalsIgnoreCase(this.getCategoria());
     }
     
-    public boolean isAtivo() {
-        return "1".equalsIgnoreCase(String.valueOf(this.getAtivo()));
+   public boolean isAtivo() {
+        return "Ativo".equalsIgnoreCase(this.getAtivo());
     }
 
     public boolean isNotAtivo() {
-        return "0".equalsIgnoreCase(String.valueOf(this.getAtivo()));
+        return "Não Ativo".equalsIgnoreCase(this.getAtivo());
     }
 }

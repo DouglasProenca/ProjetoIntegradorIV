@@ -15,13 +15,13 @@
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
         <br><br><br>
-        <input type="text" id="nomeCliente" class="form-control"/><br/>
+        <input type="text" id="nomeUsuario" class="form-control"/><br/>
         <button onclick="buscar()" class="btn btn-primary">Buscar</button>
         <div id="msgAlerta" class="alert alert-warning" role="alert" style="display:none">
             <span id="txtAlerta"></span>
         </div>
         <br><br>
-        <table id="tabelaClientes" class="table">
+        <table id="tabelaUsuarios" class="table">
             <thead>
             <th>Nome</th>
             <th>Categoria</th>

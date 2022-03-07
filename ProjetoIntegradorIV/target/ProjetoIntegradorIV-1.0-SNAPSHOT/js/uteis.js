@@ -8,40 +8,34 @@ function mostrarTelaAlerta(texto) {
 
 
 function buscar() {
-    var campoBusca = $("#nomeCliente");
-    var nomeCliente = campoBusca.val();
-    var tamanhoBusca = nomeCliente.length;
+    var campoBusca = $("#nomeUsuario");
+    var nomeUsuario = campoBusca.val();
+    var tamanhoBusca = nomeUsuario.length;
     if (tamanhoBusca < 3) {
         mostrarTelaAlerta("Digite, pelo menos, 3 caracteres");
     } else {
-        $('#tabelaClientes tbody').empty();
-        var url = "../usuario/BuscaCliente?nomeCliente=" + nomeCliente;
+        $('#tabelaUsuarios tbody').empty();
+        var url = "../usuario/BuscaUsuario?nomeUsuario=" + nomeUsuario;
         $.ajax(url).done(function (resposta) {
             // Retorno do servlet
-            var jsonClientes = JSON.parse(resposta);
-            if (jsonClientes.length === 0) {
+            var jsonUsuarios = JSON.parse(resposta);
+            if (jsonUsuarios.length === 0) {
                 mostrarTelaAlerta("A busca não encontrou resultados");
             }
-            console.log(jsonClientes);
+            console.log(jsonUsuarios);
             // Adicionando resultado na lista
-            jsonClientes.forEach(function (cliente) {
-                $("#tabelaClientes").find('tbody')
+            jsonUsuarios.forEach(function (usuario) {
+                $("#tabelaUsuarios").find('tbody')
                         .append($('<tr>')
-                                .append($('<td>').append(cliente.nome))
-                                .append($('<td>').append(cliente.categoria))
-                                .append($('<td>').append(cliente.cpf))
-                                .append($('<td>').append(cliente.ativo))
+                                .append($('<td>').append(usuario.nome))
+                                .append($('<td>').append(usuario.categoria))
+                                .append($('<td>').append(usuario.cpf))
+                                .append($('<td>').append(usuario.ativo))
                                 );
             })
-
-
-
-
         }).fail(function () {
             console.log("Erro!");
         })
     }
-
-
 }
 

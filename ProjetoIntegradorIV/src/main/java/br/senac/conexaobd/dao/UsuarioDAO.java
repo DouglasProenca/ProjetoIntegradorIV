@@ -29,7 +29,7 @@ public class UsuarioDAO {
                 + "       ,c.categoria\n"
                 + "       ,u.cpf\n"
                 + "       ,u.senha\n"
-                + "       ,u.ativo\n"
+                + "       ,case when u.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo\n"
                 + "from usuario u\n"
                 + "inner join categoria c\n"
                 + "on c.id = u.id_categoria\n"
@@ -46,7 +46,7 @@ public class UsuarioDAO {
             usuario.setEmail(rs.getString("email"));
             usuario.setSenha(rs.getString("senha"));
             usuario.setCategoria(rs.getString("categoria"));
-            usuario.setAtivo(rs.getInt("ativo"));
+            usuario.setAtivo(rs.getString("ativo"));
         }
         return usuario;
     }
@@ -110,7 +110,7 @@ public class UsuarioDAO {
                 + "       ,c.categoria\n"
                 + "       ,u.cpf\n"
                 + "       ,u.senha\n"
-                + "       ,u.ativo\n"
+                + "       ,case when u.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo\n"
                 + "from usuario u\n"
                 + "inner join categoria c\n"
                 + "on c.id = u.id_categoria\n"
@@ -131,7 +131,7 @@ public class UsuarioDAO {
                 usuario.setEmail(rs.getString("email"));
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setCategoria(rs.getString("categoria"));
-                usuario.setAtivo(rs.getInt("ativo"));
+                usuario.setAtivo(rs.getString("ativo"));
                 clientes.add(usuario);
             }
 
@@ -168,7 +168,7 @@ public class UsuarioDAO {
                 + "       ,c.categoria\n"
                 + "       ,u.cpf\n"
                 + "       ,u.senha\n"
-                + "       ,u.ativo\n"
+                + "       ,case when u.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo\n"
                 + "from usuario u\n"
                 + "inner join categoria c\n"
                 + "on c.id = u.id_categoria\n"
@@ -189,7 +189,7 @@ public class UsuarioDAO {
                 usuario.setEmail(rs.getString("email"));
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setCategoria(rs.getString("categoria"));
-                usuario.setAtivo(rs.getInt("ativo"));
+                usuario.setAtivo(rs.getString("ativo"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -208,7 +208,7 @@ public class UsuarioDAO {
                 + "       ,c.categoria\n"
                 + "       ,u.cpf\n"
                 + "       ,u.senha\n"
-                + "       ,u.ativo\n"
+                + "       ,case when u.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo\n"
                 + "from usuario u\n"
                 + "inner join categoria c\n"
                 + "on c.id = u.id_categoria\n"
@@ -230,12 +230,28 @@ public class UsuarioDAO {
                 usuario.setEmail(rs.getString("email"));
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setCategoria(rs.getString("categoria"));
-                usuario.setAtivo(rs.getInt("ativo"));
+                usuario.setAtivo(rs.getString("ativo"));
                 clientes.add(usuario);
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return clientes;
+    }
+    
+    public static boolean statusUsuario(String cpf) throws ClassNotFoundException, SQLException {
+        boolean ok = true;
+        String query = "call sp_altStatus(?)";
+        Connection con = Conexao.abrirConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, cpf);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ok = false;
+        }
+        return ok;
     }
 }
