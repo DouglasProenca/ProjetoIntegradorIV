@@ -44,9 +44,6 @@ public class AutorizacaoFilter implements Filter {
         //Passo 2 - Usuario Não tem Permissão
         Usuario usuarioSistema = (Usuario) usuario;
         String url = httpServletRequest.getRequestURI();
-        if(url.contains("/protegido/produto/") && usuarioSistema.isADM()){
-            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
-        }
         if(url.contains("/protegido/usuario/") && usuarioSistema.isEST()){
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
         }
