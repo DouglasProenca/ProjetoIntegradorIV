@@ -142,22 +142,6 @@ public class UsuarioDAO {
         return clientes;
     }
 
-    public static boolean deletarUsuario(String cpf) throws ClassNotFoundException, SQLException {
-        boolean ok = true;
-        String query = "delete from usuario where cpf=?";
-        Connection con = Conexao.abrirConexao();
-        try {
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, cpf);
-            ps.executeUpdate();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-            ok = false;
-        }
-        return ok;
-    }
-
     public static Usuario getUsuarioPorCPF(String cpf) throws ClassNotFoundException, SQLException {
         Usuario usuario = null;
         String query = "select u.id\n"

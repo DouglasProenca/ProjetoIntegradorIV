@@ -33,7 +33,7 @@
                 </c:if>
                 <c:if test="${sessionScope.usuario.isEST()}">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filial</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Produto</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
                             <button class="dropdown-item"><a href="filial/cadastroFilial.jsp">Cadastrar Produto</a></button>
                             <button class="dropdown-item"><a href="../usuario/ListarFilialServlet">Listar Produto</a></button>

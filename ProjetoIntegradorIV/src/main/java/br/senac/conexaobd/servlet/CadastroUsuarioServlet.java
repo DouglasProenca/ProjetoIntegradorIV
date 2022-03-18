@@ -75,10 +75,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
             } else if (("2".equals(ope))) {
                 UsuarioDAO.statusUsuario(cpf);
                 resp.sendRedirect(req.getContextPath() + "/protegido/usuario/ListarUsuarioServlet");
-            } else {
-                UsuarioDAO.deletarUsuario(cpf);
-                resp.sendRedirect(req.getContextPath() + "/protegido/usuario/ListarUsuarioServlet");
-            }
+            } 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
