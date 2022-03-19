@@ -25,40 +25,40 @@ public class CadastroUsuarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (ValidaCPF.isCPF(request.getParameter("CPFUsuario")) == true) {
-            try {
-                String ope = request.getParameter("ope");
-                Usuario usuario = new Usuario();
-                usuario.setNome(request.getParameter("nomeUsuario"));
-                usuario.setCpf(request.getParameter("CPFUsuario"));
-                usuario.setEmail(request.getParameter("emailUsuario"));
-                usuario.setTelefone(request.getParameter("CelularUsuario"));
-                usuario.setCategoria(request.getParameter("categoriaUsuario"));
-                usuario.setNascimento(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("NascimentoUsuario")));
-                usuario.setSenha(request.getParameter("senhaUsuario"));
-                // ope = 1 => Update
-                if ("1".equals(ope)) {
-                    try {
-                        UsuarioDAO.atualizarUsuario(usuario);
-                    } catch (ClassNotFoundException ex) {
-                        response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
-                        Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                } else {
-                    UsuarioDAO.inserirUsuario(usuario);
-                }
-                response.sendRedirect(request.getContextPath() + "/protegido/uteis/sucesso.jsp");
-            } catch (SQLException ex) {
-                if (ex.getErrorCode() == 1062) {
-                    response.sendRedirect(request.getContextPath() + "/protegido/usuario/cadastro.jsp?mailInvalido=true");
-                } else {
+        try {
+            String ope = request.getParameter("ope");
+            Usuario usuario = new Usuario();
+            usuario.setNome(request.getParameter("nomeUsuario"));
+            usuario.setEmail(request.getParameter("emailUsuario"));
+            usuario.setCpf(request.getParameter("CPFUsuario"));
+            usuario.setTelefone(request.getParameter("CelularUsuario"));
+            usuario.setCategoria(request.getParameter("categoriaUsuario"));
+            usuario.setNascimento(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("NascimentoUsuario")));
+            usuario.setSenha(request.getParameter("senhaUsuario"));
+            // ope = 1 => Update
+            if ("1".equals(ope)) {
+                try {
+                    UsuarioDAO.updateUsuario(usuario);
+                } catch (ClassNotFoundException ex) {
                     response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
+                    Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } catch (ClassNotFoundException | ParseException ex) {
-                Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } else {
+                if (ValidaCPF.isCPF(request.getParameter("CPFUsuario")) == true) {
+                    UsuarioDAO.inserirUsuario(usuario);
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/protegido/usuario/cadastro.jsp?cpfInvalido=true");
+                }
             }
-        } else {
-            response.sendRedirect(request.getContextPath() + "/protegido/usuario/cadastro.jsp?cpfInvalido=true");
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/sucesso.jsp");
+        } catch (SQLException ex) {
+            if (ex.getErrorCode() == 1062) {
+                response.sendRedirect(request.getContextPath() + "/protegido/usuario/cadastro.jsp?mailInvalido=true");
+            } else {
+                response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
+            }
+        } catch (ClassNotFoundException | ParseException ex) {
+            Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -75,7 +75,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
             } else if (("2".equals(ope))) {
                 UsuarioDAO.statusUsuario(cpf);
                 resp.sendRedirect(req.getContextPath() + "/protegido/usuario/ListarUsuarioServlet");
-            } 
+            }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

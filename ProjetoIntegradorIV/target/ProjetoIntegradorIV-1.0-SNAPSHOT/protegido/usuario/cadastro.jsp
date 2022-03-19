@@ -43,7 +43,7 @@
                 <br/>
                 <c:if test="${empty clienteAtualizacao}">
                     <div class="form-group">
-                         <label>Email</label>
+                        <label>Email</label>
                         <input type="text" name="emailUsuario" value="${clienteAtualizacao.email}"
                                required class="form-control"/>
                     </div>
@@ -85,16 +85,16 @@
                 <br/>
                 <div class="form-group">
                     <label>Senha</label>
-                    <input type="text" name="senhaUsuario" value="${clienteAtualizacao.senha}"
-                           required class="form-control"/>
+                    <input type="text" name="senhaUsuario"
+                           class="form-control"/>
                 </div>
-                           <c:if test="${not empty clienteAtualizacao}">
-                               <input type="hidden" name="CPFUsuario"
-                                      value="${clienteAtualizacao.cpf}" 
-                                      required
-                                      class="form-control"
-                                      />
-                           </c:if>
+                <c:if test="${not empty clienteAtualizacao}">
+                    <input type="hidden" name="CPFUsuario"
+                           value="${clienteAtualizacao.cpf}" 
+                           required
+                           class="form-control"
+                           />
+                </c:if>
                 <br/>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>

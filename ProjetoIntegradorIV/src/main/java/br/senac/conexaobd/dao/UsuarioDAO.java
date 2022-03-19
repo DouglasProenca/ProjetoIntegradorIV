@@ -72,7 +72,7 @@ public class UsuarioDAO {
         ps.execute();
     }
 
-    public static boolean atualizarUsuario(Usuario usuario) throws ClassNotFoundException, SQLException {
+    public static boolean updateUsuario(Usuario usuario) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         String query = "update usuario set nome=?,telefone=?,nascimento=?,id_categoria=?,senha=?"
                 + " where cpf=?";
@@ -87,7 +87,7 @@ public class UsuarioDAO {
             } else {
                 ps.setInt(4, 2);
             }
-            ps.setString(5, usuario.getSenha());
+            ps.setString(5, CryptoUtils.gerarhashSenha(usuario.getSenha()));
             ps.setString(6, usuario.getCpf());
             System.out.println(usuario.getCpf());
             ps.executeUpdate();
@@ -180,7 +180,7 @@ public class UsuarioDAO {
         }
         return usuario;
     }
-    
+
     public static List<Usuario> buscarUsuario(String nomeParam) throws ClassNotFoundException, SQLException {
         nomeParam = nomeParam.toUpperCase();
         List<Usuario> clientes = new ArrayList<>();
@@ -204,7 +204,7 @@ public class UsuarioDAO {
             ps.setString(1, nomeParam + "%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                 Usuario usuario = new Usuario();
+                Usuario usuario = new Usuario();
                 usuario = new Usuario();
                 usuario.setId(rs.getInt("id"));
                 usuario.setNome(rs.getString("nome"));
@@ -222,7 +222,7 @@ public class UsuarioDAO {
         }
         return clientes;
     }
-    
+
     public static boolean statusUsuario(String cpf) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         String query = "call sp_altStatus(?)";
