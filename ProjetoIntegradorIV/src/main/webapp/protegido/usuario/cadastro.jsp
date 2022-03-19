@@ -92,8 +92,7 @@
                     <input type="hidden" name="CPFUsuario"
                            value="${clienteAtualizacao.cpf}" 
                            required
-                           class="form-control"
-                           />
+                           class="form-control"/>
                 </c:if>
                 <br/>
                 <button type="submit" class="btn btn-primary">Enviar</button>

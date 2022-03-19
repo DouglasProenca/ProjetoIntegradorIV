@@ -23,14 +23,13 @@ public class ListarUsuarioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        int ope = Integer.parseInt(request.getParameter("ope"));
         try {
-            List<Usuario> usuarios = UsuarioDAO.getClientes();
-            request.setAttribute("listaUsuarios", usuarios);
-            // RequestDispatcher reaproveita os objetos Request e Response
-            String url = "/protegido/usuario/listar.jsp";
-            request.getRequestDispatcher(url).forward(request, response);
-
+                List<Usuario> usuarios = UsuarioDAO.getAllClientes(ope);
+                request.setAttribute("listaUsuarios", usuarios);
+                // RequestDispatcher reaproveita os objetos Request e Response
+                String url = "/protegido/usuario/listar.jsp";
+                request.getRequestDispatcher(url).forward(request, response);
         } catch (ClassNotFoundException | SQLException ex) {
             response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
             Logger.getLogger(ListarUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);

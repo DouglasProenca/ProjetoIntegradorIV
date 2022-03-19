@@ -89,7 +89,6 @@ public class UsuarioDAO {
             }
             ps.setString(5, CryptoUtils.gerarhashSenha(usuario.getSenha()));
             ps.setString(6, usuario.getCpf());
-            System.out.println(usuario.getCpf());
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -99,26 +98,14 @@ public class UsuarioDAO {
         return ok;
     }
 
-    public static List<Usuario> getClientes() throws ClassNotFoundException, SQLException {
+    public static List<Usuario> getAllClientes(int ope) throws ClassNotFoundException, SQLException {
 
         List<Usuario> clientes = new ArrayList<>();
-        String query = "select u.id\n"
-                + "       ,u.nome\n"
-                + "       ,u.telefone\n"
-                + "       ,u.nascimento\n"
-                + "       ,u.email\n"
-                + "       ,c.categoria\n"
-                + "       ,u.cpf\n"
-                + "       ,u.senha\n"
-                + "       ,case when u.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo\n"
-                + "from usuario u\n"
-                + "inner join categoria c\n"
-                + "on c.id = u.id_categoria\n"
-                + "order by u.nome";
-
+        String query = "call sp_getUsuario(?)";
         Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, ope);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Usuario usuario = new Usuario();

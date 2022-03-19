@@ -66,7 +66,92 @@ delimiter ;
 create table produto(
 código int primary key auto_increment,
  nome varchar(200) not null,
- quantidade int not null, 
+ quantidade int not null,
+ avaliacao float(24,1),
  valor double(24,2) not null,
  ativo bit not null 
 );
+
+delimiter $
+create procedure getUsuario(contador varchar(30))
+begin
+
+if contador = 0
+then
+
+select u.id
+       ,u.nome
+       ,u.telefone
+       ,u.nascimento
+       ,c.categoria
+       ,u.cpf
+       ,u.senha
+       , case when u.ativo = 1 then 'Ativo' else 'Não Ativos' end ativo
+from usuario u
+inner join categoria c
+on c.id = u.id_categoria
+order by u.nome
+LIMIT 10;
+
+end if;
+
+if contador = 1
+then
+
+select u.id
+       ,u.nome
+       ,u.telefone
+       ,u.nascimento
+       ,c.categoria
+       ,u.cpf
+       ,u.senha
+       , case when u.ativo = 1 then 'Ativo' else 'Não Ativos' end ativo
+from usuario u
+inner join categoria c
+on c.id = u.id_categoria
+order by u.nome
+LIMIT 10,10;
+
+end if;
+
+if contador = 2
+then
+
+select u.id
+       ,u.nome
+       ,u.telefone
+       ,u.nascimento
+       ,c.categoria
+       ,u.cpf
+       ,u.senha
+       , case when u.ativo = 1 then 'Ativo' else 'Não Ativos' end ativo
+from usuario u
+inner join categoria c
+on c.id = u.id_categoria
+order by u.nome
+LIMIT 20,10;
+
+end if;
+
+if contador = 3
+then
+
+select u.id
+       ,u.nome
+       ,u.telefone
+       ,u.nascimento
+       ,c.categoria
+       ,u.cpf
+       ,u.senha
+       , case when u.ativo = 1 then 'Ativo' else 'Não Ativos' end ativo
+from usuario u
+inner join categoria c
+on c.id = u.id_categoria
+order by u.nome
+LIMIT 30,10;
+
+end if;
+
+end $
+delimiter ;
+
