@@ -36,12 +36,37 @@ select u.id
        ,c.categoria
        ,u.cpf
        ,u.senha
-       ,u.ativo
+       , case when u.ativo = 1 then 'Ativo' else 'Não Ativos' end ativo
 from usuario u
 inner join categoria c
 on c.id = u.id_categoria
 order by u.nome;
 
-update usuario set ativo = 0 where id = 3;
+update usuario set ativo = 1 where id = 3;
 
-select * from usuario
+select * from usuario;
+
+call sp_al
+
+delimiter $
+
+create procedure sp_altStatus (cpf_aux varchar(50))
+begin
+
+declare _status int;
+
+set _status = (select ativo from usuario where cpf = cpf_aux);
+
+update usuario set ativo = (select case when _status = 1 then 0 else 1 end);
+
+
+end $
+delimiter ;
+
+create table produto(
+código int primary key auto_increment,
+ nome varchar(200) not null,
+ quantidade int not null, 
+ valor double(24,2) not null,
+ ativo bit not null 
+);
