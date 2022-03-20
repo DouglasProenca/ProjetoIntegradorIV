@@ -73,7 +73,7 @@ código int primary key auto_increment,
 );
 
 delimiter $
-create procedure getUsuario(contador varchar(30))
+create procedure getUsuario(contador int)
 begin
 
 if contador = 0
@@ -84,6 +84,7 @@ select u.id
        ,u.telefone
        ,u.nascimento
        ,c.categoria
+	   ,u.email
        ,u.cpf
        ,u.senha
        , case when u.ativo = 1 then 'Ativo' else 'Não Ativos' end ativo
@@ -104,8 +105,9 @@ select u.id
        ,u.nascimento
        ,c.categoria
        ,u.cpf
+       ,u.email
        ,u.senha
-       , case when u.ativo = 1 then 'Ativo' else 'Não Ativos' end ativo
+       , case when u.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo
 from usuario u
 inner join categoria c
 on c.id = u.id_categoria
@@ -122,9 +124,10 @@ select u.id
        ,u.telefone
        ,u.nascimento
        ,c.categoria
+	   ,u.email
        ,u.cpf
        ,u.senha
-       , case when u.ativo = 1 then 'Ativo' else 'Não Ativos' end ativo
+       , case when u.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo
 from usuario u
 inner join categoria c
 on c.id = u.id_categoria
@@ -143,7 +146,7 @@ select u.id
        ,c.categoria
        ,u.cpf
        ,u.senha
-       , case when u.ativo = 1 then 'Ativo' else 'Não Ativos' end ativo
+       , case when u.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo
 from usuario u
 inner join categoria c
 on c.id = u.id_categoria
@@ -155,3 +158,4 @@ end if;
 end $
 delimiter ;
 
+call sp_getUsuario(0)
