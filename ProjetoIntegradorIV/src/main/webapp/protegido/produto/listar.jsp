@@ -1,6 +1,6 @@
 <%-- 
-    Document   : cadastro
-    Created on : 20/10/2021, 21:00:14
+    Document   : Listar
+    Created on : 18/03/2022, 21:00:14
     Author     : Douglas Proença
 --%>
 
@@ -12,30 +12,69 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/estilo.css">
-        <title>Lista de Pessoas</title>
+        <title>Lista de Produtos</title>
         <script type="text/javascript">
-            var cpfRemocao;
-            function confirmarRemocao(nome, CPF) {
-                console.log("Confirmar exclusao", nome, CPF);
-                cpfRemocao = CPF;
-                var paragrafoCliente = $("#campoTextoExclusao");
-                paragrafoCliente.html(nome + " - " + CPF);
+            
+             function buscarProduto() {
+                var campoBusca = $("#nomeProduto");
+                $("#tabelaProdutos td").detach();
+                var nomeProduto = campoBusca.val();
+                var tamanhoBusca = nomeProduto.length;
+                if (tamanhoBusca < 3) {
+                    mostrarTelaAlerta("Digite, pelo menos, 3 caracteres");
+                } else {
+                    $('#tabelaColaboradores tbody').empty();
+                    var url = "../produto/BuscaProduto?nomeProduto=" + nomeProduto;
+                    $.ajax(url).done(function (resposta) {
+                        // Retorno do servlet
+                        var jsonClientes = JSON.parse(resposta);
+                        if (jsonClientes.length === 0) {
+                            mostrarTelaAlerta("A busca não encontrou resultados");
+                        }
+                        console.log(jsonClientes);
+                        // Adicionando resultado na lista
+                        jsonClientes.forEach(function (Produto) {
+                            $("#tabelaProdutos").find('tbody')
+                                    .append($('<tr>')
+                                            .append($('<td>').append(Produto.codigo))
+                                            .append($('<td>').append(Produto.nome))
+                                            .append($('<td>').append(Produto.quantidade))
+                                            .append($('<td>').append(Produto.valor))
+                                            .append($('<td>').append(Produto.ativo))
+                                            );
+                        })
 
-                var modalConfirmacao = $("#modalExclusao");
+
+
+
+                    }).fail(function () {
+                        console.log("Erro!");
+                    })
+                }
+
+            }
+            
+            function confirmarStatus(nome, codigo) {
+                console.log("Confirmar alteração ", nome, codigo);
+                idProduto = codigo;
+                var paragrafoCliente = $("#campoTextoStatus");
+                paragrafoCliente.html(nome + " - " + codigo);
+
+                var modalConfirmacao = $("#modalStatus");
                 modalConfirmacao.show();
             }
 
-            function fecharModal() {
-                var modalConfirmacao = $("#modalExclusao");
+            function fecharModalStatus() {
+                var modalConfirmacao = $("#modalStatus");
                 modalConfirmacao.hide();
             }
 
-            function deletar() {
-                console.log("Excluindo cliente ", cpfRemocao);
-                fecharModal();
-                var url = "../protegido/cliente/CadastroClienteServlet?CPFUsuario=" + cpfRemocao;
+            function status() {
+                console.log("Alterando produto ", idProduto);
+                fecharModalStatus();
+                var url = "CadastroProdutoServlet?ope=2&codigoProduto=" + idProduto;
                 $.ajax(url).done(function () {
-                    console.log("Cliente removido!");
+                    console.log("Produto Alterado!");
                     var alerta = $("#alerta");
                     alerta.css("display", "block");
                     setTimeout(function () {
@@ -43,60 +82,78 @@
                         location.reload();
                     }, 1000)
                 }).fail(function () {
-                    console.log("Erro ao remover o cliente!");
+                    console.log("Erro ao alterar o Produto!");
                 })
             }
-
         </script>
     </head>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
-        <div id="alerta" class="alert alert-success" role="alert" style="display:none">
-            Cliente removido com sucesso!
+        <br><br><br><br>
+        <c:if test="${sessionScope.usuario.isADM()}">
+        <div class="col-lg-12" style="text-align: right;">
+            <a class="btn btn-primary" href="../produto/cadastro.jsp" role="button">+</a>
         </div>
-        <br>
-        <br>
-        <br>
-        <h1><center>Todos Os Alunos</center></h1>
-        <br>
-        <div class="modal" tabindex="-1" role="dialog" id="modalExclusao">
+        </c:if>
+        <br><br>
+        <input type="text" id="nomeProduto" class="form-control"/><br/>
+        <button onclick="buscarProduto()" class="btn btn-primary">Buscar</button>
+        <div id="alerta" class="alert alert-success" role="alert" style="display:none">
+            Produto alterado com sucesso!
+        </div>
+        <br><br><br><br>
+        <div class="modal" tabindex="-1" role="dialog" id="modalStatus">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Confirmar Exclusão</h5>                       
+                        <h5 class="modal-title">Confirmar Alteração</h5>                       
                     </div>
                     <div class="modal-body">
-                        <p>Confirmar exclusão do usuário abaixo?</p>
-                        <p id="campoTextoExclusao"></p>
+                        <p>Confirmar alteração do produto abaixo abaixo?</p>
+                        <p id="campoTextoStatus"></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
-                        <button type="button" class="btn btn-primary" onclick="deletar()">Confirmar</button>
+                        <button type="button" class="btn btn-secondary" onclick="fecharModalStatus()">Cancelar</button>
+                        <button type="button" class="btn btn-primary" onclick="status()">Confirmar</button>
                     </div>
                 </div>
             </div>
         </div>
     <fildset>
-        <table class="table" aling="center">
+        <table class="table" id="tabelaProdutos" aling="center">
             <thead>
-            <td>Nome</td><td>Email</td><td>CPF</td><td>Sexo</td><td>Celular</td><td>Fixo</td>
+            <th>Código</th><th>Nome</th><th>Quantidade</th><th>Valor</td><th>Ativo</th>
             </thead>
             <tbody>
-                <c:forEach var="cliente" items="${listaClientes}">
+                <c:forEach var="produto" items="${listaProdutos}">
                     <tr>
-                        <td>${cliente.nome}</td>
-                        <td>${cliente.email}</td>
-                        <td>${cliente.CPF}</td>
-                        <td>${cliente.sexo}</td>
-                        <td>${cliente.celular}</td>
-                        <td>${cliente.telResidencial}</td>
-                        <td><a href="../protegido/cliente/CadastroClienteServlet?CPFUsuario=${cliente.CPF}&ope=1" >Atualizar</a></td>
-                        <td><button onclick="confirmarRemocao('${cliente.nome}', '${cliente.CPF}')" class="btn btn-link">Deletar</button></td>
+                        <td>${produto.codigo}</td>
+                        <td>${produto.nome}</td>
+                        <td>${produto.quantidade}</td>
+                        <td>${produto.valor}</td>
+                        <td>${produto.ativo}</td>
+                        <td><a href="../produto/CadastroProdutoServlet?codigoProduto=${produto.codigo}&ope=1" >Alterar</a></td>
+                        <c:if test="${sessionScope.usuario.isADM()}">
+                            <td><a href="../produto/CadastroProdutoServlet?codigoProduto=${produto.codigo}&ope=1" >Visualizar</a></td>
+                            <c:if test="${produto.isAtivo()}">
+                                <td><button onclick="confirmarStatus('${produto.nome}', '${produto.codigo}')" class="btn btn-link">Inativar</button></td>
+                            </c:if>
+                            <c:if test="${produto.isNotAtivo()}">
+                                <td><button onclick="confirmarStatus('${produto.nome}', '${produto.codigo}')" class="btn btn-link">Reativar</button></td>
+                            </c:if>
+                        </c:if>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
     </fildset>
+    <nav>
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="../usuario/ListarUsuarioServlet?ope=0">1</a></li>
+            <li class="page-item"><a class="page-link" href="../usuario/ListarUsuarioServlet?ope=1">2</a></li>
+            <li class="page-item"><a class="page-link" href="../usuario/ListarUsuarioServlet?ope=2">3</a></li>
+        </ul>
+    </nav>
 </body>
 <a href="${pageContext.request.contextPath}/protegido/index.jsp">Voltar</a>
 </html>

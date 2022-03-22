@@ -73,7 +73,7 @@ código int primary key auto_increment,
 );
 
 delimiter $
-create procedure getUsuario(contador int)
+create procedure sp_getUsuario(contador int)
 begin
 
 if contador = 0
@@ -99,11 +99,11 @@ end if;
 if contador = 1
 then
 
-select u.id
-       ,u.nome
-       ,u.telefone
-       ,u.nascimento
-       ,c.categoria
+select p.código
+       ,p.nome
+       ,p.quantidade
+       ,p.avaliacao
+       ,p.categoria
        ,u.cpf
        ,u.email
        ,u.senha
@@ -158,4 +158,92 @@ end if;
 end $
 delimiter ;
 
-call sp_getUsuario(0)
+delimiter $
+create procedure sp_getProdutos(contador int)
+begin
+
+if contador = 0
+then
+
+select p.código
+       ,p.nome
+       ,p.quantidade
+       ,p.avaliacao
+       ,p.valor
+       , case when p.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo
+from produto p
+order by p.código desc
+LIMIT 10;
+
+end if;
+
+if contador = 1
+then
+
+select p.código
+       ,p.nome
+       ,p.quantidade
+       ,p.avaliacao
+       ,p.valor
+       , case when p.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo
+from produto p
+order by p.código desc
+LIMIT 10,10;
+
+end if;
+
+if contador = 2
+then
+
+select p.código
+       ,p.nome
+       ,p.quantidade
+       ,p.avaliacao
+       ,p.valor
+       , case when p.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo
+from produto p
+order by p.código desc
+LIMIT 20,10;
+
+end if;
+
+if contador = 3
+then
+
+select p.código
+       ,p.nome
+       ,p.quantidade
+       ,p.avaliacao
+       ,p.valor
+       , case when p.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo
+from produto p
+order by p.código desc
+LIMIT 30,10;
+
+end if;
+
+end $
+delimiter ;
+
+select * from produto;
+
+insert into produto values(null,'Smart Tv Samsung',100,10,1000.99,1);
+insert into produto values(null,'Samsung Galaxy S10',100,10,800.60,1);
+
+delimiter $
+
+create procedure sp_altStatusProduto (id int)
+begin
+
+declare _status int;
+
+set _status = (select ativo from produto where código = id);
+
+update produto set ativo = (select case when _status = 1 then 0 else 1 end) 
+where código = id;
+
+
+end $
+delimiter ;
+
+call sp_altStatusProduto(2)

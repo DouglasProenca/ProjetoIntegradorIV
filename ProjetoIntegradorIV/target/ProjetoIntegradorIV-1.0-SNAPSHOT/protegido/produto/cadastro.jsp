@@ -11,7 +11,7 @@
     <head>  
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Cadastro de Clientes</title>
+        <title>Cadastro de Produtos</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
               crossorigin="anonymous" />
     </head>
@@ -19,79 +19,57 @@
         <div class="container">
             <c:import url="../uteis/header.jsp"/>
             <br><br><br>
-            <h1><center>Cadastro de Pessoas</center></h1>
+            <h1><center>Cadastro de Produtos</center></h1>
             <br><br>
-            <form class="col-md-6 offset-md-3 jumbotron" action="CadastroClienteServlet" method="POST">
-
-                <c:if test="${not empty clienteAtualizacao}">
+            <form class="col-md-6 offset-md-3 jumbotron" action="CadastroProdutoServlet" method="POST">
+                <c:if test="${not empty produtoAtualizacao}">
                     <input type="hidden" name="ope" value="1"/>
                 </c:if>
+                <c:if test="${sessionScope.usuario.isADM()}">
                 <div  class="form-group">
                     <label>Nome</label>
-                    <input type="text" name="nomeCliente" value="${clienteAtualizacao.nome}"
+                    <input type="text" name="nomeProduto" value="${produtoAtualizacao.nome}"
                            required class="form-control"/>
                 </div>
+                </c:if>
                 <br/>
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" name="emailCliente" value="${clienteAtualizacao.email}"
+                    <label>Quantidade</label>
+                    <input type="number" name="quantidadeProduto" value="${produtoAtualizacao.quantidade}"
                            required class="form-control"/>
                 </div>
                 <br/>
-                <c:if test="${empty clienteAtualizacao}">
-                    <div class="form-group">
-                        <label>CPF</label>
-                        <input type="text" name="CPFCliente"
-                               value="${clienteAtualizacao.CPF}" placeholder="000.000.000-00"
-                               required class="form-control"/>
-                    </div>
-                </c:if>
+                <c:if test="${sessionScope.usuario.isADM()}">
+                <div class="form-group">
+                    <label>Valor</label>
+                    <input type="number" name="valorProduto"
+                           value="${produtoAtualizacao.valor}" placeholder="000000.00"
+                           required class="form-control"/>
+                </div>
                 <br>
                 <div class="form-group">
-                    <label>Celular</label>
-                    <input type="text" name="CelularCliente"
-                           value="${clienteAtualizacao.celular}" placeholder="(00)00000-0000"
+                    <label>Avaliação</label>
+                    <input type="text" name="avaliacaoProduto"
+                           value="${produtoAtualizacao.avaliacao}" 
                            required
                            class="form-control"/>        
                 </div>
+                </c:if>
                 <br>
-                <div class="form-group">
-                    <label>Telefone Residencial</label>
-                    <input type="text" name="ResidencialCliente"
-                           value="${clienteAtualizacao.telResidencial}" placeholder="(00)0000-0000"
-                           required
+                <c:if test="${not empty produtoAtualizacao}">
+                    <input type="hidden" name="codigoProduto"
+                           value="${produtoAtualizacao.codigo}" 
                            class="form-control"/>
-                </div>
-                <br>
-                <div class="form-group">
-                    <c:if test="${empty clienteAtualizacao}">
-                        <label>Sexo</label>
-                        <select name="sexo" value="${clienteAtualizacao.sexo}"
-                                class="form-control">
-                            <option value="Masculino">Masculino</option>
-                            <option value="Feminino">Feminino</option>
-                        </select>
-                    </c:if>
-                </div>
-                <div class="form-group">
-                    <input type="hidden" name="Colaborador" 
-                           value="${sessionScope.usuario.id_colaborador}" 
-                           class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <input type="hidden" name="empr" 
-                           value="${sessionScope.usuario.empr_id}" 
-                           class="form-control"/>
-                </div>
-                           <c:if test="${not empty clienteAtualizacao}">
-                               <input type="hidden" name="CPFCliente"
-                                      value="${clienteAtualizacao.CPF}" 
-                                      required
-                                      class="form-control"
-                                      />
-                           </c:if>
+                </c:if>
                 <br/>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <div class="btn-group">
+                    <div class="col-lg-12" style="text-align: left;">
+                        <button type="submit" class="btn btn-primary" style="width:100%;">Salvar</button>
+                    </div>
+                    <div class="col-lg-12" style="text-align: right;">
+                        <a class="btn btn-primary" href="../produto/ListarProdutoServlet?ope=0" role="button" style="width:100%;">Cancelar</a>
+                    </div>
+                </div>
             </form>
         </div>
     </body>
