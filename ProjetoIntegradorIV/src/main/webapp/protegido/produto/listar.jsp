@@ -14,8 +14,8 @@
         <link rel="stylesheet" href="/css/estilo.css">
         <title>Lista de Produtos</title>
         <script type="text/javascript">
-            
-             function buscarProduto() {
+
+            function buscarProduto() {
                 var campoBusca = $("#nomeProduto");
                 $("#tabelaProdutos td").detach();
                 var nomeProduto = campoBusca.val();
@@ -53,7 +53,7 @@
                 }
 
             }
-            
+
             function confirmarStatus(nome, codigo) {
                 console.log("Confirmar alteração ", nome, codigo);
                 idProduto = codigo;
@@ -91,16 +91,16 @@
         <c:import url="../uteis/header.jsp"/>
         <br><br><br><br>
         <c:if test="${sessionScope.usuario.isADM()}">
-        <div class="col-lg-12" style="text-align: right;">
-            <a class="btn btn-primary" href="../produto/cadastro.jsp" role="button">+</a>
-        </div>
+            <div class="col-lg-12" style="text-align: right;">
+                <a class="btn btn-primary" href="../produto/cadastro.jsp" role="button">+</a>
+            </div>
         </c:if>
         <br><br>
-        <input type="text" id="nomeProduto" class="form-control"/><br/>
-        <button onclick="buscarProduto()" class="btn btn-primary">Buscar</button>
         <div id="alerta" class="alert alert-success" role="alert" style="display:none">
             Produto alterado com sucesso!
         </div>
+        <input type="text" id="nomeProduto" class="form-control"/><br/>
+        <button onclick="buscarProduto()" class="btn btn-primary">Buscar</button>
         <br><br><br><br>
         <div class="modal" tabindex="-1" role="dialog" id="modalStatus">
             <div class="modal-dialog" role="document">

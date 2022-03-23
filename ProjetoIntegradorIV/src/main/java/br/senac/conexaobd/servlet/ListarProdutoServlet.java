@@ -3,7 +3,6 @@ package br.senac.conexaobd.servlet;
 import br.senac.conexaobd.dao.ProdutoDAO;
 import br.senac.conexaobd.entidades.Produto;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -33,7 +32,7 @@ public class ListarProdutoServlet extends HttpServlet {
             request.getRequestDispatcher(url).forward(request, response);
         } catch (ClassNotFoundException | SQLException ex) {
             response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
-            Logger.getLogger(ListarUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListarProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
