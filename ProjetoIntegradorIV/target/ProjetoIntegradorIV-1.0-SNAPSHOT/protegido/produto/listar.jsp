@@ -148,9 +148,9 @@
     </fildset>
     <nav>
         <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="../usuario/ListarUsuarioServlet?ope=0">1</a></li>
-            <li class="page-item"><a class="page-link" href="../usuario/ListarUsuarioServlet?ope=1">2</a></li>
-            <li class="page-item"><a class="page-link" href="../usuario/ListarUsuarioServlet?ope=2">3</a></li>
+            <li class="page-item"><a class="page-link" href="../produto/ListarProdutoServlet?ope=0">1</a></li>
+            <li class="page-item"><a class="page-link" href="../produto/ListarProdutoServlet?ope=1">2</a></li>
+            <li class="page-item"><a class="page-link" href="../produto/ListarProdutoServlet?ope=2">3</a></li>
         </ul>
     </nav>
 </body>
