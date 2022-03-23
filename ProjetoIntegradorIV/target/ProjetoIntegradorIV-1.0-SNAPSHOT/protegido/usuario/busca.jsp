@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Buscar colaboradores</title>
+        <title>Buscar Usuarios</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
               crossorigin="anonymous" />
         <script type="text/javascript">
@@ -23,7 +23,7 @@
                     mostrarTelaAlerta("Digite, pelo menos, 3 caracteres");
                 } else {
                     $('#tabelaColaboradores tbody').empty();
-                    var url = "../cliente/BuscaColaborador?nomeColaborador=" + nomeColaborador;
+                    var url = "../usuario/BuscaUsuario?nomeUsuario=" + nomeColaborador;
                     $.ajax(url).done(function (resposta) {
                         // Retorno do servlet
                         var jsonClientes = JSON.parse(resposta);
@@ -32,15 +32,13 @@
                         }
                         console.log(jsonClientes);
                         // Adicionando resultado na lista
-                        jsonClientes.forEach(function (colaborador) {
-                            $("#tabelaColaboradores").find('tbody')
+                        jsonClientes.forEach(function (usuario) {
+                            $("#tabelaUsuarios").find('tbody')
                                     .append($('<tr>')
-                                            .append($('<td>').append(colaborador.id))
-                                            .append($('<td>').append(colaborador.Nome))
-                                            .append($('<td>').append(colaborador.cargo))
-                                            .append($('<td>').append(colaborador.setor))
-                                            .append($('<td>').append(colaborador.salario))
-                                            .append($('<td>').append(colaborador.data_ingresso))
+                                            .append($('<td>').append(usuario.nome))
+                                            .append($('<td>').append(usuario.categoria))
+                                            .append($('<td>').append(usuario.cpf))
+                                            .append($('<td>').append(usuario.ativo))
                                             );
                         })
 
@@ -76,14 +74,12 @@
         </div>
         <br>
         <br>
-        <table id="tabelaColaboradores" class="table">
+        <table id="tabelaUsuarios" class="table">
             <thead>
-            <th>ID</th>
             <th>Nome</th>
-            <th>Cargo</th>
-            <th>Setor</th>
-            <th>Salario</th>
-            <th>Data de admissão</th>
+            <th>Categoria</th>
+            <th>CPF</th>
+            <th>Ativo</th>
         </thead>
         <tbody>
 

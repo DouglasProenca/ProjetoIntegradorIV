@@ -27,7 +27,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
                             <button class="dropdown-item"><a href="usuario/cadastro.jsp">Cadastrar Usuário</a></button>
                             <button class="dropdown-item"><a href="../protegido/usuario/ListarUsuarioServlet?ope=0">Listar Usuário</a></button>
-                            <button class="dropdown-item"><a href="produto/busca.jsp">Buscar Usuário</a></button>
+                            <button class="dropdown-item"><a href="usuario/busca.jsp">Buscar Usuário</a></button>
                         </div>
                     </li>
                 </c:if>
