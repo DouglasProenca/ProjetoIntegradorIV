@@ -49,7 +49,7 @@
         <c:import url="../uteis/header.jsp"/>
         <c:import url="../uteis/header.jsp"/>
         <div id="alerta" class="alert alert-success" role="alert" style="display:none">
-            Colaborador(a) removido(a) com sucesso!
+            Usuario(a) Alterado(a) com sucesso!
         </div>
         <br><br><br>
         <h1><center>Usuários</center></h1>

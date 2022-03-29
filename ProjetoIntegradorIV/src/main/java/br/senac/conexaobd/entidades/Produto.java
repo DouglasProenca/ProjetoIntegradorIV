@@ -17,6 +17,14 @@ public class Produto {
     private int quantidade;
     private float avaliacao;
     private double valor;
-    private int ativo;
+    private String ativo;
+
+    public boolean isAtivo() {
+        return "Ativo".equalsIgnoreCase(this.getAtivo());
+    }
+
+    public boolean isNotAtivo() {
+        return "Não Ativo".equalsIgnoreCase(this.getAtivo());
+    }
 
 }

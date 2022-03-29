@@ -26,14 +26,14 @@ public class BuscaUsuario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String nomeUsuario = request.getParameter("nomeUsuario");
-        List<Usuario> clientes = null;
+        List<Usuario> usuario = null;
         try {
-            clientes = UsuarioDAO.buscarUsuario(nomeUsuario);
+            usuario = UsuarioDAO.buscarUsuario(nomeUsuario);
         } catch (ClassNotFoundException | SQLException ex) {
             response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
             Logger.getLogger(BuscaUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String clientesJson = new Gson().toJson(clientes);
+        String clientesJson = new Gson().toJson(usuario);
         response.setContentType("text/html");
         PrintWriter pw = response.getWriter();
         pw.write(clientesJson);
