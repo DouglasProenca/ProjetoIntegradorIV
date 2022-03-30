@@ -36,13 +36,13 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item">
-                        <img src="Resources/casa_9.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
+                        <img src="Resources/casa_8.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
                     </div>
                     <div class="carousel-item">
-                        <img src="Resources/casa_10.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
+                        <img src="Resources/casa_7.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
                     </div>
                     <div class="carousel-item active">
-                        <img src="Resources/casa_11.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
+                        <img src="Resources/casa_6.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">

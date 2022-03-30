@@ -19,6 +19,7 @@ public class Produto {
     private double valor;
     private String ativo;
     private String descricao;
+    private String imgReferencia;
 
     public boolean isAtivo() {
         return "Ativo".equalsIgnoreCase(this.getAtivo());

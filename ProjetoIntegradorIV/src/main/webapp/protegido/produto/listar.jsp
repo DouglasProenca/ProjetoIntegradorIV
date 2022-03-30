@@ -132,8 +132,8 @@
                         <td>${produto.valor}</td>
                         <td>${produto.ativo}</td>
                         <td><a href="../produto/CadastroProdutoServlet?codigoProduto=${produto.codigo}&ope=1" >Alterar</a></td>
-                        <c:if test="${sessionScope.usuario.isADM()}">
                             <td><a href="../produto/VisualizarServlet?id=${produto.codigo}">Visualizar</a></td>
+                            <c:if test="${sessionScope.usuario.isADM()}">
                             <c:if test="${produto.isAtivo()}">
                                 <td><button onclick="confirmarStatus('${produto.nome}', '${produto.codigo}')" class="btn btn-link">Inativar</button></td>
                             </c:if>

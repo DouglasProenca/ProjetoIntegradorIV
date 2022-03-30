@@ -67,23 +67,15 @@ public class ProdutoDAO {
     }
 
     public static void inserirProduto(Produto produto) throws SQLException, ClassNotFoundException {
-        String query = "insert into produto values (null,?,?,?,?,?,?,?,?)";
+        String query = "insert into produto values (null,?,?,?,?,1,?)";
         Connection con = Conexao.abrirConexao();
         PreparedStatement ps;
         ps = con.prepareStatement(query);
-        ps.setString(1, usuario.getNome());
-        ps.setString(2, usuario.getTelefone());
-        ps.setString(3, usuario.getEmail());
-        ps.setDate(4, new java.sql.Date(usuario.getNascimento().getTime()));
-        if (usuario.getCategoria().equals("administrador")) {
-            ps.setInt(5, 1);
-        } else {
-            ps.setInt(5, 2);
-        }
-        ps.setString(6, usuario.getCpf());
-        ps.setString(7, CryptoUtils.gerarhashSenha(usuario.getSenha()));
-        ps.setInt(8, 1);
-
+        ps.setString(1, produto.getNome());
+        ps.setInt(2, produto.getQuantidade());
+        ps.setFloat(3, produto.getAvaliacao());
+        ps.setDouble(4, produto.getValor());
+        ps.setString(5, produto.getDescricao());
         ps.execute();
     }
 
