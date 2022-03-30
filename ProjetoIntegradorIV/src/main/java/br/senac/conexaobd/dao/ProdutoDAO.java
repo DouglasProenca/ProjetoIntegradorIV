@@ -93,6 +93,7 @@ public class ProdutoDAO {
                 + "       ,p.quantidade\n"
                 + "       ,p.avaliacao\n"
                 + "       ,p.valor\n"
+                + "       ,p.descricao\n"
                 + "       , case when p.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo\n"
                 + "from produto p\n"
                 + "where código = ?";
@@ -110,6 +111,7 @@ public class ProdutoDAO {
                 produto.setAvaliacao(rs.getFloat("avaliacao"));
                 produto.setValor(rs.getDouble("valor"));
                 produto.setAtivo(rs.getString("ativo"));
+                produto.setDescricao(rs.getString("descricao"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);

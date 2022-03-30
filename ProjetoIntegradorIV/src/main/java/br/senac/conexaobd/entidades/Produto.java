@@ -18,6 +18,7 @@ public class Produto {
     private float avaliacao;
     private double valor;
     private String ativo;
+    private String descricao;
 
     public boolean isAtivo() {
         return "Ativo".equalsIgnoreCase(this.getAtivo());
