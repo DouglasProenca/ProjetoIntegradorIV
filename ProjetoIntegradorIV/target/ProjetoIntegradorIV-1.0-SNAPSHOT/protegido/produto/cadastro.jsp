@@ -54,9 +54,14 @@
                     <label>Quantidade</label>
                     <input type="number" name="quantidadeProduto" value="${produtoAtualizacao.quantidade}"
                            required class="form-control"/>
-                </div>
-                <br/>
                 <c:if test="${sessionScope.usuario.isADM()}">
+                </div>
+                <div class="form-group">
+                    <label>Descricao</label>
+                    <input type="text" name="quantidadeProduto" value="${produtoAtualizacao.descricao}"
+                           required class="form-control"/>
+                </div>           
+                <br/>
                     <div class="form-group">
                         <label>Valor</label>
                         <input type="number" name="valorProduto"
@@ -66,7 +71,7 @@
                     <br>
                     <div class="form-group">
                         <label>Avaliação</label>
-                        <input type="text" name="avaliacaoProduto"
+                        <input type="number"  name="avaliacaoProduto"
                                value="${produtoAtualizacao.avaliacao}" 
                                required
                                class="form-control"/>        

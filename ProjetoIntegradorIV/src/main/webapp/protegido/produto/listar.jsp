@@ -98,7 +98,7 @@
         <div id="alerta" class="alert alert-success" role="alert" style="display:none">
             Produto alterado com sucesso!
         </div>
-        <input type="text" id="nomeProduto" class="form-control"/><br/>
+        <input type="search" id="nomeProduto" class="form-control"/><br/>
         <button onclick="buscarProduto()" class="btn btn-primary">Buscar</button>
         <br><br><br><br>
         <div class="modal" tabindex="-1" role="dialog" id="modalStatus">

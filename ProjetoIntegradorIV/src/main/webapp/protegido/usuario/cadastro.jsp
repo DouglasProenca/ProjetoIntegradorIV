@@ -44,7 +44,7 @@
                 <c:if test="${empty clienteAtualizacao}">
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="text" name="emailUsuario" value="${clienteAtualizacao.email}"
+                        <input type="email" name="emailUsuario" value="${clienteAtualizacao.email}"
                                required class="form-control"/>
                     </div>
                 </c:if>
@@ -85,7 +85,7 @@
                 <br/>
                 <div class="form-group">
                     <label>Senha</label>
-                    <input type="text" name="senhaUsuario"
+                    <input type="password" name="senhaUsuario"
                            class="form-control"/>
                 </div>
                 <c:if test="${not empty clienteAtualizacao}">

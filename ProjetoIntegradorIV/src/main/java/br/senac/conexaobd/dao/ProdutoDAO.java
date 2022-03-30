@@ -46,7 +46,7 @@ public class ProdutoDAO {
 
     public static boolean updateProduto(Produto produto) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "update produto set nome=?,quantidade=?,avaliacao=?,valor=?"
+        String query = "update produto set nome=?,quantidade=?,avaliacao=?,valor=?,descricao=?"
                 + " where código=?";
         Connection con = Conexao.abrirConexao();
         try {
@@ -54,8 +54,9 @@ public class ProdutoDAO {
             ps.setString(1, produto.getNome());
             ps.setInt(2, produto.getQuantidade());
             ps.setFloat(3, produto.getAvaliacao());
-            ps.setFloat(4, produto.getAvaliacao());
-            ps.setInt(5, produto.getCodigo());
+            ps.setDouble(4, produto.getValor());
+            ps.setString(5, produto.getDescricao());
+            ps.setInt(6, produto.getCodigo());
             ps.executeUpdate();
 
         } catch (SQLException ex) {

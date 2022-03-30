@@ -66,7 +66,7 @@
         <br>
         <br>
         <br>
-        <input type="text" id="nomeColaborador" class="form-control"/><br/>
+        <input type="search" id="nomeColaborador" class="form-control"/><br/>
         <button onclick="buscarColaborador()" class="btn btn-primary">Buscar</button>
 
         <div id="msgAlerta" class="alert alert-warning" role="alert" style="display:none">
