@@ -2,6 +2,7 @@ package br.senac.conexaobd.servlet;
 
 import br.senac.conexaobd.dao.UsuarioDAO;
 import br.senac.conexaobd.entidades.Usuario;
+import br.senac.uteis.CryptoUtils;
 import br.senac.uteis.ValidaCPF;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -34,7 +35,9 @@ public class CadastroUsuarioServlet extends HttpServlet {
             usuario.setTelefone(request.getParameter("CelularUsuario"));
             usuario.setCategoria(request.getParameter("categoriaUsuario"));
             usuario.setNascimento(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("NascimentoUsuario")));
-            usuario.setSenha(request.getParameter("senhaUsuario"));
+            if (!request.getParameter("senhaUsuario").equals("")){
+                usuario.setSenha(CryptoUtils.gerarhashSenha(request.getParameter("senhaUsuario")));
+            }
             // ope = 1 => Update
             if ("1".equals(ope)) {
                 try {
