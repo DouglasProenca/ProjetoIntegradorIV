@@ -24,8 +24,6 @@ public class CadastroProdutoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String imagem = request.getParameter("nomeProduto");
-        System.out.println(imagem);
         try {
             String ope = request.getParameter("ope");
             if (request.getParameter("nomeProduto") != null) {
@@ -35,6 +33,7 @@ public class CadastroProdutoServlet extends HttpServlet {
             if (request.getParameter("valorProduto") != null) {
                 produto.setValor(Double.parseDouble(request.getParameter("valorProduto")));
                 produto.setAvaliacao(Float.parseFloat(request.getParameter("avaliacaoProduto")));
+                produto.setDescricao(request.getParameter("DescricaoProduto"));
             }
             // ope = 1 => Update
             if ("1".equals(ope)) {

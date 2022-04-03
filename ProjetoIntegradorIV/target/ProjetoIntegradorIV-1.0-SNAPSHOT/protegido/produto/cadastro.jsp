@@ -58,7 +58,7 @@
                 </div>
                 <div class="form-group">
                     <label>Descricao</label>
-                    <input type="text" name="quantidadeProduto" value="${produtoAtualizacao.descricao}"
+                    <input type="text" name="DescricaoProduto" value="${produtoAtualizacao.descricao}"
                            required class="form-control"/>
                 </div>           
                 <br/>
@@ -78,7 +78,7 @@
                 <div class="form-group">
                     <label>Imagem</label>
                     <input type="file" id="img-input" name="imagem" multiple
-                           required
+                           required accept="image/png, image/jpeg"
                            class="form-control"/>        
                 </div>
                 <div id="img-container">
