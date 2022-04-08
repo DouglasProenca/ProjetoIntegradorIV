@@ -29,7 +29,7 @@ public class VisualizarServlet extends HttpServlet {
             Produto produtos = ProdutoDAO.getProdutoPorCodigo(id);
             request.setAttribute("Produto", produtos);
             // RequestDispatcher reaproveita os objetos Request e Response
-            String url = "/protegido/produto/visualizar.jsp";
+            String url = "/visualizar.jsp";
             request.getRequestDispatcher(url).forward(request, response);
         } catch (ClassNotFoundException | SQLException ex) {
             response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");

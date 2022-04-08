@@ -77,7 +77,7 @@
                                class="form-control"/>        
                 <div class="form-group">
                     <label>Imagem</label>
-                    <input type="file" id="img-input" name="imagem" multiple
+                    <input type="file" id="img-input" name="imagem[]" multiple
                            required accept="image/png, image/jpeg"
                            class="form-control"/>        
                 </div>
