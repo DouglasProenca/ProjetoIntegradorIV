@@ -88,7 +88,7 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item">
-                        <img src="Resources/s21-branco.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
+                        <img src="../Resources/s21-branco.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
                     </div>
                     <div class="carousel-item">
                         <img src="Resources/s21-violeta.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
