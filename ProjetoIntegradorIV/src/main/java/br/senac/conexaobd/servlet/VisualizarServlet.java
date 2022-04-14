@@ -1,6 +1,8 @@
 package br.senac.conexaobd.servlet;
 
+import br.senac.conexaobd.dao.ImagemDAO;
 import br.senac.conexaobd.dao.ProdutoDAO;
+import br.senac.conexaobd.entidades.Imagem;
 import br.senac.conexaobd.entidades.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,7 +29,9 @@ public class VisualizarServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         try {
             Produto produtos = ProdutoDAO.getProdutoPorCodigo(id);
+            List<Imagem> imagens = ImagemDAO.getImagens(id);
             request.setAttribute("Produto", produtos);
+            request.setAttribute("listaImagens", imagens);
             // RequestDispatcher reaproveita os objetos Request e Response
             String url = "/visualizar.jsp";
             request.getRequestDispatcher(url).forward(request, response);
