@@ -19,6 +19,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#carousel').find('.carousel-item').first().addClass('active');
+            });
+        </script>
     </head>
     <body>
         <div class="container">
@@ -86,13 +91,10 @@
                 </ol>
                 <div class="carousel-inner">
                     <c:forEach var="imagem" items="${listaImagens}" >
-                    <div class="carousel-item">
+                        <div class="carousel-item">
                             <img src="<c:url value="${ imagem['caminho']}" />" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%"/>
-                    </div>
+                        </div>
                     </c:forEach>
-                    <div class="carousel-item active">
-                        <img src="Resources/s21-cinza.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
-                    </div>
                 </div>
                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
