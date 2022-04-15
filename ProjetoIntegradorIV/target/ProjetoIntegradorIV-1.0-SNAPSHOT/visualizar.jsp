@@ -80,17 +80,16 @@
             </div>
             <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" style="margin-bottom: 40px;">
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel" data-slide-to="0" class=""></li>
-                    <li data-target="#carousel" data-slide-to="1" class=""></li>
-                    <li data-target="#carousel" data-slide-to="2" class="active"></li>
+                    <c:forEach var="imagem" items="${listaImagens}" >
+                        <li data-target="#carousel" data-slide-to=""></li>
+                        </c:forEach>
                 </ol>
                 <div class="carousel-inner">
+                    <c:forEach var="imagem" items="${listaImagens}" >
                     <div class="carousel-item">
-                        <img src="Resources/s21-branco.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
+                            <img src="<c:url value="${ imagem['caminho']}" />" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%"/>
                     </div>
-                    <div class="carousel-item">
-                        <img src="Resources/s21-violeta.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
-                    </div>
+                    </c:forEach>
                     <div class="carousel-item active">
                         <img src="Resources/s21-cinza.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
                     </div>
