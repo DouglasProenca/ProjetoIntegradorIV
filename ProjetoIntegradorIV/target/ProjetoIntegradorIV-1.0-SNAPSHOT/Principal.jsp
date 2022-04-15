@@ -73,13 +73,13 @@
                                                                 </ol>
                                                                 <div class="carousel-inner">
                                                                     <div class="carousel-item">
-                                                                        <img src="Resources/s21-branco.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
+                                                                        <img src="protegido/produto/Resources/s21-rosa.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
                                                                     </div>
                                                                     <div class="carousel-item">
-                                                                        <img src="Resources/s21-violeta.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
+                                                                        <img src="protegido/produto/Resources/s21-violeta.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
                                                                     </div>
                                                                     <div class="carousel-item active">
-                                                                        <img src="Resources/s21-cinza.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
+                                                                        <img src="protegido/produto/Resources/s21-cinza.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
                                                                     </div>
                                                                 </div>
                                                                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
@@ -96,7 +96,7 @@
                                                             <li class="list-group-item">
                                                                 <a href="produto.html">
                                                                     <figure>
-                                                                        <img src="Resources/samsung/smartphones/s21-branco.jpg" alt="miniatura1" width="300px" height="300px">
+                                                                        <img src="protegido/produto/Resources/samsung/smartphones/s21-branco.jpg" alt="miniatura1" width="300px" height="300px">
                                                                             <figcaption>Galaxy S21 - Branco por R$ 2849,90</figcaption>
                                                                     </figure>
                                                                 </a>    
@@ -104,7 +104,7 @@
                                                             <li class="list-group-item">
                                                                 <a href="produto.html">
                                                                     <figure>
-                                                                        <img src="Resources/samsung/smartphones/s22-preto.jpg" alt="miniatura2" width="300px" height="300px">
+                                                                        <img src="protegido/produto/Resources/samsung/smartphones/s22-preto.jpg" alt="miniatura2" width="300px" height="300px">
                                                                             <figcaption>Galaxy S22 - Preto por R$ 2999,90</figcaption>
                                                                     </figure>
                                                                 </a>
@@ -112,7 +112,7 @@
                                                             <li class="list-group-item">
                                                                 <a href="produto.html">
                                                                     <figure>
-                                                                        <img src="Resources/samsung/smartphones/s22-ultra-vinho.jpg" alt="miniatura3" width="300px" height="300px">
+                                                                        <img src="protegido/produto/Resources/samsung/smartphones/s22-ultra-vinho.jpg" alt="miniatura3" width="300px" height="300px">
                                                                             <figcaption>Galaxy S22 Ultra - Vinho por R$ 2549,90</figcaption>
                                                                     </figure>
                                                                 </a>
@@ -120,7 +120,7 @@
                                                             <li class="list-group-item">
                                                                 <a href="produto.html">
                                                                     <figure>
-                                                                        <img src="Resources/apple/iphones/iphone11-green-select-2019.png" alt="miniatura4" width= auto height= "350px">
+                                                                        <img src="protegido/produto/Resources/apple/iphones/iphone11-green-select-2019.png" alt="miniatura4" width= auto height= "350px">
                                                                             <figcaption>Iphone 11 - Verde por R$ 3149,90</figcaption>
                                                                     </figure>
                                                                 </a>
@@ -128,7 +128,7 @@
                                                             <li class="list-group-item">
                                                                 <a href="produto.html">
                                                                     <figure>
-                                                                        <img src="Resources/apple/iphones/iphone-12-purple-select-2021.png" alt="miniatura5" width=auto height="400px">
+                                                                        <img src="protegido/produto/Resources/apple/iphones/iphone-12-purple-select-2021.png" alt="miniatura5" width=auto height="400px">
                                                                             <figcaption>Iphone 12 - Roxo por R$ 3149,90</figcaption>
                                                                     </figure>
                                                                 </a>
@@ -136,7 +136,7 @@
                                                             <li class="list-group-item">
                                                                 <a href="produto.html">
                                                                     <figure>
-                                                                        <img src="Resources/apple/iphones/iphone-13-pro-green-select.png" alt="miniatura6" width=auto height="450px" >
+                                                                        <img src="protegido/produto/Resources/apple/iphones/iphone-13-pro-green-select.png" alt="miniatura6" width=auto height="450px" >
                                                                             <figcaption>Iphone 13 Pro - Verde por R$ 6449,90</figcaption>
                                                                     </figure>
                                                                 </a>
@@ -150,7 +150,7 @@
                                                                 <li class="list-group-item">
                                                                     <a href="produto.html">
                                                                         <figure>
-                                                                            <img src="Resources/apple/iphones/iphone-12-blue-select-2020.png" alt="miniatura7" width=auto height="400px">
+                                                                            <img src="protegido/produto/Resources/apple/iphones/iphone-12-blue-select-2020.png" alt="miniatura7" width=auto height="400px">
                                                                                 <figcaption>Iphone 12 - Azul por R$ 3149,90</figcaption>
                                                                         </figure>
                                                                     </a>    
@@ -158,7 +158,7 @@
                                                                 <li class="list-group-item">
                                                                     <a href="produto.html">
                                                                         <figure>
-                                                                            <img src="Resources/apple/iphones/iphone-13-product-red-select-2021.png" alt="miniatura8" width=auto height="450px">
+                                                                            <img src="protegido/produto/Resources/apple/iphones/iphone-13-product-red-select-2021.png" alt="miniatura8" width=auto height="450px">
                                                                                 <figcaption>Iphone 13 Mini - Vermelho por R$ 6449,90</figcaption>
                                                                         </figure>
                                                                     </a>    
@@ -166,7 +166,7 @@
                                                                 <li class="list-group-item">
                                                                     <a href="produto.html">
                                                                         <figure>
-                                                                            <img src="Resources/samsung/smartphones/s22-ultra-verde.jpg" alt="miniatura3" width="300px" height="300px">
+                                                                            <img src="protegido/produto/Resources/samsung/smartphones/s22-ultra-verde.jpg" alt="miniatura3" width="300px" height="300px">
                                                                                 <figcaption>Galaxy S22 Ultra - Verde por R$ 2549,90</figcaption>
                                                                         </figure>
                                                                     </a>    
@@ -174,7 +174,7 @@
                                                                 <li class="list-group-item">
                                                                     <a href="produto.html">
                                                                         <figure>
-                                                                            <img src="Resources/samsung/smartphones/s21-cinza.jpg" alt="miniatura1" width="300px" height="300px">
+                                                                            <img src="protegido/produto/Resources/samsung/smartphones/s21-cinza.jpg" alt="miniatura1" width="300px" height="300px">
                                                                                 <figcaption>Galaxy S21 - Cinza  por R$ 2849,90</figcaption>
                                                                         </figure>
                                                                     </a>    
