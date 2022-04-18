@@ -152,7 +152,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Samsung Galaxy S21 <small>R$ 4000.00</small></h4>
                               <p class="card-text"></p>
-                              <a href="#" class="btn btn-dark stretched-link">Ir para o produto</a>
+                              <a href="#" class="btn btn-dark">Ir para o produto</a>
                             </div>
                         </div>                    
                     </div>
@@ -169,13 +169,13 @@
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-branco.jpg" alt="s21-branco" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/samsung/smartphones/s22-branco.jpg" alt="s21-branco" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-violeta.jpg" alt="s21-violeta" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/samsung/smartphones/s22-preto.jpg" alt="s21-violeta" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-cinza.jpg" alt="s21-cinza" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/samsung/smartphones/s22-rose.jpg" alt="s21-cinza" width="100%" height="auto">
                                   </div>
                                 </div>
 
@@ -188,9 +188,9 @@
                                 </a>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Samsung Galaxy S21 <small>R$ 4000.00</small></h4>
+                                <h4 class="card-title">Samsung Galaxy S22 <small>R$ 4000.00</small></h4>
                               <p class="card-text"></p>
-                              <a href="#" class="btn btn-dark stretched-link">Ir para o produto</a>
+                              <a href="#" class="btn btn-dark">Ir para o produto</a>
                             </div>
                         </div>                    
                     </div>
@@ -207,13 +207,13 @@
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-branco.jpg" alt="s21-branco" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/samsung/smartphones/s22-ultra-preto.jpg" alt="s21-branco" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-violeta.jpg" alt="s21-violeta" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/samsung/smartphones/s22-ultra-verde.jpg" alt="s21-violeta" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-cinza.jpg" alt="s21-cinza" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/samsung/smartphones/s22-ultra-vinho.jpg" alt="s21-cinza" width="100%" height="auto">
                                   </div>
                                 </div>
 
@@ -226,9 +226,9 @@
                                 </a>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Samsung Galaxy S21 <small>R$ 4000.00</small></h4>
+                                <h4 class="card-title">Samsung Galaxy S22 Ultra <small>R$ 4000.00</small></h4>
                               <p class="card-text"></p>
-                              <a href="#" class="btn btn-dark stretched-link">Ir para o produto</a>
+                              <a href="#" class="btn btn-dark">Ir para o produto</a>
                             </div>
                         </div>                    
                     </div>
@@ -237,7 +237,7 @@
                 <div class="row m-sm-2">
                     <div class="col-md p-sm-2 ml-md-1">
                         <div class="card mx-auto border-0 shadow-sm" style="width:400px">
-                            <div id="produto"4 class="carousel slide" data-ride="carousel">
+                            <div id="produto4" class="carousel slide" data-ride="carousel">
                                 <!-- Indicators -->
                                 <ul class="carousel-indicators">
                                   <li data-target="#produto4" data-slide-to="0" class="active"></li>
@@ -248,13 +248,13 @@
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-branco.jpg" alt="s21-branco" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/apple/iphones/iphone11-yellow-select-2019.png" alt="iphone 11 amarelo" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-violeta.jpg" alt="s21-violeta" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/apple/iphones/iphone11-red-select-2019.png" alt="iphone 11 vermelho" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-cinza.jpg" alt="s21-cinza" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/apple/iphones/iphone11-purple-select-2019.png" alt="iphone 11 roxo" width="100%" height="auto">
                                   </div>
                                 </div>
 
@@ -267,9 +267,9 @@
                                 </a>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Samsung Galaxy S21 <small>R$ 4000.00</small></h4>
+                                <h4 class="card-title">Apple Iphone 11 <small>R$ 4000.00</small></h4>
                               <p class="card-text"></p>
-                              <a href="#" class="btn btn-dark stretched-link">Ir para o produto</a>
+                              <a href="#" class="btn btn-dark">Ir para o produto</a>
                             </div>
                         </div>                    
                     </div>
@@ -286,13 +286,13 @@
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-branco.jpg" alt="s21-branco" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/apple/iphones/iphone-13-blue-select-2021.png" alt="iphone 13 azul" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-violeta.jpg" alt="s21-violeta" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/apple/iphones/iphone-13-pink-select-2021.png" alt="iphone 13 rosa" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-cinza.jpg" alt="s21-cinza" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/apple/iphones/iphone-13-green-select.png" alt="iphone 13 verde" width="100%" height="auto">
                                   </div>
                                 </div>
 
@@ -305,9 +305,9 @@
                                 </a>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Samsung Galaxy S21 <small>R$ 4000.00</small></h4>
+                                <h4 class="card-title">Apple Iphone 13 <small>R$ 4000.00</small></h4>
                               <p class="card-text"></p>
-                              <a href="#" class="btn btn-dark stretched-link">Ir para o produto</a>
+                              <a href="#" class="btn btn-dark">Ir para o produto</a>
                             </div>
                         </div>                    
                     </div>
@@ -324,13 +324,13 @@
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-branco.jpg" alt="s21-branco" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/apple/iphones/iphone-12-black-select-2020.png" alt="iphone 12 preto" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-violeta.jpg" alt="s21-violeta" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/apple/iphones/iphone-12-blue-select-2020.png" alt="iphone 12 azul" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-cinza.jpg" alt="s21-cinza" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/apple/iphones/iphone-12-green-select-2020.png" alt="iphone 12 verde" width="100%" height="auto">
                                   </div>
                                 </div>
 
@@ -343,9 +343,9 @@
                                 </a>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Samsung Galaxy S21 <small>R$ 4000.00</small></h4>
+                                <h4 class="card-title">Apple Iphone 12 <small>R$ 4000.00</small></h4>
                               <p class="card-text"></p>
-                              <a href="#" class="btn btn-dark stretched-link">Ir para o produto</a>
+                              <a href="#" class="btn btn-dark">Ir para o produto</a>
                             </div>
                         </div>                    
                     </div>
