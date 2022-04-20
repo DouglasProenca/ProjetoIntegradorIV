@@ -25,7 +25,7 @@
             <h1 class="">CrSete Tecnology</h1>
         </div>
         
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top" style="opacity: 0.98;">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
             <a class="navbar-brand mx-auto" href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
             </a>
@@ -59,9 +59,11 @@
         <div class="container mt-4 p-4" style="background-color: white; border-radius: 20px">
             <form>
                 <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Pesquisar" aria-label="Search" style="border-right: none;">
+                    <input class="form-control" type="search" placeholder="Pesquisar" aria-label="Search">
                     <div class="input-group-append">
-                        <button class="fas fa-search px-3 border"></button>
+                        <a class="btn bg-light border">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </div>
             </form>
@@ -90,13 +92,13 @@
                     <!-- The slideshow -->
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                          <img src="protegido/produto/Resources/samsung/smartphones/s21-branco.jpg" alt="Los Angeles" width="100%" height="auto">
+                          <img src="protegido/produto/Resources/s21-branco.jpg" alt="Los Angeles" width="100%" height="auto">
                       </div>
                       <div class="carousel-item">
-                          <img src="protegido/produto/Resources/samsung/smartphones/s21-violeta.jpg" alt="Chicago" width="100%" height="auto">
+                          <img src="protegido/produto/Resources/s21-violeta.jpg" alt="Chicago" width="100%" height="auto">
                       </div>
                       <div class="carousel-item">
-                          <img src="protegido/produto/Resources/samsung/smartphones/s21-cinza.jpg" alt="New York" width="100%" height="auto">
+                          <img src="protegido/produto/Resources/s21-cinza.jpg" alt="New York" width="100%" height="auto">
                       </div>
                     </div>
 
@@ -131,13 +133,13 @@
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-branco.jpg" alt="s21-branco" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/s21-branco.jpg" alt="s21-branco" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-violeta.jpg" alt="s21-violeta" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/s21-violeta.jpg" alt="s21-violeta" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s21-cinza.jpg" alt="s21-cinza" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/s21-cinza.jpg" alt="s21-cinza" width="100%" height="auto">
                                   </div>
                                 </div>
 
@@ -169,13 +171,13 @@
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s22-branco.jpg" alt="s21-branco" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/s22-branco.jpg" alt="s21-branco" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s22-preto.jpg" alt="s21-violeta" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/s22-preto.jpg" alt="s21-violeta" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s22-rose.jpg" alt="s21-cinza" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/s22-rose.jpg" alt="s21-cinza" width="100%" height="auto">
                                   </div>
                                 </div>
 
@@ -207,13 +209,13 @@
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s22-ultra-preto.jpg" alt="s21-branco" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/s22-ultra-preto.jpg" alt="s21-branco" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s22-ultra-verde.jpg" alt="s21-violeta" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/s22-ultra-verde.jpg" alt="s21-violeta" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/samsung/smartphones/s22-ultra-vinho.jpg" alt="s21-cinza" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/s22-ultra-vinho.jpg" alt="s21-cinza" width="100%" height="auto">
                                   </div>
                                 </div>
 
@@ -248,13 +250,13 @@
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                      <img src="protegido/produto/Resources/apple/iphones/iphone11-yellow-select-2019.png" alt="iphone 11 amarelo" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/iphone11-yellow-select-2019.png" alt="iphone 11 amarelo" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/apple/iphones/iphone11-red-select-2019.png" alt="iphone 11 vermelho" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/iphone11-red-select-2019.png" alt="iphone 11 vermelho" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/apple/iphones/iphone11-purple-select-2019.png" alt="iphone 11 roxo" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/iphone11-purple-select-2019.png" alt="iphone 11 roxo" width="100%" height="auto">
                                   </div>
                                 </div>
 
@@ -286,13 +288,13 @@
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                      <img src="protegido/produto/Resources/apple/iphones/iphone-13-blue-select-2021.png" alt="iphone 13 azul" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/iphone-13-blue-select-2021.png" alt="iphone 13 azul" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/apple/iphones/iphone-13-pink-select-2021.png" alt="iphone 13 rosa" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/iphone-13-pink-select-2021.png" alt="iphone 13 rosa" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/apple/iphones/iphone-13-green-select.png" alt="iphone 13 verde" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/iphone-13-green-select.png" alt="iphone 13 verde" width="100%" height="auto">
                                   </div>
                                 </div>
 
@@ -324,13 +326,13 @@
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                      <img src="protegido/produto/Resources/apple/iphones/iphone-12-black-select-2020.png" alt="iphone 12 preto" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/iphone-12-black-select-2020.png" alt="iphone 12 preto" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/apple/iphones/iphone-12-blue-select-2020.png" alt="iphone 12 azul" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/iphone-12-blue-select-2020.png" alt="iphone 12 azul" width="100%" height="auto">
                                   </div>
                                   <div class="carousel-item">
-                                      <img src="protegido/produto/Resources/apple/iphones/iphone-12-green-select-2020.png" alt="iphone 12 verde" width="100%" height="auto">
+                                      <img src="protegido/produto/Resources/iphone-12-green-select-2020.png" alt="iphone 12 verde" width="100%" height="auto">
                                   </div>
                                 </div>
 
