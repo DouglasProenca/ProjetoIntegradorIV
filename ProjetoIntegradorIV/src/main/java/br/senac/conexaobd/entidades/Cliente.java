@@ -19,4 +19,9 @@ public class Cliente {
     private String genero;
     private String cpf;
     private String senha;
+
+    public Cliente() {
+
+    }
+
 }

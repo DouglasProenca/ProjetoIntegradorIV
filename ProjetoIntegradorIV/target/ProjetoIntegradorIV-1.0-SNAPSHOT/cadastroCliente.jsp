@@ -4,6 +4,7 @@
     Author     : Gabriel Lima
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -17,22 +18,24 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-        
+
         <title>Cadastro</title>
-        
-        <script>    
-            function mascaraCPF(i){
+
+        <script>
+            function mascaraCPF(i) {
 
                 var v = i.value;
 
-                if(isNaN(v[v.length-1])){
-                   i.value = v.substring(0, v.length-1);
-                   return;
+                if (isNaN(v[v.length - 1])) {
+                    i.value = v.substring(0, v.length - 1);
+                    return;
                 }
 
                 i.setAttribute("maxlength", "14");
-                if (v.length == 3 || v.length == 7) i.value += ".";
-                if (v.length == 11) i.value += "-";
+                if (v.length == 3 || v.length == 7)
+                    i.value += ".";
+                if (v.length == 11)
+                    i.value += "-";
 
             }
         </script>
@@ -50,27 +53,36 @@
         <div class="container-fluid bg-dark shadow" style="height: 250px"></div>
         <div class="container shadow border bg-light p-5 mb-sm-5" style="max-width: 600px; top: -50px; position: relative; border-radius: 15px">
             <h2 class="display-4 mb-5" style="text-align: center">Cadastro</h2>
-            
             <form action="CadastroClienteServlet" method="POST">
                 <p class="mb-0">Seu nome</p>
+                <c:if test="${not empty clienteAtualizacao}">
+                    <input type="hidden" name="ope" value="1"/>
+                </c:if>
+                <c:if test="${param.cpfInvalido != null}">
+                    <div class="alert alert-danger" role="alert">
+                        CPF Inválido!
+                    </div>  
+                </c:if>
                 <div class="input-group mb-3 px-auto justify-content-sm-between">
-                    <div class="d-sm-inline flex-fill mr-sm-1"><input class="form-control" type="text" placeholder="Primeiro nome"></div>
-                    <div class="d-sm-inline flex-fill"><input class="form-control" type="text" placeholder="Segundo nome"></div>
+                    <div class="d-sm-inline flex-fill mr-sm-1">
+                        <input class="form-control" type="text" name="prnome" required placeholder="Primeiro nome"></div>
+                    <div class="d-sm-inline flex-fill">
+                        <input class="form-control" type="text" name="sgnome" required placeholder="Segundo nome"></div>
                 </div>
                 <p class="mb-0">Sua data de nascimento</p>
                 <div class="input-group mb-3">
-                    <input class="form-control" type="date" id="datemax" name="datemax" max="2022-12-31">
+                    <input class="form-control" type="date" id="datemax" required name="datemax" max="2022-12-31">
                 </div>
                 <p class="mb-0">Seu gênero</p>
                 <div class="mb-3">
                     <div class="form-check-inline">
                         <label class="form-check-label" for="feminino">
-                          <input type="radio" class="form-check-input" id="feminino" name="optradio" value="option1">Feminino
+                            <input type="radio" class="form-check-input" id="feminino" name="optradio" value="option1">Feminino
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label" for="masculino">
-                          <input type="radio" class="form-check-input" id="masculino" name="optradio" value="option2">Masculino
+                            <input type="radio" class="form-check-input" id="masculino" name="optradio" value="option2">Masculino
                         </label>
                     </div>
                     <div class="form-check-inline">
@@ -80,49 +92,54 @@
                     </div>
                 </div>            
                 <p class="mb-0">Seu CPF</p>
-                <div class="input-group mb-3">
-                    <input class="form-control" placeholder="___ . ___ . ___ - __" oninput="mascaraCPF(this)" type="text">
+                <div class="form-group">
+                    <input class="form-control" required placeholder="___ . ___ . ___ - __" name="cpf" oninput="mascaraCPF(this)" type="text">
                 </div>
                 <p class="mb-0">Seu e-mail</p>
-                <div class="input-group mb-3">
-                    <input class="form-control" type="email" placeholder="exemplo@mail.com">
+                <div class="form-group">
+                    <input class="form-control" required type="email" name="email" placeholder="exemplo@mail.com">
                 </div>
                 <p class="mb-0">Seu CEP</p>
-                <div class="input-group mb-3">
-                    <input class="form-control" type="text" placeholder="_____ - ___">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="cep" placeholder="_____ - ___">
                 </div>
                 <p class="mb-0">Seu endereço</p>
-                <div class="input-group mb-3 px-auto justify-content-sm-between">
-                    <div class="d-sm-inline flex-grow-1 mr-sm-1"><input class="form-control" type="text" placeholder="Rua"></div>
-                    <input class="form-control" type="number" min="0" placeholder="Nº">
+                <div class="form-group">
+                    <div class="d-sm-inline flex-grow-1 mr-sm-1">
+                        <input class="form-control" type="text" name="rua" placeholder="Rua">
+                    </div>
+                    <input class="form-control" type="number" min="0" name="num" placeholder="Nº">
                 </div>             
                 <div class="input-group mb-3">
-                    <input class="form-control" type="text" placeholder="Complemento">
+                    <input class="form-control" type="text" name="complemento" placeholder="Complemento">
                 </div>
                 <div class="input-group mb-3">
-                    <div class="d-sm-inline flex-fill mr-sm-1"><input class="form-control" type="text" placeholder="Bairro"></div>
-                    <div class="d-sm-inline flex-fill mr-sm-1"><input class="form-control" type="text" placeholder="Cidade"></div>
-                    <input class="form-control" type="text" placeholder="UF">
+                    <div class="d-sm-inline flex-fill mr-sm-1">
+                        <input class="form-control" type="text" name="bairro" placeholder="Bairro">
+                    </div>
+                    <div class="d-sm-inline flex-fill mr-sm-1">
+                        <input class="form-control" type="text" name="cidade" placeholder="Cidade">
+                    </div>
+                    <input class="form-control" type="text" name="uf" placeholder="UF">
                 </div>
                 <p class="mb-0">Defina uma senha</p>
                 <div class="input-group mb-3">
-                    <div class="d-sm-inline flex-fill mr-sm-1"><input class="form-control" type="password" placeholder="Crie uma senha"></div>
-                    <div class="d-sm-inline flex-fill"><input class="form-control" type="password" placeholder="Confirme a senha"></div>
+                    <div class="d-sm-inline flex-fill mr-sm-1">
+                        <input class="form-control" type="password" required placeholder="Crie uma senha"></div>
+                    <div class="d-sm-inline flex-fill">
+                        <input class="form-control" type="password" required name="senha" placeholder="Confirme a senha"></div>
+                </div>
+                <div class=" d-flex justify-content-sm-between mt-5">
+                    <div class="order-2">
+                        <button type="submit" class="btn bg-primary text-white px-4">Cadastrar</button>
+                    </div>
+                    <div class="order-1 align-self-end">
+                        <a class="btn p-0" href="loginCliente.jsp">
+                            Já tem cadastro? Entre aqui
+                        </a>
+                    </div>
                 </div>
             </form>
-            <div class=" d-flex justify-content-sm-between mt-5">
-                <div class="order-2">
-                    <a class="btn bg-primary text-white px-4" href="loginCliente.jsp">
-                        Cadastrar
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div class="order-1 align-self-end">
-                    <a class="btn p-0" href="loginCliente.jsp">
-                        Já tem cadastro? Entre aqui
-                    </a>
-                </div>
-            </div>
         </div>
     </body>
 </html>
