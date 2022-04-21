@@ -112,7 +112,7 @@
             </form>
             <div class=" d-flex justify-content-sm-between mt-5">
                 <div class="order-2">
-                    <a class="btn bg-primary text-white px-4" href="#">
+                    <a class="btn bg-primary text-white px-4" href="loginCliente.jsp">
                         Cadastrar
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </a>
