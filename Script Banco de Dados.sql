@@ -48,7 +48,7 @@ CREATE TABLE cliente (
     usuario VARCHAR(150) UNIQUE,
     nome VARCHAR(150) NOT NULL,
     cpf VARCHAR(30) UNIQUE NOT NULL,
-    nascimente DATE NOT NULL,
+    nascimento DATE NOT NULL,
     genero VARCHAR(100) NOT NULL,
     senha VARCHAR(80) NOT NULL
 );
@@ -302,4 +302,4 @@ insert into imagem values(1,'s21-rosa.jpg','Resources/s21-rosa.jpg'),
                          (6,'iphone-12-purple-select-2021.png','Resources/iphone-12-purple-select-2021.png'),
                          (6,'iphone-12-red-select-2020.png','Resources/iphone-12-red-select-2020.png'),
                          (6,'iphone-12-white-select-2020.png','Resources/iphone-12-white-select-2020.png');
-			
+
