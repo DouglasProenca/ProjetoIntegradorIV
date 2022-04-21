@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -18,7 +19,10 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
         <title>Cadastro</title>
 
         <script>
@@ -60,7 +64,7 @@
                 </c:if>
                 <c:if test="${param.cpfInvalido != null}">
                     <div class="alert alert-danger" role="alert">
-                        CPF Inv�lido!
+                        CPF Inválido!
                     </div>  
                 </c:if>
                 <div class="input-group mb-3 px-auto justify-content-sm-between">
@@ -73,7 +77,7 @@
                 <div class="input-group mb-3">
                     <input class="form-control" type="date" id="datemax" required name="datemax" max="2022-12-31">
                 </div>
-                <p class="mb-0">Seu g�nero</p>
+                <p class="mb-0">Seu gênero</p>
                 <div class="mb-3">
                     <div class="form-check-inline">
                         <label class="form-check-label" for="feminino">
@@ -101,26 +105,26 @@
                 </div>
                 <p class="mb-0">Seu CEP</p>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="cep" placeholder="_____ - ___">
+                    <input class="form-control" type="text" id="cep" name="cep" placeholder="_____ - ___">
                 </div>
-                <p class="mb-0">Seu endere�o</p>
+                <p class="mb-0">Seu endereço</p>
                 <div class="form-group">
                     <div class="d-sm-inline flex-grow-1 mr-sm-1">
-                        <input class="form-control" type="text" name="rua" placeholder="Rua">
+                        <input class="form-control" type="text" id="rua" name="rua" placeholder="Rua">
                     </div>
-                    <input class="form-control" type="number" min="0" name="num" placeholder="N�">
+                    <input class="form-control" type="number" id="numero" min="0" name="num" placeholder="Nº">
                 </div>             
                 <div class="input-group mb-3">
-                    <input class="form-control" type="text" name="complemento" placeholder="Complemento">
+                    <input class="form-control" type="text" id="complemento" name="complemento" placeholder="Complemento">
                 </div>
                 <div class="input-group mb-3">
                     <div class="d-sm-inline flex-fill mr-sm-1">
-                        <input class="form-control" type="text" name="bairro" placeholder="Bairro">
+                        <input class="form-control" type="text" id="bairro" name="bairro" placeholder="Bairro">
                     </div>
                     <div class="d-sm-inline flex-fill mr-sm-1">
-                        <input class="form-control" type="text" name="cidade" placeholder="Cidade">
+                        <input class="form-control" type="text" id="cidade" name="cidade" placeholder="Cidade">
                     </div>
-                    <input class="form-control" type="text" name="uf" placeholder="UF">
+                    <input class="form-control" type="text" id="uf" name="uf" placeholder="UF">
                 </div>
                 <p class="mb-0">Defina uma senha</p>
                 <div class="input-group mb-3">
@@ -135,12 +139,49 @@
                     </div>
                     <div class="order-1 align-self-end">
                         <a class="btn p-0" href="loginCliente.jsp">
-                            J� tem cadastro? Entre aqui
+                            Já tem cadastro? Entre aqui
                         </a>
                     </div>
                 </div>
             </form>
         </div>
+        <script type="text/javascript">
+            //máscara do cep
+            $("#cep").inputmask({"mask": "99999-999"});
+
+            $("#cep").focusout(function () {
+                //Início do Comando AJAX
+                $.ajax({
+                    //O campo URL diz o caminho de onde virá os dados
+                    //É importante concatenar o valor digitado no CEP
+                    url: 'https://viacep.com.br/ws/' + $(this).val() + '/json/',
+                    //Aqui você deve preencher o tipo de dados que será lido,
+                    //no caso, estamos lendo JSON.
+                    dataType: 'json',
+                    //SUCESS é referente a função que será executada caso
+                    //ele consiga ler a fonte de dados com sucesso.
+                    //O parâmetro dentro da função se refere ao nome da variável
+                    //que você vai dar para ler esse objeto.
+                    success: function (resposta) {
+                        //Agora basta definir os valores que você deseja preencher
+                        //automaticamente nos campos acima.
+                        if (!("erro" in resposta)) {
+                            $("#rua").val(resposta.logradouro);
+                            $("#complemento").val(resposta.complemento);
+                            $("#bairro").val(resposta.bairro);
+                            $("#cidade").val(resposta.localidade);
+                            $("#uf").val(resposta.uf);
+                            //Vamos incluir para que o Número seja focado automaticamente
+                            //melhorando a experiência do usuário
+                            $("#numero").focus();
+                        } else {
+                            //CEP não Encontrado.
+                            alert("CEP não encontrado.");
+                        }
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
 
