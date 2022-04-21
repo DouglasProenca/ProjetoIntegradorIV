@@ -154,7 +154,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Samsung Galaxy S21 <small>R$ 4000.00</small></h4>
                               <p class="card-text"></p>
-                              <a href="#" class="btn btn-dark">Ir para o produto</a>
+                              <a href="protegido/produto/VisualizarServlet?id=1" class="btn btn-dark">Ir para o produto</a>
                             </div>
                         </div>                    
                     </div>
@@ -192,7 +192,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Samsung Galaxy S22 <small>R$ 4000.00</small></h4>
                               <p class="card-text"></p>
-                              <a href="#" class="btn btn-dark">Ir para o produto</a>
+                              <a href="protegido/produto/VisualizarServlet?id=2" class="btn btn-dark">Ir para o produto</a>
                             </div>
                         </div>                    
                     </div>
@@ -230,7 +230,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Samsung Galaxy S22 Ultra <small>R$ 4000.00</small></h4>
                               <p class="card-text"></p>
-                              <a href="#" class="btn btn-dark">Ir para o produto</a>
+                              <a href="protegido/produto/VisualizarServlet?id=3" class="btn btn-dark">Ir para o produto</a>
                             </div>
                         </div>                    
                     </div>
@@ -271,7 +271,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Apple Iphone 11 <small>R$ 4000.00</small></h4>
                               <p class="card-text"></p>
-                              <a href="#" class="btn btn-dark">Ir para o produto</a>
+                              <a href="protegido/produto/VisualizarServlet?id=4" class="btn btn-dark">Ir para o produto</a>
                             </div>
                         </div>                    
                     </div>
@@ -309,7 +309,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Apple Iphone 13 <small>R$ 4000.00</small></h4>
                               <p class="card-text"></p>
-                              <a href="#" class="btn btn-dark">Ir para o produto</a>
+                              <a href="protegido/produto/VisualizarServlet?id=5" class="btn btn-dark">Ir para o produto</a>
                             </div>
                         </div>                    
                     </div>
@@ -347,7 +347,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Apple Iphone 12 <small>R$ 4000.00</small></h4>
                               <p class="card-text"></p>
-                              <a href="#" class="btn btn-dark">Ir para o produto</a>
+                              <a href="protegido/produto/VisualizarServlet?id=6" class="btn btn-dark">Ir para o produto</a>
                             </div>
                         </div>                    
                     </div>

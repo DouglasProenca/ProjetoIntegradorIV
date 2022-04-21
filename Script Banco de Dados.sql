@@ -29,7 +29,7 @@ CREATE TABLE produto (
     código INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(200) NOT NULL,
     quantidade INT NOT NULL,
-    avalicao FLOAT,
+    avaliacao FLOAT,
     valor DOUBLE NOT NULL,
     ativo BIT NOT NULL,
     descricao VARCHAR(500)
@@ -264,4 +264,42 @@ insert into categoria values(null,'administrador'),
 							(null,'estoquista');
                             
 insert into usuario values(null,'Douglas Proença Rolim de Souza','(11)95436-0397','Douglasp.r.desouza@gmail.com','1998-04-04',1,'488.654.963-78','$2a$08$fH2uvGnb70vzY7jS.vSn4OLEjjRE6u7J.Zpwh7Oa8FfQjyVCz6Qoq',1),
-						  (null,'Rafael Gomes Camilo','(11)94002-8922','Rafa.gomes@gmail.com','1986-04-04',2,'488.654.963-70','$2a$08$1BdA7ANRBwhdnpWeE4UBM.38Iej0g8SAGCJALeEoOwTDFshQJlo8W',1);                            
+						  (null,'Rafael Gomes Camilo','(11)94002-8922','Rafa.gomes@gmail.com','1986-04-04',2,'488.654.963-70','$2a$08$1BdA7ANRBwhdnpWeE4UBM.38Iej0g8SAGCJALeEoOwTDFshQJlo8W',1);      
+                          
+insert into produto values(null,'Samsung Galaxy S21',10,5,40000.00,1,'O Galaxy S21 Ultra 5G é extraordinário em cada detalhe.'),
+						  (null,'Samsung Galaxy S22',10,5,40000.00,1,'O Samsung Galaxy S22 5G é um smartphone Android de bom nível, ótimo para fotos, que pode satisfazer até o mais exigente dos usuários.'),
+						  (null,'Samsung Galaxy S22 Ultra',10,5,40000.00,1,'Smartphone Samsung Galaxy S22 Ultra com 256GB, 12GB ram e Tela Infinita de 6,8".'),
+						  (null,'Apple Iphone 11',10,5,40000.00,1,'É o IPhone com preço mais baixo da décima terceira geração, sucedendo ao IPhone XR.'),
+                          (null,'Apple Iphone 13',10,5,40000.00,1,'IPhone 13. O sistema de câmera dupla mais avançado em um iPhone.'),
+						  (null,'Apple Iphone 12',10,5,40000.00,1,'A14 Bionic, o chip mais rápido em um smartphone. Tela OLED de ponta a ponta.');
+
+insert into imagem values(1,'s21-rosa.jpg','Resources/s21-rosa.jpg'),
+						 (1,'s21-violeta.jpg','Resources/s21-violeta.jpg'),
+                         (1,'s21-cinza.jpg','Resources/s21-cinza.jpg'),
+                         (1,'s21-branco.jpg','Resources/s21-branco.jpg'),
+                         (2,'s22-preto.jpg','Resources/s22-preto.jpg'),
+                         (2,'s22-branco.jpg','Resources/s22-branco.jpg'),
+                         (2,'s22-rose.jpg','Resources/s22-rose.jpg'),
+                         (2,'s22-verde.jpg','Resources/s22-verde.jpg'),
+                         (3,'s22-ultra-branco.jpg','Resources/s22-ultra-branco.jpg'),
+                         (3,'s22-ultra-preto.jpg','Resources/s22-ultra-preto.jpg'),
+                         (3,'s22-ultra-verde.jpg','Resources/s22-ultra-verde.jpg'),
+                         (3,'s22-ultra-vinho.jpg','Resources/s22-ultra-vinho.jpg'),
+                         (4,'iphone11-black-select-2019.png','Resources/iphone11-black-select-2019.png'),
+                         (4,'iphone11-green-select-2019.png','Resources/iphone11-green-select-2019.png'),
+                         (4,'iphone11-purple-select-2019','Resources/iphone11-purple-select-2019.png'),
+                         (4,'iphone11-red-select-2019.png','Resources/iphone11-red-select-2019.png'),
+                         (4,'iphone11-white-select-2019.png','Resources/iphone11-white-select-2019.png'),
+                         (4,'iphone11-yellow-select-2019.png','Resources/iphone11-yellow-select-2019.png'),
+                         (5,'iphone-13-blue-select-2021.png','Resources/iphone-13-blue-select-2021.png'),
+                         (5,'iphone-13-green-select.png','Resources/iphone-13-green-select.png'),
+                         (5,'iphone-13-midnight-select-2021.png','Resources/iphone-13-midnight-select-2021.png'),
+                         (5,'iphone-13-pink-select-2021.png','Resources/iphone-13-pink-select-2021.png'),
+                         (5,'iphone-13-product-red-select-2021.png','Resources/iphone-13-product-red-select-2021.png'),
+                         (6,'iphone-12-black-select-2020.png','Resources/iphone-12-black-select-2020.png'),
+                         (6,'iphone-12-blue-select-2020.png','Resources/iphone-12-blue-select-2020.png'),
+                         (6,'iphone-12-green-select-2020.png','Resources/iphone-12-green-select-2020.png'),
+                         (6,'iphone-12-purple-select-2021.png','Resources/iphone-12-purple-select-2021.png'),
+                         (6,'iphone-12-red-select-2020.png','Resources/iphone-12-red-select-2020.png'),
+                         (6,'iphone-12-white-select-2020.png','Resources/iphone-12-white-select-2020.png');
+                                                 
