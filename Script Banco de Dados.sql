@@ -302,4 +302,4 @@ insert into imagem values(1,'s21-rosa.jpg','Resources/s21-rosa.jpg'),
                          (6,'iphone-12-purple-select-2021.png','Resources/iphone-12-purple-select-2021.png'),
                          (6,'iphone-12-red-select-2020.png','Resources/iphone-12-red-select-2020.png'),
                          (6,'iphone-12-white-select-2020.png','Resources/iphone-12-white-select-2020.png');
-                                                 
+			

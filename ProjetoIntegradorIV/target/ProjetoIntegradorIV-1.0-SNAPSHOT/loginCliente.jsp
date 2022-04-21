@@ -4,6 +4,7 @@
     Author     : Gabriel Lima
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -34,7 +35,12 @@
         <div class="container shadow border bg-light p-5" style="max-width: 600px; top: -50px; position: relative; border-radius: 15px">
             <h2 class="display-4 mb-3" style="text-align: center">Login</h2>
             
-            <form>
+            <form action="LoginClienteServlet" method="POST">
+                <c:if test="${param.loginInvalido != null}">
+                    <div class="alert alert-danger" role="alert">
+                        Usuário/Senha inválidos
+                    </div>  
+                </c:if>
                 <div class="input-group my-5">
                     <input type="email" name="mail" class="form-control" placeholder="Seu e-mail">
                     <div class="input-group-append">
@@ -52,9 +58,9 @@
                 <div class="mb-5"><a class="btn p-0" href="#">Esqueceu a senha?</a></div>
                 <div class=" d-flex justify-content-sm-between">
                     <div class="order-2">
-                        <a class="btn bg-primary text-white px-5" href="#">
+                        <button class="btn bg-primary text-white px-5" type="submit">
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </a>
+                        </button>
                     </div>
                     <div class="order-1 align-self-end">
                         <a class="btn p-0" href="cadastroCliente.jsp">

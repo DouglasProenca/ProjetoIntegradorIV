@@ -51,7 +51,7 @@
         <div class="container shadow border bg-light p-5 mb-sm-5" style="max-width: 600px; top: -50px; position: relative; border-radius: 15px">
             <h2 class="display-4 mb-5" style="text-align: center">Cadastro</h2>
             
-            <form>
+            <form action="CadastroClienteServlet" method="POST">
                 <p class="mb-0">Seu nome</p>
                 <div class="input-group mb-3 px-auto justify-content-sm-between">
                     <div class="d-sm-inline flex-fill mr-sm-1"><input class="form-control" type="text" placeholder="Primeiro nome"></div>
