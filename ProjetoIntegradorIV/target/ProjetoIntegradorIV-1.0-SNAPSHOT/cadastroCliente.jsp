@@ -129,9 +129,9 @@
                 <p class="mb-0">Defina uma senha</p>
                 <div class="input-group mb-3">
                     <div class="d-sm-inline flex-fill mr-sm-1">
-                        <input class="form-control" type="password" required name="senhaConfir" placeholder="Crie uma senha"></div>
+                        <input class="form-control" type="password" required id="senhaConfir" name="senhaConfir" placeholder="Crie uma senha"></div>
                     <div class="d-sm-inline flex-fill">
-                        <input class="form-control" type="password" required name="senha" placeholder="Confirme a senha"></div>
+                        <input class="form-control" type="password" required id="senha" name="senha" placeholder="Confirme a senha"></div>
                 </div>
                 <div class=" d-flex justify-content-sm-between mt-5">
                     <div class="order-2">
@@ -182,6 +182,19 @@
                 });
             });
         </script>
+        <script>
+         var password = document.getElementById("senhaConfir")
+                    , confirm_password = document.getElementById("senha");
+
+            function validatePassword() {
+                if (password.value != confirm_password.value) {
+                    alert("Senhas diferentes!");
+                } else {
+                }
+            }
+
+            confirm_password.onchange = validatePassword;
+            </script>
     </body>
 </html>
 
