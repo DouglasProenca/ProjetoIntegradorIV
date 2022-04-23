@@ -35,7 +35,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
             usuario.setTelefone(request.getParameter("CelularUsuario"));
             usuario.setCategoria(request.getParameter("categoriaUsuario"));
             usuario.setNascimento(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("NascimentoUsuario")));
-            if (!request.getParameter("senhaUsuario").equals("")){
+            if (!request.getParameter("senhaUsuario").equals("")) {
                 usuario.setSenha(CryptoUtils.gerarhashSenha(request.getParameter("senhaUsuario")));
             }
             // ope = 1 => Update
@@ -49,11 +49,11 @@ public class CadastroUsuarioServlet extends HttpServlet {
             } else {
                 if (ValidaCPF.isCPF(request.getParameter("CPFUsuario")) == true) {
                     UsuarioDAO.inserirUsuario(usuario);
+                    response.sendRedirect(request.getContextPath() + "/protegido/uteis/sucesso.jsp");
                 } else {
                     response.sendRedirect(request.getContextPath() + "/protegido/usuario/cadastro.jsp?cpfInvalido=true");
                 }
             }
-            response.sendRedirect(request.getContextPath() + "/protegido/uteis/sucesso.jsp");
         } catch (SQLException ex) {
             if (ex.getErrorCode() == 1062) {
                 response.sendRedirect(request.getContextPath() + "/protegido/usuario/cadastro.jsp?mailInvalido=true");

@@ -59,11 +59,11 @@ public class CadastroClienteServlet extends HttpServlet {
             } else {
                 if (ValidaCPF.isCPF((request.getParameter("cpf")).replace(".", "").replace("-", "")) == true) {
                     ClienteDAO.inserirCliente(cliente, endereco);
+                    response.sendRedirect(request.getContextPath() + "/loginCliente.jsp");
                 } else {
                     response.sendRedirect(request.getContextPath() + "/cadastroCliente.jsp?cpfInvalido=true");
                 }
             }
-            response.sendRedirect(request.getContextPath() + "/loginCliente.jsp");
         } catch (ClassNotFoundException | SQLException | ParseException ex) {
             Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
