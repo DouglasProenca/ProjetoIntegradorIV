@@ -19,11 +19,11 @@ public class ClienteDAO {
         Connection con = Conexao.abrirConexao();
         Cliente cliente = null;
         String query = "select id\n"
-                + "	  , usuario\n"
+                + "	 , usuario\n"
                 + "      , nome\n"
                 + "      , senha\n"
                 + "from cliente \n"
-                + "where usuario = ?";
+                + "where usuario = ?;";
 
         PreparedStatement ps = con.prepareStatement(query);
         ps.setString(1, login);
@@ -49,7 +49,7 @@ public class ClienteDAO {
         ps.setString(3, cliente.getCpf());
         ps.setDate(4, new java.sql.Date(cliente.getNascimento().getTime()));
         ps.setString(5, cliente.getGenero());
-        ps.setString(6, CryptoUtils.gerarhashSenha(cliente.getSenha()));
+        ps.setString(6, cliente.getSenha());
         ps.setString(7, enderecoCliente.getCEP());
         ps.setString(8, enderecoCliente.getRua());
         ps.setInt(9, enderecoCliente.getNumero());
@@ -63,7 +63,7 @@ public class ClienteDAO {
     
     public static boolean updateCliente(Cliente cliente) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "update usuario set nome=?,telefone=?,nascimento=?,id_categoria=?,senha=?"
+        /*String query = "update usuario set nome=?,telefone=?,nascimento=?,id_categoria=?,senha=?"
                 + " where cpf=?";
         Connection con = Conexao.abrirConexao();
         try {
@@ -83,13 +83,13 @@ public class ClienteDAO {
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             ok = false;
-        }
+        }*/
         return ok;
     }
     
     public static Cliente getClientePorCPF(String cpf) throws ClassNotFoundException, SQLException {
-        Usuario usuario = null;
-        String query = "select u.id\n"
+        Cliente usuario = null;
+        /*String query = "select u.id\n"
                 + "       ,u.nome\n"
                 + "       ,u.telefone\n"
                 + "       ,u.nascimento\n"
@@ -122,7 +122,7 @@ public class ClienteDAO {
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         return usuario;
     }
 }

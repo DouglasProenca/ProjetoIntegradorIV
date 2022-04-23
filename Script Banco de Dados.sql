@@ -54,7 +54,7 @@ CREATE TABLE cliente (
 );
 
 CREATE TABLE endereco_cliente (
-    id_cliente INT,
+    id_cliente INT not null,
     CEP VARCHAR(100),
     logradouro VARCHAR(200),
     Número BIGINT,
@@ -255,6 +255,22 @@ LIMIT 30,10;
 end if;
 
 end
+
+delimiter ;
+
+delimiter $
+
+CREATE PROCEDURE sp_inserirCliente(email varchar(250),nome varchar(100), cpf varchar(30)
+				,Nascimento datetime,Genero varchar(100),Senha varchar(100), cep varchar(10)
+                ,rua varchar(500), numero bigint, complemento varchar(500), bairro varchar(100)
+                ,cidade varchar(100), uf varchar(2))
+begin
+
+insert into cliente values(null,email,nome,cpf,Nascimento,Genero,Senha);
+
+insert into endereco_cliente values((select max(id) from cliente),cep,rua,numero,complemento,bairro,cidade,uf);
+
+end $
 
 delimiter ;
 

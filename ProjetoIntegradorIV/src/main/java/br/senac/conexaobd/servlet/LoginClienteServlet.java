@@ -28,6 +28,7 @@ public class LoginClienteServlet extends HttpServlet {
         try {
             String nomeUsuario = request.getParameter("mail");
             String senhaUsuario = request.getParameter("pass");
+            
             Cliente cliente = ClienteDAO.getUsuario(nomeUsuario);
             if (cliente == null) {
                 response.sendRedirect(request.getContextPath() + "/loginCliente.jsp?loginInvalido=true");
@@ -35,7 +36,7 @@ public class LoginClienteServlet extends HttpServlet {
                     boolean senhaOk = CryptoUtils.verificarSenha(senhaUsuario, cliente.getSenha());
                     if (senhaOk) {
                         HttpSession sessao = request.getSession();
-                        sessao.setAttribute("usuario", cliente);
+                        sessao.setAttribute("cliente", cliente);
                         response.sendRedirect(request.getContextPath() + "/Principal.jsp");
                     } else {
                         response.sendRedirect(request.getContextPath() + "/loginCliente.jsp?loginInvalido=true");

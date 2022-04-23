@@ -6,7 +6,6 @@ import br.senac.conexaobd.entidades.EnderecoCliente;
 import br.senac.uteis.CryptoUtils;
 import br.senac.uteis.ValidaCPF;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -45,7 +44,7 @@ public class CadastroClienteServlet extends HttpServlet {
             endereco.setRua(request.getParameter("rua"));
             endereco.setBairro(request.getParameter("bairro"));
             endereco.setCidade(request.getParameter("cidade"));
-            endereco.setCidade(request.getParameter("uf"));
+            endereco.setUf(request.getParameter("uf"));
             endereco.setComplemento(request.getParameter("complemento"));
             endereco.setNumero(Integer.parseInt(request.getParameter("num")));
 
