@@ -21,7 +21,7 @@
         
         <title>Login</title>
     </head>
-    <body class="">
+    <body>
         <header class="fixed-top bg-dark pb-3">
             <div class="container">
                 <div class="d-flex justify-content-center mt-3">
@@ -33,7 +33,7 @@
         </header>
         <div class="container-fluid bg-dark shadow" style="height: 250px"></div>
         <div class="container shadow border bg-light p-5" style="max-width: 600px; top: -50px; position: relative; border-radius: 15px">
-            <h2 class="display-4 mb-3" style="text-align: center">Login</h2>
+            <h2 class="display-4 mb-3 text-center">Login</h2>
             
             <form action="LoginClienteServlet" method="POST">
                 <c:if test="${param.loginInvalido != null}">
@@ -55,11 +55,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="mb-5"><a class="btn p-0" href="#">Esqueceu a senha?</a></div>
-                <div class=" d-flex justify-content-sm-between">
+                <!-- <div><a class="btn p-0" href="#">Esqueceu a senha?</a></div> -->
+                <div class=" d-flex justify-content-sm-between mt-5">
                     <div class="order-2">
                         <button class="btn bg-primary text-white px-5" type="submit">
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <i class="fa fa-check" aria-hidden="true"></i>
                         </button>
                     </div>
                     <div class="order-1 align-self-end">
