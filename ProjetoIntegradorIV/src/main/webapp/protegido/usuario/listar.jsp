@@ -47,7 +47,6 @@
     </head>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
-        <c:import url="../uteis/header.jsp"/>  
         <div id="alerta" class="alert alert-success" role="alert" style="display:none">
             Usuario(a) Alterado(a) com sucesso!
         </div>

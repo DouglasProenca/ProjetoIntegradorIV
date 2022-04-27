@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -120,5 +122,37 @@ public class ClienteDAO {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return cliente;
+    }
+
+    public static List<EnderecoCliente> getEnderecoCliente(String cpf) throws ClassNotFoundException, SQLException {
+
+        List<EnderecoCliente> enderecos = new ArrayList<>();
+        String query = "select e.* \n"
+                + "from endereco_cliente e\n"
+                + "inner join cliente c\n"
+                + "	on c.id = e.id_cliente\n"
+                + "where c.cpf = ?";
+        Connection con = Conexao.abrirConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, cpf);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                EnderecoCliente endereco = new EnderecoCliente();
+                endereco.setId(rs.getInt("id_cliente"));
+                endereco.setCEP(rs.getString("CEP"));
+                endereco.setRua(rs.getString("logradouro"));
+                endereco.setCidade(rs.getString("cidade"));
+                endereco.setBairro(rs.getString("bairro"));
+                endereco.setUf(rs.getString("uf"));
+                endereco.setComplemento(rs.getString("complemento"));
+                enderecos.add(endereco);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return enderecos;
     }
 }

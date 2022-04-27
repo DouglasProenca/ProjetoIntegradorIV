@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
-        
+
         <title>Perfil</title>
     </head>
     <body>
@@ -78,66 +78,33 @@
                     </li>
                 </ul>
                 <h2 class="ml-sm-3">Seus endereços</h2>
-                <div class="d-flex justify-content-between mb-3">
-                    <ul class="list-group flex-fill">
-                        <li class="list-group-item">"CEP"</li>
-                        <li class="list-group-item">"Complemento"</li>
-                        <li class="list-group-item">"Cidade"</li>
-                    </ul>
-                    <ul class="list-group flex-fill">
-                        <li class="list-group-item">"Rua, Nº"</li>
-                        <li class="list-group-item">"Bairro"</li>
-                        <li class="list-group-item">"Estado"</li>
-                    </ul>
-                    <div class="d-flex flex-column">
-                        <button class="btn bg-white my-auto flex-fill border" data-toggle="modal" data-target="#adicionarEndereco" data-toggle="tooltip" title="Editar endereço">
-                            <i class="fa fa-pen" aria-hidden="true"></i>
-                        </button>
-                        <button class="btn bg-white my-auto flex-fill border text-danger" data-toggle="tooltip" title="Excluir endereço">
-                            <i class="fa fa-trash"></i>
-                        </button>
+                <c:forEach var="enderecos" items="${listaEnderecos}">
+                    <div class="d-flex justify-content-between mb-3">
+                        <ul class="list-group flex-fill">
+                            <li class="list-group-item">${enderecos.CEP}</li>
+                            <c:if test="${not empty enderecos.complemento}">
+                            <li class="list-group-item">${enderecos.complemento}</li>
+                            </c:if>
+                            <c:if test="${empty enderecos.complemento}">
+                            <li class="list-group-item">"Complemento"</li>
+                            </c:if>
+                            <li class="list-group-item">${enderecos.cidade}</li>
+                        </ul>
+                        <ul class="list-group flex-fill">
+                            <li class="list-group-item">${enderecos.rua}</li>
+                            <li class="list-group-item">${enderecos.bairro}</li>
+                            <li class="list-group-item">${enderecos.uf}</li>
+                        </ul>
+                        <div class="d-flex flex-column">
+                            <button class="btn bg-white my-auto flex-fill border" data-toggle="modal" data-target="#adicionarEndereco" data-toggle="tooltip" title="Editar endereço">
+                                <i class="fa fa-pen" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn bg-white my-auto flex-fill border text-danger" data-toggle="tooltip" title="Excluir endereço">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="d-none justify-content-between mb-3">
-                    <ul class="list-group flex-fill">
-                        <li class="list-group-item">"CEP"</li>
-                        <li class="list-group-item">"Complemento"</li>
-                        <li class="list-group-item">"Cidade"</li>
-                    </ul>
-                    <ul class="list-group flex-fill">
-                        <li class="list-group-item">"Rua, Nº"</li>
-                        <li class="list-group-item">"Bairro"</li>
-                        <li class="list-group-item">"Estado"</li>
-                    </ul>
-                    <div class="d-flex flex-column">
-                        <button class="btn bg-white my-auto flex-fill border" data-toggle="modal" data-target="#adicionarEndereco" data-toggle="tooltip" title="Editar endereço">
-                            <i class="fa fa-pen" aria-hidden="true"></i>
-                        </button>
-                        <button class="btn bg-white my-auto flex-fill border text-danger" data-toggle="tooltip" title="Excluir endereço">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="d-none justify-content-between mb-3">
-                    <ul class="list-group flex-fill">
-                        <li class="list-group-item">"CEP"</li>
-                        <li class="list-group-item">"Complemento"</li>
-                        <li class="list-group-item">"Cidade"</li>
-                    </ul>
-                    <ul class="list-group flex-fill">
-                        <li class="list-group-item">"Rua, Nº"</li>
-                        <li class="list-group-item">"Bairro"</li>
-                        <li class="list-group-item">"Estado"</li>
-                    </ul>
-                    <div class="d-flex flex-column">
-                        <button class="btn bg-white my-auto flex-fill border" data-toggle="modal" data-target="#adicionarEndereco" data-toggle="tooltip" title="Editar endereço">
-                            <i class="fa fa-pen" aria-hidden="true"></i>
-                        </button>
-                        <button class="btn bg-white my-auto flex-fill border text-danger" data-toggle="tooltip" title="Excluir endereço">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
+                </c:forEach>
                 <div class="d-flex justify-content-center mt-5">
                     <button class="btn bg-white rounded-circle shadow-sm" data-toggle="modal" data-target="#adicionarEndereco" data-toggle="tooltip" title="Adicionar endereço">
                         <i class="fa fa-plus"></i>
@@ -145,7 +112,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Caixinha para alterar o nome -->
         <div class="modal" id="mudarNome">
             <div class="modal-dialog modal-dialog-centered">
@@ -279,12 +246,12 @@
                 </div>                
             </div>
         </div>
-        
-        
+
+
         <script type="text/javascript">
-                       
+
             $("#cpf").inputmask({"mask": "999.999.999-99"});
-            
+
             $("#cep").focusout(function () {
                 //Início do Comando AJAX
                 $.ajax({
@@ -319,7 +286,7 @@
             });
         </script>
         <script>
-            $(document).ready(function(){
+            $(document).ready(function () {
                 $('[data-toggle="tooltip"]').tooltip();
             });
             var password = document.getElementById("senhaConfir"),
