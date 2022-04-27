@@ -83,7 +83,7 @@
                         <td>${usuario.categoria}</td>
                         <td>${usuario.cpf}</td>
                         <td>${usuario.ativo}</td>
-                        <td><a href="../usuario/CadastroUsuarioServlet?CPFUsuario=${usuario.cpf}&ope=1" >Alterar</a></td>
+                        <td><a href="../CadastroClienteServlet?CPFUsuario=${usuario.cpf}&ope=1" >Alterar</a></td>
                         <c:if test="${usuario.isAtivo()}">
                             <td><button onclick="confirmarStatus('${usuario.nome}', '${usuario.cpf}')" class="btn btn-link">Inativar</button></td>
                         </c:if>

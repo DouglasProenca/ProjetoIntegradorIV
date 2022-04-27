@@ -71,14 +71,14 @@ public class CadastroClienteServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String cpf = req.getParameter("CPFUsuario");
+        String cpf = req.getParameter("CPFCliente");
         String ope = req.getParameter("ope");
         //OPE = 1 => Atualização
         try {
             if ("1".equals(ope)) {
                 Cliente cliente = ClienteDAO.getClientePorCPF(cpf);
                 req.setAttribute("clienteAtualizacao", cliente);
-                req.getRequestDispatcher("/protegido/usuario/cadastroCliente.jsp").forward(req, resp);
+                req.getRequestDispatcher("/protegido/cliente/perfilCliente.jsp").forward(req, resp);
             } else if (("2".equals(ope))) {
                 //ClienteDAO.statusUsuario(cpf);
                 //resp.sendRedirect(req.getContextPath() + "/protegido/usuario/ListarUsuarioServlet?ope=0");

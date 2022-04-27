@@ -38,7 +38,7 @@
         <div class=" container bg-light shadow-lg mx-lg-auto p-5" style="top: -100px; position: relative; border-radius: 15px;">
             <div class="text-center mb-5">
                 <!-- Imagem do usuário aqui -->
-                <img src="protegido/produto/Resources/sem-foto.jpg" alt="Foto de perfil" class="rounded-circle border" style="max-width: 400px; max-height: 400px">
+                <img src="../produto/Resources/sem-foto.jpg" alt="Foto de perfil" class="rounded-circle border" style="max-width: 400px; max-height: 400px">
                 <!-- Nome do usuário aqui -->
                 <h2 class="display-4">Gabriel Machado</h2>
                 <button class="btn bg-transparent rounded-circle" data-toggle="modal" data-target="#mudarNome" data-toggle="tooltip" title="Editar nome">
