@@ -38,9 +38,9 @@
         <div class=" container bg-light shadow-lg mx-lg-auto p-5" style="top: -100px; position: relative; border-radius: 15px;">
             <div class="text-center mb-5">
                 <!-- Imagem do usuário aqui -->
-                <img src="../produto/Resources/sem-foto.jpg" alt="Foto de perfil" class="rounded-circle border" style="max-width: 400px; max-height: 400px">
+                <img src="protegido/produto/Resources/sem-foto.jpg" alt="Foto de perfil" class="rounded-circle border" style="max-width: 400px; max-height: 400px">
                 <!-- Nome do usuário aqui -->
-                <h2 class="display-4">Gabriel Machado</h2>
+                <h2 class="display-4">${clienteAtualizacao.nome}</h2>
                 <button class="btn bg-transparent rounded-circle" data-toggle="modal" data-target="#mudarNome" data-toggle="tooltip" title="Editar nome">
                     <i class="fa fa-pen" aria-hidden="true"></i>
                 </button>
@@ -50,14 +50,14 @@
                 <ul class="list-group mx-auto mb-5">
                     <li class="list-group-item d-flex justify-content-between pb-0">
                         <h4 class="flex-fill">Data de nascimento</h4>
-                        <p>28/09/2002</p>
+                        <p>${clienteAtualizacao.nascimento}</p>
                         <button class="btn bg-transparent pt-0 rounded-circle" data-toggle="modal" data-target="#mudarData" data-toggle="tooltip" title="Editar data">
                             <i class="fa fa-pen" aria-hidden="true"></i>
                         </button>
                     </li>
                     <li class="list-group-item d-flex justify-content-between pb-0">
                         <h4 class="flex-fill">Seu e-mail</h4>
-                        <p>gabriel.mdlima@gmail.com</p>
+                        <p>${clienteAtualizacao.email}</p>
                         <button class="btn bg-transparent pt-0 rounded-circle" data-toggle="modal" data-target="#mudarEmail" data-toggle="tooltip" title="Editar e-mail">
                             <i class="fa fa-pen" aria-hidden="true"></i>
                         </button>
@@ -71,7 +71,7 @@
                     </li>
                     <li class="list-group-item d-flex justify-content-between pb-0">
                         <h4 class="flex-fill">Seu CPF</h4>
-                        <p>000.000.000-00</p>
+                        <p>${clienteAtualizacao.cpf}</p>
                         <button class="btn bg-transparent pt-0 rounded-circle" data-toggle="modal" data-target="#mudarCPF" data-toggle="tooltip" title="Editar CPF">
                             <i class="fa fa-pen" aria-hidden="true"></i>
                         </button>

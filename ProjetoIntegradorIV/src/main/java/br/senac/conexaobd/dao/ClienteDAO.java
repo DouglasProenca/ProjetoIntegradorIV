@@ -3,11 +3,12 @@ package br.senac.conexaobd.dao;
 import br.senac.conexaobd.Conexao;
 import br.senac.conexaobd.entidades.Cliente;
 import br.senac.conexaobd.entidades.EnderecoCliente;
-import br.senac.uteis.CryptoUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,6 +21,7 @@ public class ClienteDAO {
         Cliente cliente = null;
         String query = "select id\n"
                 + "	 , usuario\n"
+                + "      , cpf\n"
                 + "      , nome\n"
                 + "      , senha\n"
                 + "from cliente \n"
@@ -34,12 +36,13 @@ public class ClienteDAO {
             cliente.setId(rs.getInt("id"));
             cliente.setEmail(rs.getString("usuario"));
             cliente.setNome(rs.getString("nome"));
+            cliente.setCpf(rs.getString("cpf"));
             cliente.setSenha(rs.getString("senha"));
         }
         return cliente;
     }
-    
-    public static void inserirCliente(Cliente cliente,EnderecoCliente enderecoCliente) throws SQLException, ClassNotFoundException {
+
+    public static void inserirCliente(Cliente cliente, EnderecoCliente enderecoCliente) throws SQLException, ClassNotFoundException {
         String query = "call sp_inserirCliente(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection con = Conexao.abrirConexao();
         PreparedStatement ps;
@@ -60,7 +63,7 @@ public class ClienteDAO {
 
         ps.execute();
     }
-    
+
     public static boolean updateCliente(Cliente cliente) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         /*String query = "update usuario set nome=?,telefone=?,nascimento=?,id_categoria=?,senha=?"
@@ -86,22 +89,12 @@ public class ClienteDAO {
         }*/
         return ok;
     }
-    
-    public static Cliente getClientePorCPF(String cpf) throws ClassNotFoundException, SQLException {
-        Cliente usuario = null;
-        /*String query = "select u.id\n"
-                + "       ,u.nome\n"
-                + "       ,u.telefone\n"
-                + "       ,u.nascimento\n"
-                + "       ,u.email\n"
-                + "       ,c.categoria\n"
-                + "       ,u.cpf\n"
-                + "       ,u.senha\n"
-                + "       ,case when u.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo\n"
-                + "from usuario u\n"
-                + "inner join categoria c\n"
-                + "on c.id = u.id_categoria\n"
-                + "where u.cpf = ?";
+
+    public static EnderecoCliente getClientePorCPF(String cpf) throws ClassNotFoundException, SQLException {
+        EnderecoCliente cliente = null;
+        String query = "select c.*\n"
+                + "from cliente c\n"
+                + "where c.cpf = ?\n";
 
         Connection con = Conexao.abrirConexao();
         try {
@@ -109,20 +102,23 @@ public class ClienteDAO {
             ps.setString(1, cpf);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                usuario = new Usuario();
-                usuario.setId(rs.getInt("id"));
-                usuario.setNome(rs.getString("nome"));
-                usuario.setTelefone(rs.getString("telefone"));
-                usuario.setNascimento(rs.getDate("nascimento"));
-                usuario.setCpf(rs.getString("cpf"));
-                usuario.setEmail(rs.getString("email"));
-                usuario.setSenha(rs.getString("senha"));
-                usuario.setCategoria(rs.getString("categoria"));
-                usuario.setAtivo(rs.getString("ativo"));
+                cliente = new EnderecoCliente();
+                cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setCpf(rs.getString("cpf"));
+                cliente.setNascimento(rs.getDate("nascimento"));
+                cliente.setGenero(rs.getString("genero"));
+                cliente.setEmail(rs.getString("usuario"));
+                cliente.setSenha(rs.getString("senha"));
+                cliente.setCEP(rs.getString("CEP"));
+                cliente.setRua(rs.getString("logradouro"));
+                cliente.setUf(rs.getString("uf"));
+                cliente.setCidade(rs.getString("cidade"));
+                cliente.setBairro(rs.getString("bairro"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        return usuario;
+        }
+        return cliente;
     }
 }
