@@ -82,12 +82,12 @@
                     <div class="d-flex justify-content-between mb-3">
                         <ul class="list-group flex-fill">
                             <li class="list-group-item">${enderecos.CEP}</li>
-                            <c:if test="${not empty enderecos.complemento}">
-                            <li class="list-group-item">${enderecos.complemento}</li>
-                            </c:if>
-                            <c:if test="${empty enderecos.complemento}">
-                            <li class="list-group-item">"Complemento"</li>
-                            </c:if>
+                                <c:if test="${not empty enderecos.complemento}">
+                                <li class="list-group-item">${enderecos.complemento}</li>
+                                </c:if>
+                                <c:if test="${empty enderecos.complemento}">
+                                <li class="list-group-item">"Complemento"</li>
+                                </c:if>
                             <li class="list-group-item">${enderecos.cidade}</li>
                         </ul>
                         <ul class="list-group flex-fill">
@@ -212,7 +212,7 @@
             </div>
         </div>
         <!-- Caixinha para alterar/adicionar novo endereço -->
-        <div class="modal" id="adicionarEndereco">
+        <form class="modal" id="adicionarEndereco" action="EnderecoServlet" method="POST">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -240,12 +240,18 @@
                             <input class="form-control" type="text" id="uf" name="uf" placeholder="UF">
                         </div>
                     </div>
+                    <c:if test="${not empty clienteAtualizacao}">
+                        <input type="hidden" name="id"
+                               value="${clienteAtualizacao.id}" 
+                               required
+                               class="form-control"/>
+                    </c:if>
                     <div class="modal-footer">
-                        <button type="button" class="btn bg-primary text-white" data-dismiss="modal">Confirmar</button>
+                        <button type="submit" class="btn bg-primary text-white">Confirmar</button>
                     </div>
                 </div>                
             </div>
-        </div>
+        </form>
 
 
         <script type="text/javascript">

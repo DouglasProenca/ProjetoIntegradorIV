@@ -155,4 +155,21 @@ public class ClienteDAO {
         }
         return enderecos;
     }
+    
+     public static void inserirEndereco(EnderecoCliente enderecoCliente) throws SQLException, ClassNotFoundException {
+        String query = "insert into endereco_cliente values(?,?,?,?,?,?,?,?)";
+        Connection con = Conexao.abrirConexao();
+        PreparedStatement ps;
+        ps = con.prepareStatement(query);
+        ps.setInt(1, enderecoCliente.getId());
+        ps.setString(2, enderecoCliente.getCEP());
+        ps.setString(3, enderecoCliente.getRua());
+        ps.setInt(4, enderecoCliente.getNumero());
+        ps.setString(5, enderecoCliente.getComplemento());
+        ps.setString(6, enderecoCliente.getBairro());
+        ps.setString(7, enderecoCliente.getCidade());
+        ps.setString(8, enderecoCliente.getUf());
+
+        ps.execute();
+    }
 }
