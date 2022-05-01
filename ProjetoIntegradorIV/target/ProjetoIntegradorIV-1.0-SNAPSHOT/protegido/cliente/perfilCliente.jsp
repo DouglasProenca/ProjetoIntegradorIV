@@ -257,6 +257,8 @@
         <script type="text/javascript">
 
             $("#cpf").inputmask({"mask": "999.999.999-99"});
+            //m?scara do cep
+            $("#cep").inputmask({"mask": "99999-999"});
 
             $("#cep").focusout(function () {
                 //Início do Comando AJAX

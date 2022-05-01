@@ -38,7 +38,7 @@
             <br><br><br>
             <h1><center>Cadastro de Produtos</center></h1>
             <br><br>
-            <form class="col-md-6 offset-md-3 jumbotron" action="CadastroProdutoServlet" method="POST">
+            <form class="col-md-6 offset-md-3 jumbotron" action="CadastroProdutoServlet" method="POST" enctype="multipart/form-data">
                 <c:if test="${not empty produtoAtualizacao}">
                     <input type="hidden" name="ope" value="1"/>
                 </c:if>
@@ -77,7 +77,7 @@
                                class="form-control"/>        
                 <div class="form-group">
                     <label>Imagem</label>
-                    <input type="file" id="img-input" name="imagem[]" multiple
+                    <input type="file" id="img-input" name="imagem" multiple
                            required accept="image/png, image/jpeg"
                            class="form-control"/>        
                 </div>

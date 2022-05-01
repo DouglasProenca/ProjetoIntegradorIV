@@ -47,7 +47,6 @@
     </head>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
-        <c:import url="../uteis/header.jsp"/>  
         <div id="alerta" class="alert alert-success" role="alert" style="display:none">
             Usuario(a) Alterado(a) com sucesso!
         </div>
@@ -83,7 +82,7 @@
                         <td>${usuario.categoria}</td>
                         <td>${usuario.cpf}</td>
                         <td>${usuario.ativo}</td>
-                        <td><a href="../usuario/CadastroUsuarioServlet?CPFUsuario=${usuario.cpf}&ope=1" >Alterar</a></td>
+                        <td><a href="../CadastroClienteServlet?CPFUsuario=${usuario.cpf}&ope=1" >Alterar</a></td>
                         <c:if test="${usuario.isAtivo()}">
                             <td><button onclick="confirmarStatus('${usuario.nome}', '${usuario.cpf}')" class="btn btn-link">Inativar</button></td>
                         </c:if>

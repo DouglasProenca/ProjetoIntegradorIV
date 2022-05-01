@@ -19,6 +19,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#carousel').find('.carousel-item').first().addClass('active');
+            });
+        </script>
     </head>
     <body>
         <div class="container">
@@ -43,10 +48,8 @@
                         <a class="py-2" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
                         </a>
-                        <a class="py-2 d-none d-md-inline-block" href="#">Tour</a>
-                        <a class="py-2 d-none d-md-inline-block" href="#">Produto</a>
-                        <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
-                        <a class="py-2 d-none d-md-inline-block" href="#">Premium</a>
+                        <a class="py-2 d-none d-md-inline-block" href="#">Login</a>
+                        <a class="py-2 d-none d-md-inline-block" href="../../Principal.jsp">Produto</a>
                         <a class="py-2 d-none d-md-inline-block" href="#">Suporte</a>
                         <a class="py-2 d-none d-md-inline-block" href="#">Preços</a>
                         <a class="py-2 d-none d-md-inline-block" href="#">Carrinho</a>
@@ -82,20 +85,16 @@
             </div>
             <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" style="margin-bottom: 40px;">
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel" data-slide-to="0" class=""></li>
-                    <li data-target="#carousel" data-slide-to="1" class=""></li>
-                    <li data-target="#carousel" data-slide-to="2" class="active"></li>
+                    <c:forEach var="imagem" items="${listaImagens}" >
+                        <li data-target="#carousel" data-slide-to=""></li>
+                        </c:forEach>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item">
-                        <img src="../Resources/s21-branco.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="Resources/s21-violeta.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
-                    </div>
-                    <div class="carousel-item active">
-                        <img src="Resources/s21-cinza.jpg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%">
-                    </div>
+                    <c:forEach var="imagem" items="${listaImagens}" >
+                        <div class="carousel-item">
+                            <img src="<c:url value="${ imagem['caminho']}" />" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%"/>
+                        </div>
+                    </c:forEach>
                 </div>
                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

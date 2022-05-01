@@ -66,7 +66,7 @@ public class UsuarioDAO {
             ps.setInt(5, 2);
         }
         ps.setString(6, usuario.getCpf());
-        ps.setString(7, CryptoUtils.gerarhashSenha(usuario.getSenha()));
+        ps.setString(7, usuario.getSenha());
         ps.setInt(8, 1);
 
         ps.execute();

@@ -1,22 +1,30 @@
 package br.senac.conexaobd.servlet;
 
+import br.senac.conexaobd.dao.ImagemDAO;
 import br.senac.conexaobd.dao.ProdutoDAO;
 import br.senac.conexaobd.entidades.Produto;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Paths;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author Douglas
  */
 @WebServlet(name = "CadastroProdutoServlet", urlPatterns = {"/protegido/produto/CadastroProdutoServlet"})
+@MultipartConfig(maxFileSize= 1024 * 1024 * 10,maxRequestSize= 1024 * 1024 * 15)
 public class CadastroProdutoServlet extends HttpServlet {
 
     Produto produto = new Produto();
@@ -26,6 +34,7 @@ public class CadastroProdutoServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             String ope = request.getParameter("ope");
+            List<Part> fileParts = request.getParts().stream().filter(part -> "imagem".equals(part.getName()) && part.getSize() > 0).collect(Collectors.toList());
             if (request.getParameter("nomeProduto") != null) {
                 produto.setNome(request.getParameter("nomeProduto"));
             }
@@ -48,6 +57,11 @@ public class CadastroProdutoServlet extends HttpServlet {
 
             } else {
                 ProdutoDAO.inserirProduto(produto);
+                for (Part filePart : fileParts) {
+                    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+                    InputStream fileContent = filePart.getInputStream();
+                    ImagemDAO.inserirImagem(fileName);
+                }
             }
             response.sendRedirect(request.getContextPath() + "/protegido/uteis/sucesso.jsp");
         } catch (SQLException | ClassNotFoundException ex) {
