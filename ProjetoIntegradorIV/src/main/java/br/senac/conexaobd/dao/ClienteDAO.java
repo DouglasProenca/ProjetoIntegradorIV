@@ -68,27 +68,23 @@ public class ClienteDAO {
 
     public static boolean updateCliente(Cliente cliente) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        /*String query = "update usuario set nome=?,telefone=?,nascimento=?,id_categoria=?,senha=?"
-                + " where cpf=?";
+        String query = "update cliente set nome=?,nascimento=?,usuario=?,cpf=?,senha=?"
+                + " where id=?";
         Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, usuario.getNome());
-            ps.setString(2, usuario.getTelefone());
-            ps.setDate(3, new java.sql.Date(usuario.getNascimento().getTime()));
-            if (usuario.getCategoria().equals("administrador")) {
-                ps.setInt(4, 1);
-            } else {
-                ps.setInt(4, 2);
-            }
-            ps.setString(5, usuario.getSenha());
-            ps.setString(6, usuario.getCpf());
+            ps.setString(1, cliente.getNome());
+            ps.setDate(2, new java.sql.Date(cliente.getNascimento().getTime()));
+            ps.setString(3, cliente.getEmail());
+            ps.setString(4, cliente.getCpf());
+            ps.setString(5, cliente.getSenha());
+            ps.setInt(6, cliente.getId());
             ps.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             ok = false;
-        }*/
+        }
         return ok;
     }
 
@@ -112,11 +108,6 @@ public class ClienteDAO {
                 cliente.setGenero(rs.getString("genero"));
                 cliente.setEmail(rs.getString("usuario"));
                 cliente.setSenha(rs.getString("senha"));
-                cliente.setCEP(rs.getString("CEP"));
-                cliente.setRua(rs.getString("logradouro"));
-                cliente.setUf(rs.getString("uf"));
-                cliente.setCidade(rs.getString("cidade"));
-                cliente.setBairro(rs.getString("bairro"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);

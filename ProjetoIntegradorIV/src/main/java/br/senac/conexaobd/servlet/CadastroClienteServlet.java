@@ -36,23 +36,29 @@ public class CadastroClienteServlet extends HttpServlet {
             cliente.setCpf(request.getParameter("cpf"));
             cliente.setGenero(request.getParameter("optradio"));
             cliente.setNascimento(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("datemax")));
-            if (!request.getParameter("senha").equals("")) {
+            if (request.getParameter("senha") != null) {
                 cliente.setSenha(CryptoUtils.gerarhashSenha(request.getParameter("senha")));
+            } else {
+                cliente.setSenha(request.getParameter("senha2"));
             }
 
             EnderecoCliente endereco = new EnderecoCliente();
-            endereco.setCEP(request.getParameter("cep"));
-            endereco.setRua(request.getParameter("rua"));
-            endereco.setBairro(request.getParameter("bairro"));
-            endereco.setCidade(request.getParameter("cidade"));
-            endereco.setUf(request.getParameter("uf"));
-            endereco.setComplemento(request.getParameter("complemento"));
-            endereco.setNumero(Integer.parseInt(request.getParameter("num")));
+            if (!"1".equals(ope)) {
+                endereco.setCEP(request.getParameter("cep"));
+                endereco.setRua(request.getParameter("rua"));
+                endereco.setBairro(request.getParameter("bairro"));
+                endereco.setCidade(request.getParameter("cidade"));
+                endereco.setUf(request.getParameter("uf"));
+                endereco.setComplemento(request.getParameter("complemento"));
+                endereco.setNumero(Integer.parseInt(request.getParameter("num")));
+            }
 
             // ope = 1 => Update
             if ("1".equals(ope)) {
                 try {
+                    cliente.setId(Integer.parseInt(request.getParameter("id")));
                     ClienteDAO.updateCliente(cliente);
+                    response.sendRedirect(request.getContextPath() + "/loginCliente.jsp");
                 } catch (ClassNotFoundException ex) {
                     response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
                     Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -99,9 +99,6 @@
                             <button class="btn bg-white my-auto flex-fill border" data-toggle="modal" data-target="#adicionarEndereco" data-toggle="tooltip" title="Editar endereço">
                                 <i class="fa fa-pen" aria-hidden="true"></i>
                             </button>
-                            <button class="btn bg-white my-auto flex-fill border text-danger" data-toggle="tooltip" title="Excluir endereço">
-                                <i class="fa fa-trash"></i>
-                            </button>
                         </div>
                     </div>
                 </c:forEach>
@@ -114,7 +111,7 @@
         </div>
 
         <!-- Caixinha para alterar o nome -->
-        <div class="modal" id="mudarNome">
+        <form class="modal" id="mudarNome" action="CadastroClienteServlet" method="POST">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -129,14 +126,22 @@
                             <input class="form-control" type="text" name="sgnome" required placeholder="Sobrenome">
                         </div>
                     </div>
+                    <c:if test="${not empty clienteAtualizacao}">
+                        <input type="hidden" name="id" value="${clienteAtualizacao.id}" class="form-control"/>
+                        <input type="hidden" name="cpf" value="${clienteAtualizacao.cpf}" class="form-control"/>
+                        <input type="hidden" name="datemax" value="${clienteAtualizacao.nascimento}" class="form-control"/>
+                        <input type="hidden" name="email" value="${clienteAtualizacao.email}" class="form-control"/>
+                        <input type="hidden" name="senha2" value="${clienteAtualizacao.senha}" class="form-control"/>
+                        <input type="hidden" name="ope" value="1"/>
+                    </c:if>
                     <div class="modal-footer">
-                        <button type="button" class="btn bg-primary text-white" data-dismiss="modal">Confirmar</button>
+                        <button type="submit" class="btn bg-primary text-white" >Confirmar</button>
                     </div>
                 </div>                
             </div>
-        </div>
+        </form>
         <!-- Caixinha para alterar a data de nascimento -->
-        <div class="modal" id="mudarData">
+        <form class="modal" id="mudarData" action="CadastroClienteServlet" method="POST">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -146,14 +151,23 @@
                     <div class="modal-body">
                         <input class="form-control" type="date" id="datemax" required name="datemax" max="2022-12-31">
                     </div>
+                    <c:if test="${not empty clienteAtualizacao}">
+                        <input type="hidden" name="id" value="${clienteAtualizacao.id}" class="form-control"/>
+                        <input type="hidden" name="cpf" value="${clienteAtualizacao.cpf}" class="form-control"/>
+                        <input type="hidden" name="prnome" value="${clienteAtualizacao.nome}" class="form-control"/>
+                        <input type="hidden" name="sgnome" value="" class="form-control"/>
+                        <input type="hidden" name="email" value="${clienteAtualizacao.email}" class="form-control"/>
+                        <input type="hidden" name="senha2" value="${clienteAtualizacao.senha}" class="form-control"/>
+                        <input type="hidden" name="ope" value="1"/>
+                    </c:if>
                     <div class="modal-footer">
-                        <button type="button" class="btn bg-primary text-white" data-dismiss="modal">Confirmar</button>
+                        <button type="submit" class="btn bg-primary text-white">Confirmar</button>
                     </div>
                 </div>                
             </div>
-        </div>
+        </form>
         <!-- Caixinha para alterar o e-mail -->
-        <div class="modal" id="mudarEmail">
+        <form class="modal" id="mudarEmail" action="CadastroClienteServlet" method="POST">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -164,13 +178,22 @@
                         <input class="form-control" required type="email" name="email" placeholder="exemplo@mail.com">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn bg-primary text-white" data-dismiss="modal">Confirmar</button>
+                        <c:if test="${not empty clienteAtualizacao}">
+                            <input type="hidden" name="id" value="${clienteAtualizacao.id}" class="form-control"/>
+                            <input type="hidden" name="cpf" value="${clienteAtualizacao.cpf}" class="form-control"/>
+                            <input type="hidden" name="datemax" value="${clienteAtualizacao.nascimento}" class="form-control"/>
+                            <input type="hidden" name="prnome" value="${clienteAtualizacao.nome}" class="form-control"/>
+                            <input type="hidden" name="sgnome" value="" class="form-control"/>
+                            <input type="hidden" name="senha2" value="${clienteAtualizacao.senha}" class="form-control"/>
+                            <input type="hidden" name="ope" value="1"/>
+                        </c:if>
+                        <button type="submit" class="btn bg-primary text-white">Confirmar</button>
                     </div>
                 </div>                
             </div>
-        </div>
+        </form>
         <!-- Caixinha para alterar a senha -->
-        <div class="modal" id="mudarSenha">
+        <form class="modal" id="mudarSenha" action="CadastroClienteServlet" method="POST">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -179,23 +202,29 @@
                     </div>
                     <div class="modal-body">
                         <div class="d-sm-inline flex-fill mr-sm-1">
-                            <input class="form-control" type="password" placeholder="Senha atual">
-                        </div>
-                        <div class="d-sm-inline flex-fill mr-sm-1">
                             <input class="form-control" type="password" required id="senhaConfir" name="senhaConfir" placeholder="Nova senha">
                         </div>
                         <div class="d-sm-inline flex-fill">
                             <input class="form-control" type="password" required id="senha" name="senha" placeholder="Confirme a senha">
                         </div>
                     </div>
+                    <c:if test="${not empty clienteAtualizacao}">
+                        <input type="hidden" name="id" value="${clienteAtualizacao.id}" class="form-control"/>
+                        <input type="hidden" name="cpf" value="${clienteAtualizacao.cpf}" class="form-control"/>
+                        <input type="hidden" name="email" value="${clienteAtualizacao.email}" class="form-control"/>
+                        <input type="hidden" name="datemax" value="${clienteAtualizacao.nascimento}" class="form-control"/>
+                        <input type="hidden" name="prnome" value="${clienteAtualizacao.nome}" class="form-control"/>
+                        <input type="hidden" name="sgnome" value="" class="form-control"/>
+                        <input type="hidden" name="ope" value="1"/>
+                    </c:if>
                     <div class="modal-footer">
-                        <button type="button" class="btn bg-primary text-white" data-dismiss="modal">Confirmar</button>
+                        <button type="submit" class="btn bg-primary text-white">Confirmar</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
         <!-- Caixinha para alterar o CPF -->
-        <div class="modal" id="mudarCPF">
+        <form class="modal" id="mudarCPF" action="CadastroClienteServlet" method="POST">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -205,12 +234,21 @@
                     <div class="modal-body">
                         <input class="form-control" required placeholder="___.___.___-__" name="cpf" id="cpf" type="text">
                     </div>
+                    <c:if test="${not empty clienteAtualizacao}">
+                        <input type="hidden" name="id" value="${clienteAtualizacao.id}" class="form-control"/>
+                        <input type="hidden" name="email" value="${clienteAtualizacao.email}" class="form-control"/>
+                        <input type="hidden" name="datemax" value="${clienteAtualizacao.nascimento}" class="form-control"/>
+                        <input type="hidden" name="prnome" value="${clienteAtualizacao.nome}" class="form-control"/>
+                        <input type="hidden" name="senha2" value="${clienteAtualizacao.senha}" class="form-control"/>
+                        <input type="hidden" name="sgnome" value="" class="form-control"/>
+                        <input type="hidden" name="ope" value="1"/>
+                    </c:if>
                     <div class="modal-footer">
-                        <button type="button" class="btn bg-primary text-white" data-dismiss="modal">Confirmar</button>
+                        <button type="submit" class="btn bg-primary text-white">Confirmar</button>
                     </div>
                 </div>                
             </div>
-        </div>
+        </form>
         <!-- Caixinha para alterar/adicionar novo endereço -->
         <form class="modal" id="adicionarEndereco" action="EnderecoServlet" method="POST">
             <div class="modal-dialog modal-lg modal-dialog-centered">
