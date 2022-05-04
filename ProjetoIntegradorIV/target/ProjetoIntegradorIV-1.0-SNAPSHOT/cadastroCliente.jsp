@@ -22,6 +22,52 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
         <title>Cadastro</title>
+        <script type="text/javascript">
+            function _cpf(cpf) {
+                cpf = cpf.replace(/[^\d]+/g, '');
+                if (cpf == '')
+                    return false;
+                if (cpf.length != 11 ||
+                        cpf == "00000000000" ||
+                        cpf == "11111111111" ||
+                        cpf == "22222222222" ||
+                        cpf == "33333333333" ||
+                        cpf == "44444444444" ||
+                        cpf == "55555555555" ||
+                        cpf == "66666666666" ||
+                        cpf == "77777777777" ||
+                        cpf == "88888888888" ||
+                        cpf == "99999999999")
+                    return false;
+                add = 0;
+                for (i = 0; i < 9; i++)
+                    add += parseInt(cpf.charAt(i)) * (10 - i);
+                rev = 11 - (add % 11);
+                if (rev == 10 || rev == 11)
+                    rev = 0;
+                if (rev != parseInt(cpf.charAt(9)))
+                    return false;
+                add = 0;
+                for (i = 0; i < 10; i++)
+                    add += parseInt(cpf.charAt(i)) * (11 - i);
+                rev = 11 - (add % 11);
+                if (rev == 10 || rev == 11)
+                    rev = 0;
+                if (rev != parseInt(cpf.charAt(10)))
+                    return false;
+                return true;
+            }
+
+            function validarCPF(el) {
+                if (!_cpf(el.value)) {
+
+                    alert("CPF inválido!" + el.value);
+
+                    // apaga o valor
+                    el.value = "";
+                }
+            }
+        </script>
     </head>
     <body>
         <header class="fixed-top bg-dark pb-3">
@@ -62,23 +108,23 @@
                 <div class="mb-3">
                     <div class="form-check-inline">
                         <label class="form-check-label" for="feminino">
-                            <input type="radio" class="form-check-input" id="feminino" name="optradio" value="option1">Feminino
+                            <input type="radio" class="form-check-input" id="feminino" name="optradio" value="Feminino">Feminino
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label" for="masculino">
-                            <input type="radio" class="form-check-input" id="masculino" name="optradio" value="option2">Masculino
+                            <input type="radio" class="form-check-input" id="masculino" name="optradio" value="Masculino">Masculino
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label" for="outro">
-                            <input type="radio" class="form-check-input" id="outro" name="optradio" value="option3">Outros
+                            <input type="radio" class="form-check-input" id="outro" name="optradio" value="Outros">Outros
                         </label>
                     </div>
                 </div>            
                 <p class="mb-0">Seu CPF</p>
                 <div class="form-group">
-                    <input class="form-control" required placeholder="___.___.___-__" name="cpf" id="cpf" type="text">
+                    <input class="form-control" required placeholder="___.___.___-__" onblur="validarCPF(this)" name="cpf" id="cpf" type="text">
                 </div>
                 <p class="mb-0">Seu e-mail</p>
                 <div class="form-group">
@@ -131,7 +177,7 @@
         <script type="text/javascript">
             //máscara do cpf
             $("#cpf").inputmask({"mask": "999.999.999-99"});
-            
+
             //máscara do cep
             $("#cep").inputmask({"mask": "99999-999"});
 
@@ -169,7 +215,7 @@
             });
         </script>
         <script>
-         var password = document.getElementById("senhaConfir")
+            var password = document.getElementById("senhaConfir")
                     , confirm_password = document.getElementById("senha");
 
             function validatePassword() {
