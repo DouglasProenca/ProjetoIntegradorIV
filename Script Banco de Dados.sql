@@ -299,7 +299,7 @@ begin
 
 insert into cliente values(null,email,nome,cpf,Nascimento,Genero,Senha);
 
-insert into endereco_cliente values((select max(id) from cliente),cep,rua,numero,complemento,bairro,cidade,uf);
+insert into endereco_cliente values(null,(select max(id) from cliente),cep,rua,numero,complemento,bairro,cidade,uf);
 
 end $
 

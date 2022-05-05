@@ -58,7 +58,7 @@
                     </li>   
                     </c:if>
                     <li class="nav-item mx-3">
-                        <a class="nav-link" href="#">Carrinho</a>
+                        <a class="nav-link" href="Carrinho.jsp">Carrinho</a>
                     </li>   
                 </ul>
             </div> 

@@ -18,10 +18,10 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-        
+
         <title>Carrinho</title>
     </head>
-    <body>
+    <body class="bg-light">
         <header class="fixed-top bg-dark pb-3">
             <div class="container">
                 <div class="d-flex justify-content-center mt-3">
@@ -32,38 +32,37 @@
             </div>
         </header>
         <div class="container-fluid bg-dark shadow" style="height: 250px"></div>
-        <div class="container-fluid shadow border bg-light p-5 mb-sm-5" style="top: -50px; position: relative; border-radius: 15px;">
-            <div class="row">
-                <div class="col-8">
-                    <div class="media border p-2">
-                        <img src="protegido/produto/Resources/iphone-12-black-select-2020.png" alt="12-black" class="mr-3 mt-3" style="width:200px; height: auto; overflow: hidden">
-                        <div class="media-body align-self-end">
-                            <div class="row">
-                                <div class="col">
-                                    <h4>Iphone 12 - Preto <small><i>R$4000.00</i></small></h4>
-                                    <p>Melhor produto do mercado</p>   
-                                </div>
-                                <div class="col ">
-                                    <label>Quantidade:</label>
-                                    <select class="form-control" id="sel1" name="sellist1" style="max-width: 100px">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </div>
+        <div class="container shadow border bg-light p-5 mb-sm-5" style="top: -50px; position: relative; border-radius: 15px;">
+            <h1 class="display-4 text-center mb-sm-5">Carrinho</h1>
+            <div class="media border-top border-bottom p-2 my-1">
+                <img src="protegido/produto/Resources/iphone-12-black-select-2020.png" alt="12-black" class="mr-3 mt-3 d-md-block d-none" style="width:200px; height: auto; overflow: hidden">
+                <div class="media-body align-self-end">
+                    <div class="row">
+                        <div class="col-sm">
+                            <h4 class="text-sm-left text-center mt-sm-0 mt-4">Iphone 12 - Preto</h4>
+                            <p class="text-sm-left text-center">Melhor produto do mercado</p>   
+                        </div>
+                        <div class="col-sm text-right">
+                            <h2>R$4000.00</h2>
+                            <label>Quantidade:</label>
+                            <br>
+                            <select class="form-control float-right text-center" id="sel1" name="sellist1" style="max-width: 100px">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
-                    <h1>Total:</h1>
-                    <h3>R$4000.00</h3>
-                    <div class="d-flex">
-                        <div class="">
-                            <button class="btn bg-primary text-white">Finalizar compra</button>
-                        </div>
+            </div>
+            <div class="d-flex flex-column text-sm-right text-center mt-4">
+                <h1>Total:</h1>
+                <h3>R$4000.00</h3>
+                <div class="d-flex align-self-sm-end align-self-center">
+                    <div class="">
+                        <button class="btn btn-lg bg-primary text-white">Finalizar compra</button>
                     </div>
                 </div>
             </div>
