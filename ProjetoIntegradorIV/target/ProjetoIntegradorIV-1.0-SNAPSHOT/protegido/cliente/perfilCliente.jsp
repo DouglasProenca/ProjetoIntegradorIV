@@ -99,6 +99,9 @@
                             <button class="btn bg-white my-auto flex-fill border" data-toggle="modal" data-target="#adicionarEndereco" data-toggle="tooltip" title="Editar endereço">
                                 <i class="fa fa-pen" aria-hidden="true"></i>
                             </button>
+                            <div class="bg-white my-auto border text-center py-1" data-toggle="tooltip" title="Endereço principal">
+                                <input type="radio"checked>
+                            </div>
                         </div>
                     </div>
                 </c:forEach>
