@@ -21,7 +21,7 @@
 
         <title>Carrinho</title>
     </head>
-    <body class="bg-light">
+    <body class="" style="background-color: #006C75">
         <header class="fixed-top bg-dark pb-3">
             <div class="container">
                 <div class="d-flex justify-content-center mt-3">
@@ -43,9 +43,13 @@
                             <p class="text-sm-left text-center">Melhor produto do mercado</p>   
                         </div>
                         <div class="col-sm text-right">
+                            <div class="">
+                                <a class="btn bg-transparent text-danger">Excluir</a>
+                            </div>
                             <h2>R$4000.00</h2>
                             <label>Quantidade:</label>
                             <br>
+                            <!-- Nota: Aqui, tu pode fazer a quantidade options conforme a disponibilidade do estoque -->
                             <select class="form-control float-right text-center" id="sel1" name="sellist1" style="max-width: 100px">
                                 <option>1</option>
                                 <option>2</option>
@@ -57,15 +61,29 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex flex-column text-sm-right text-center mt-4">
-                <h1>Total:</h1>
-                <h3>R$4000.00</h3>
-                <div class="d-flex align-self-sm-end align-self-center">
-                    <div class="">
-                        <button class="btn btn-lg bg-primary text-white">Finalizar compra</button>
+            <div class="row">
+                <div class="col-sm mt-4">
+                    <div class="container float-left" style="max-width: 250px">
+                        <h4 class="">Calcule seu frete</h4>
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="cep" name="cep" placeholder="_____-___">
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-sm">
+                    <div class="d-flex flex-column text-sm-right text-center mt-4">
+                        <h3 class="">Frete</h3>
+                        <h5>R$10.00</h5>
+                        <h3>Total</h3>
+                        <h5>R$4010.00</h5>
+                        <div class="d-flex align-self-sm-end align-self-center">
+                            <div class="mt-sm-0 mt-4">
+                                <button class="btn btn-lg bg-primary text-white">Finalizar compra</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
         </div>
     </body>
 </html>
