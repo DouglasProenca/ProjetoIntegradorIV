@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senac.conexaobd.servlet;
 
 import br.senac.conexaobd.dao.ClienteDAO;
@@ -32,7 +27,6 @@ public class EnderecoServlet extends HttpServlet {
         String ope = request.getParameter("ope");
         EnderecoCliente endereco = new EnderecoCliente();
         endereco.setId(Integer.parseInt(request.getParameter("id")));
-        System.out.println(endereco.getId());
         endereco.setCEP(request.getParameter("cep"));
         endereco.setRua(request.getParameter("rua"));
         endereco.setBairro(request.getParameter("bairro"));

@@ -148,7 +148,7 @@ public class ClienteDAO {
     }
     
      public static void inserirEndereco(EnderecoCliente enderecoCliente) throws SQLException, ClassNotFoundException {
-        String query = "insert into endereco_cliente values(?,?,?,?,?,?,?,?)";
+        String query = "insert into endereco_cliente values(null,?,?,?,?,?,?,?,?)";
         Connection con = Conexao.abrirConexao();
         PreparedStatement ps;
         ps = con.prepareStatement(query);

@@ -100,7 +100,7 @@
                                 <i class="fa fa-pen" aria-hidden="true"></i>
                             </button>
                             <div class="bg-white my-auto border text-center py-1" data-toggle="tooltip" title="Endereço principal">
-                                <input type="radio"checked>
+                                <input type="radio">
                             </div>
                         </div>
                     </div>
