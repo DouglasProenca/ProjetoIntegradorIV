@@ -69,7 +69,7 @@
             }
         </script>
     </head>
-    <body>
+    <body style="background-color: #006C75">
         <header class="fixed-top bg-dark pb-3">
             <div class="container">
                 <div class="d-flex justify-content-center mt-3">
@@ -89,7 +89,7 @@
                 <c:if test="${param.cpfInvalido != null}">
                     <div class="alert alert-danger" role="alert">
                         CPF Inválido!
-                    </div>  
+                    </div>
                 </c:if>
                 <p class="mb-0">Seu nome</p>
                 <div class="input-group mb-3 px-auto justify-content-sm-between">
@@ -121,7 +121,7 @@
                             <input type="radio" class="form-check-input" id="outro" name="optradio" value="Outros">Outros
                         </label>
                     </div>
-                </div>            
+                </div>
                 <p class="mb-0">Seu CPF</p>
                 <div class="form-group">
                     <input class="form-control" required placeholder="___.___.___-__" onblur="validarCPF(this)" name="cpf" id="cpf" type="text">

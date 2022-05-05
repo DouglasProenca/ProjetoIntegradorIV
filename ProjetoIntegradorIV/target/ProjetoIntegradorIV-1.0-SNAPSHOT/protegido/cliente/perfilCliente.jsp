@@ -24,7 +24,7 @@
 
         <title>Perfil</title>
     </head>
-    <body>
+    <body style="background-color: #006C75">
         <header class="fixed-top bg-dark pb-3">
             <div class="container">
                 <div class="d-flex justify-content-center mt-3">
