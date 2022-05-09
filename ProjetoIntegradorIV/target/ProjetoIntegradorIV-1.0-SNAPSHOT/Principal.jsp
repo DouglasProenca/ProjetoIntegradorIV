@@ -58,7 +58,7 @@
                         </li>   
                     </c:if>
                     <li class="nav-item mx-3">
-                        <a class="nav-link" href="Carrinho.jsp">Carrinho</a>
+                        <a class="nav-link" href="Carrinho.jsp"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
                     </li>   
                 </ul>
             </div> 
@@ -70,7 +70,7 @@
                     <input class="form-control" type="search" placeholder="Pesquisar" aria-label="Search">
                     <div class="input-group-append">
                         <a class="btn bg-light border">
-                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <i class="fas fa-search" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
