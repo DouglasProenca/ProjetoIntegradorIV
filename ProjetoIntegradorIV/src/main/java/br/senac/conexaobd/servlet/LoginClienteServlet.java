@@ -54,7 +54,7 @@ public class LoginClienteServlet extends HttpServlet {
 
         HttpSession sessao = request.getSession();
         sessao.invalidate();
-        response.sendRedirect(request.getContextPath() + "Login.jsp");
+        response.sendRedirect(request.getContextPath() + "/Principal.jsp");
     }
 }
 
