@@ -64,7 +64,7 @@
                             </li>   
                         </c:if>
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="../../Carrinho.jsp"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
+                            <a class="nav-link" href="../../protegido/cliente/Carrinho.jsp"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
                         </li>   
                     </ul>
                 </div> 
@@ -89,7 +89,7 @@
                 <div class="mx-auto bg-light text-center" style="max-width: 600px; padding: 100px">
                     <h1 class="display-4 font-weight-normal">${Produto.nome}</h1>
                     <p class="lead font-weight-normal">${Produto.descricao}</p>
-                    <button class="btn btn-outline-secondary bg-primary text-white mt-sm-5" href="#">Adicionar ao carrinho</button>
+                    <button class="btn btn-outline-secondary bg-primary text-white mt-sm-5" <c:if test="${sessionScope.usuario.isEST() || sessionScope.usuario.isADM()}">enable="false"</c:if> href="#">Adicionar ao carrinho</button>
                 </div>
             </div>
             <div class="container mt-4 p-4" style="background-color: white; border-radius: 20px">
