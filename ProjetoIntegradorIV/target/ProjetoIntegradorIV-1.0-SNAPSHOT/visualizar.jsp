@@ -60,7 +60,7 @@
                 <div class="col-md-4 p-lg-4 mx-auto my-5">
                     <h1 class="display-4 font-weight-normal">${Produto.nome}</h1>
                     <p class="lead font-weight-normal">${Produto.descricao}</p>
-                    <button class="btn btn-outline-secondary" href="#" disabled>comprar</button>
+                    <button class="btn btn-outline-secondary bg-primary text-white" href="#">Adicionar ao carrinho</button>
                 </div>
                 <div class="product-device shadow-sm d-none d-md-block"></div>
                 <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>

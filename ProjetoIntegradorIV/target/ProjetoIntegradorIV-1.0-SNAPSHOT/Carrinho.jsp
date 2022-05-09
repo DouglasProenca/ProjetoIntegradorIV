@@ -61,12 +61,34 @@
                     </div>
                 </div>
             </div>
+            <div class="d-flex flex-column text-sm-right text-center my-sm-4">
+                <h3>Sub-total</h3>
+                <h5>4000.00</h5>
+            </div>
             <div class="row">
-                <div class="col-sm mt-4">
-                    <div class="container float-left" style="max-width: 250px">
-                        <h4 class="">Calcule seu frete</h4>
-                        <div class="form-group">
-                            <input class="form-control" type="text" id="cep" name="cep" placeholder="_____-___">
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col-sm mt-4 d-none">
+                            <div class="container" style="max-width: 250px">
+                                <h4 class="">Calcule seu frete</h4>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" id="cep" name="cep" placeholder="_____-___">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm mt-4">
+                            <div class="container d-flex">
+                                <ul class="list-group text-center" style="width: 200px">
+                                    <li class="list-group-item">Rua</li>
+                                    <li class="list-group-item">Bairro</li>
+                                    <li class="list-group-item">Cidade</li>
+                                </ul>
+                                <ul class="list-group text-center" style="width: 200px">
+                                    <li class="list-group-item">Numero</li>
+                                    <li class="list-group-item">CEP</li>
+                                    <li class="list-group-item">UF</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
