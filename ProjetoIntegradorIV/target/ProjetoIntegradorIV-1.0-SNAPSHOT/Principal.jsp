@@ -57,9 +57,16 @@
                             <a class="nav-link" href="CadastroClienteServlet?CPFCliente=${cliente.cpf}&ope=1">Perfil</a>
                         </li>   
                     </c:if>
+                    <c:if test="${sessionScope.cliente.nome == null}">
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="loginCliente.jsp"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
+                        </li>   
+                    </c:if>
+                    <c:if test="${sessionScope.cliente.nome != null}">
                     <li class="nav-item mx-3">
                         <a class="nav-link" href="Carrinho.jsp"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
-                    </li>   
+                    </li> 
+                    </c:if>
                 </ul>
             </div> 
         </nav>
