@@ -28,7 +28,6 @@
         </script>
     </head>
     <body style="background-color: #006C75; overflow-x: hidden">
-        <c:if test="${sessionScope.cliente.nome == null}">
             <div class="container-fluid bg-dark text-white p-3" style="text-align: center">
                 <h1 class="">CrSete Tecnology</h1>
             </div>
@@ -43,7 +42,7 @@
                 <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
                     <ul class="navbar-nav ">
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="Principal.jsp">Home</a>
+                            <a class="nav-link" href="../../Principal.jsp">Home</a>
                         </li>
                         <li class="nav-item dropdown mx-3">
                             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -61,16 +60,15 @@
                         </c:if>
                         <c:if test="${sessionScope.cliente.nome != null}">
                             <li class="nav-item mx-3">
-                                <a class="nav-link" href="CadastroClienteServlet?CPFCliente=${cliente.cpf}&ope=1">Perfil</a>
+                                <a class="nav-link" href="../../CadastroClienteServlet?CPFCliente=${cliente.cpf}&ope=1">Perfil</a>
                             </li>   
                         </c:if>
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="Carrinho.jsp"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
+                            <a class="nav-link" href="../../Carrinho.jsp"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
                         </li>   
                     </ul>
                 </div> 
             </nav>
-        </c:if>
         <div class="container">
             <c:if test="${sessionScope.usuario.isEST() || sessionScope.usuario.isADM()}">
                 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
