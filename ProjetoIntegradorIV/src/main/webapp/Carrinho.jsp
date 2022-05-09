@@ -68,7 +68,8 @@
             <div class="row">
                 <div class="col-sm">
                     <div class="row">
-                        <div class="col-sm mt-4 d-none">
+                        <!-- Quando tiver que inserir o CEP, tornar essa div d-flex -->
+                        <div class="col-sm mt-4 d-flex">
                             <div class="container" style="max-width: 250px">
                                 <h4 class="">Calcule seu frete</h4>
                                 <div class="form-group">
@@ -77,7 +78,8 @@
                             </div>
                         </div>
                         <div class="col-sm mt-4">
-                            <div class="container d-flex">
+                            <!-- Quando o endereço já estiver selecionado, tornar essa div d-flex com as informações respectivas do endereço -->
+                            <div class="container d-none">
                                 <ul class="list-group text-center" style="width: 200px">
                                     <li class="list-group-item">Rua</li>
                                     <li class="list-group-item">Bairro</li>
