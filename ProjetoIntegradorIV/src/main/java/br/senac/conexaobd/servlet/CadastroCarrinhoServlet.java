@@ -2,10 +2,12 @@ package br.senac.conexaobd.servlet;
 
 import br.senac.conexaobd.dao.CarrinhoDAO;
 import br.senac.conexaobd.entidades.Carrinho;
+import br.senac.conexaobd.entidades.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -51,26 +53,19 @@ public class CadastroCarrinhoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        /* String cpf = req.getParameter("CPFCliente");
+        String id = req.getParameter("id_cliente");
         String ope = req.getParameter("ope");
         //OPE = 1 => Atualização
         try {
             if ("1".equals(ope)) {
-                Cliente cliente = ClienteDAO.getClientePorCPF(cpf);
-                List<EnderecoCliente> enderecos = ClienteDAO.getEnderecoCliente(cpf);
-                req.setAttribute("listaEnderecos", enderecos);
-                req.setAttribute("clienteAtualizacao", cliente);
-                req.getRequestDispatcher("/protegido/cliente/perfilCliente.jsp").forward(req, resp);
-            
+                List<Produto> ProdutosCarrinho = CarrinhoDAO.ProdutosCarrinho(id);
+                req.setAttribute("listaCarrinho", ProdutosCarrinho);
+                req.getRequestDispatcher("/protegido/cliente/Carrinho.jsp").forward(req, resp);
 
-} else if (("2".equals(ope))) {
-                //ClienteDAO.statusUsuario(cpf);
-                //resp.sendRedirect(req.getContextPath() + "/protegido/usuario/ListarUsuarioServlet?ope=0");
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(CadastroUsuarioServlet.class
-.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }*/
+
     }
 }

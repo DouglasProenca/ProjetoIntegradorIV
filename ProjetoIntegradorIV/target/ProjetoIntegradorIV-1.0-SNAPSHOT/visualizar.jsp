@@ -70,7 +70,7 @@
                     </c:if>
                     <c:if test="${sessionScope.cliente.nome != null}">
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="../cliente/Carrinho.jsp"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
+                            <a class="nav-link" href="../produto/CadastroCarrinhoServlet?ope=1&id_cliente=${cliente.id}"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
                         </li>
                     </c:if>
                 </ul>
