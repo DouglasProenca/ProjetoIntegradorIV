@@ -28,47 +28,54 @@
         </script>
     </head>
     <body style="background-color: #006C75; overflow-x: hidden">
-            <div class="container-fluid bg-dark text-white p-3" style="text-align: center">
-                <h1 class="">CrSete Tecnology</h1>
-            </div>
+        <div class="container-fluid bg-dark text-white p-3" style="text-align: center">
+            <h1 class="">CrSete Tecnology</h1>
+        </div>
 
-            <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
-                <a class="navbar-brand mx-auto" href="${pageContext.request.contextPath}/Principal.jsp">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
-                    <ul class="navbar-nav ">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
+            <a class="navbar-brand mx-auto" href="${pageContext.request.contextPath}/Principal.jsp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+                <ul class="navbar-nav ">
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="../../Principal.jsp">Home</a>
+                    </li>
+                    <li class="nav-item dropdown mx-3">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Produtos
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Celulares Apple</a>
+                            <a class="dropdown-item" href="#">Celulares Samsung</a>
+                        </div>
+                    </li>
+                    <c:if test="${sessionScope.cliente.nome == null}">
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="../../Principal.jsp">Home</a>
-                        </li>
-                        <li class="nav-item dropdown mx-3">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                                Produtos
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Celulares Apple</a>
-                                <a class="dropdown-item" href="#">Celulares Samsung</a>
-                            </div>
-                        </li>
-                        <c:if test="${sessionScope.cliente.nome == null}">
-                            <li class="nav-item mx-3">
-                                <a class="nav-link" href="loginCliente.jsp">Login</a>
-                            </li>   
-                        </c:if>
-                        <c:if test="${sessionScope.cliente.nome != null}">
-                            <li class="nav-item mx-3">
-                                <a class="nav-link" href="../../CadastroClienteServlet?CPFCliente=${cliente.cpf}&ope=1">Perfil</a>
-                            </li>   
-                        </c:if>
-                        <li class="nav-item mx-3">
-                            <a class="nav-link" href="../../protegido/cliente/Carrinho.jsp"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
+                            <a class="nav-link" href="../../loginCliente.jsp">Login</a>
                         </li>   
-                    </ul>
-                </div> 
-            </nav>
+                    </c:if>
+                    <c:if test="${sessionScope.cliente.nome != null}">
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="../../CadastroClienteServlet?CPFCliente=${cliente.cpf}&ope=1">Perfil</a>
+                        </li>   
+                    </c:if>
+                    <c:if test="${sessionScope.cliente.nome == null}">
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="../../loginCliente.jsp"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
+                        </li>
+                    </c:if>
+                    <c:if test="${sessionScope.cliente.nome != null}">
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="../cliente/Carrinho.jsp"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
+                        </li>
+                    </c:if>
+                </ul>
+            </div> 
+        </nav>
         <div class="container">
             <c:if test="${sessionScope.usuario.isEST() || sessionScope.usuario.isADM()}">
                 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -89,7 +96,16 @@
                 <div class="mx-auto bg-light text-center" style="max-width: 600px; padding: 100px">
                     <h1 class="display-4 font-weight-normal">${Produto.nome}</h1>
                     <p class="lead font-weight-normal">${Produto.descricao}</p>
-                    <button class="btn btn-outline-secondary bg-primary text-white mt-sm-5" <c:if test="${sessionScope.usuario.isEST() || sessionScope.usuario.isADM()}">enable="false"</c:if> href="#">Adicionar ao carrinho</button>
+                    <c:if test="${sessionScope.cliente.nome != null}">
+                        <form action="CadastroCarrinhoServlet" method="POST">
+                            <input type="hidden" name="id_cliente" value="${cliente.id}" class="form-control"/>
+                            <input type="hidden" name="id_produto" value="${Produto.codigo}" class="form-control"/>
+                            <button class="btn btn-outline-secondary bg-primary text-white mt-sm-5" type="submit">Adicionar ao carrinho</button>
+                        </form>
+                    </c:if>
+                    <c:if test="${sessionScope.cliente.nome == null}">
+                         <button class="btn btn-outline-secondary bg-primary text-white mt-sm-5" onclick="location.href='../../loginCliente.jsp';">Adicionar ao carrinho</button>
+                    </c:if>   
                 </div>
             </div>
             <div class="container mt-4 p-4" style="background-color: white; border-radius: 20px">
