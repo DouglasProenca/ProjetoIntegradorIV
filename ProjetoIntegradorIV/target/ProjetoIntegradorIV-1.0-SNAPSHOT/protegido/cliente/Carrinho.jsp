@@ -36,7 +36,7 @@
             <h1 class="display-4 text-center mb-sm-5">Carrinho</h1>
             <c:forEach var="produto" items="${listaCarrinho}">
                 <div class="media border-top border-bottom p-2 my-1">
-                    <img src="protegido/produto/Resources/iphone-12-black-select-2020.png" alt="12-black" class="mr-3 mt-3 d-md-block d-none" style="width:200px; height: auto; overflow: hidden">
+                    <img src="<c:url value="${ produto['caminho']}" />" alt="12-black" class="mr-3 mt-3 d-md-block d-none" style="width:200px; height: auto; overflow: hidden">
                     <div class="media-body align-self-end">
                         <div class="row">
                             <div class="col-sm">

@@ -79,8 +79,8 @@ public class CarrinhoDAO {
                 produto.setNome(rs.getString("nome"));
                 produto.setQuantidade(rs.getInt("quantidade"));
                 produto.setValor(rs.getDouble("valor"));
+                produto.setCaminho(rs.getString("caminho"));
                 Produtos.add(produto);
-                System.out.println(produto.getNome());
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
