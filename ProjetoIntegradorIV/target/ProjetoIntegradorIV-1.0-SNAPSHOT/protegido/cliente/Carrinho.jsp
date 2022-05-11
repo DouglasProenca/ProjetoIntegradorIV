@@ -34,33 +34,35 @@
         <div class="container-fluid bg-dark shadow" style="height: 250px"></div>
         <div class="container shadow border bg-light p-5 mb-sm-5" style="top: -50px; position: relative; border-radius: 15px;">
             <h1 class="display-4 text-center mb-sm-5">Carrinho</h1>
-            <div class="media border-top border-bottom p-2 my-1">
-                <img src="protegido/produto/Resources/iphone-12-black-select-2020.png" alt="12-black" class="mr-3 mt-3 d-md-block d-none" style="width:200px; height: auto; overflow: hidden">
-                <div class="media-body align-self-end">
-                    <div class="row">
-                        <div class="col-sm">
-                            <h4 class="text-sm-left text-center mt-sm-0 mt-4">Iphone 12 - Preto</h4>
-                            <p class="text-sm-left text-center">Melhor produto do mercado</p>   
-                        </div>
-                        <div class="col-sm text-right">
-                            <div class="">
-                                <a class="btn bg-transparent text-danger">Excluir</a>
+            <c:forEach var="produto" items="${listaCarrinho}">
+                <div class="media border-top border-bottom p-2 my-1">
+                    <img src="protegido/produto/Resources/iphone-12-black-select-2020.png" alt="12-black" class="mr-3 mt-3 d-md-block d-none" style="width:200px; height: auto; overflow: hidden">
+                    <div class="media-body align-self-end">
+                        <div class="row">
+                            <div class="col-sm">
+                                <h4 class="text-sm-left text-center mt-sm-0 mt-4">${produto.nome}</h4>
+                                <p class="text-sm-left text-center">Melhor produto do mercado</p>   
                             </div>
-                            <h2>R$4000.00</h2>
-                            <label>Quantidade:</label>
-                            <br>
-                            <!-- Nota: Aqui, tu pode fazer a quantidade options conforme a disponibilidade do estoque -->
-                            <select class="form-control float-right text-center" id="sel1" name="sellist1" style="max-width: 100px">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
+                            <div class="col-sm text-right">
+                                <div class="">
+                                    <a class="btn bg-transparent text-danger">Excluir</a>
+                                </div>
+                                <h2>${produto.valor}</h2>
+                                <label>Quantidade:</label>
+                                <br>
+                                <!-- Nota: Aqui, tu pode fazer a quantidade options conforme a disponibilidade do estoque -->
+                                <select class="form-control float-right text-center" id="sel1" name="sellist1" style="max-width: 100px">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
             <div class="d-flex flex-column text-sm-right text-center my-sm-4">
                 <h3>Sub-total</h3>
                 <h5>4000.00</h5>

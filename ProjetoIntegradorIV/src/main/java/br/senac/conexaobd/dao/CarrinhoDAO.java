@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * @author Douglas
  */
 public class CarrinhoDAO {
-    
+
     public static void inserirProduto(Carrinho carrinho) throws SQLException, ClassNotFoundException {
         String query = "insert into carrinho values (null,?,?,1,(select date(now())))";
         Connection con = Conexao.abrirConexao();
@@ -50,17 +50,23 @@ public class CarrinhoDAO {
         }*/
         return ok;
     }
-    
+
     public static List<Produto> ProdutosCarrinho(String id) throws ClassNotFoundException, SQLException {
         List<Produto> Produtos = new ArrayList<>();
         String query = "select p.código\n"
-                + "       ,p.nome\n"
-                + "       ,p.quantidade\n"
-                + "       ,p.avaliacao\n"
-                + "       ,p.valor\n"
-                + "       , case when p.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo\n"
-                + "from produto p\n"
-                + "where p.nome like ?";
+                + "	 , p.nome\n"
+                + "     , p.descricao\n"
+                + "     , p.valor\n"
+                + "     , i.caminho\n"
+                + "     , c.id_cliente\n"
+                + "     , c.quantidade\n"
+                + "from carrinho c \n"
+                + "inner join produto p \n"
+                + "on p.código = c.id_produto \n"
+                + "inner join imagem i \n"
+                + "on i.codigo_produto = p.código \n"
+                + "where c.id_cliente = ? \n"
+                + "group by p.nome";
 
         Connection con = Conexao.abrirConexao();
         try {
@@ -72,15 +78,14 @@ public class CarrinhoDAO {
                 produto.setCodigo(rs.getInt("código"));
                 produto.setNome(rs.getString("nome"));
                 produto.setQuantidade(rs.getInt("quantidade"));
-                produto.setAvaliacao(rs.getFloat("avaliacao"));
                 produto.setValor(rs.getDouble("valor"));
-                produto.setAtivo(rs.getString("ativo"));
                 Produtos.add(produto);
+                System.out.println(produto.getNome());
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return Produtos;
     }
-    
+
 }
