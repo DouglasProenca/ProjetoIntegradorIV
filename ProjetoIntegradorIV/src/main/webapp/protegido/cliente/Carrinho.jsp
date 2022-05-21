@@ -104,7 +104,7 @@
                         <h5>${total}</h5>
                         <div class="d-flex align-self-sm-end align-self-center">
                             <div class="mt-sm-0 mt-4">
-                                <button class="btn btn-lg bg-primary text-white">Finalizar compra</button>
+                                <button class="btn btn-lg bg-primary text-white">Comfirmar pedido</button>
                             </div>
                         </div>
                     </div>
