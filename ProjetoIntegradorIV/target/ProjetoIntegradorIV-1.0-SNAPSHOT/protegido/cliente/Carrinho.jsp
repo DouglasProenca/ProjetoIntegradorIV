@@ -45,7 +45,7 @@
                             </div>
                             <div class="col-sm text-right">
                                 <div class="">
-                                    <a class="btn bg-transparent text-danger">Excluir</a>
+                                    <a class="btn bg-transparent text-danger" href="CadastroCarrinhoServlet?ope=2&id_produto=${produto.codigo}&id_cliente=${sessionScope.cliente.id}">Excluir</a>
                                 </div>
                                 <h2>${produto.valor}</h2>
                                 <label>Quantidade:</label>
@@ -65,7 +65,7 @@
             </c:forEach>
             <div class="d-flex flex-column text-sm-right text-center my-sm-4">
                 <h3>Sub-total</h3>
-                <h5>4000.00</h5>
+                <h5>${total}</h5>
             </div>
             <div class="row">
                 <div class="col-sm">
@@ -101,7 +101,7 @@
                         <h3 class="">Frete</h3>
                         <h5>R$10.00</h5>
                         <h3>Total</h3>
-                        <h5>R$4010.00</h5>
+                        <h5>${total}</h5>
                         <div class="d-flex align-self-sm-end align-self-center">
                             <div class="mt-sm-0 mt-4">
                                 <button class="btn btn-lg bg-primary text-white">Finalizar compra</button>
@@ -110,6 +110,10 @@
                     </div>
                 </div>
             </div>            
-        </div>
+        </div> 
+               <script type="text/javascript">
+            //máscara do cep
+            $("#cep").inputmask({"mask": "99999-999"});
+            </script>
     </body>
 </html>

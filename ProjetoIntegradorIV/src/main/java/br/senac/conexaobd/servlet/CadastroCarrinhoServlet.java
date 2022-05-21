@@ -55,13 +55,25 @@ public class CadastroCarrinhoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id_cliente");
         String ope = req.getParameter("ope");
+        String id_produto = null;
+        if ("2".equals(ope)) {
+            id_produto = req.getParameter("id_produto");
+        }
         //OPE = 1 => Atualização
         try {
             if ("1".equals(ope)) {
                 List<Produto> ProdutosCarrinho = CarrinhoDAO.ProdutosCarrinho(id);
+                double total = 0;
+                for (Produto p : ProdutosCarrinho) {
+                    total = total + p.getValor();
+                }
                 req.setAttribute("listaCarrinho", ProdutosCarrinho);
+                req.setAttribute("total", total);
                 req.getRequestDispatcher("/protegido/cliente/Carrinho.jsp").forward(req, resp);
 
+            } else if ("2".equals(ope)) {
+                CarrinhoDAO.excluir(id_produto);
+                resp.sendRedirect(req.getContextPath() + "/Principal.jsp");
             }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);

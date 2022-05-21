@@ -88,4 +88,45 @@ public class CarrinhoDAO {
         return Produtos;
     }
 
+     public static boolean excluir(String id) {
+        boolean retorno = false;
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+
+        try {
+
+            conexao = Conexao.abrirConexao();
+
+            instrucaoSQL = conexao.prepareStatement("DELETE FROM carRinho WHERE id_produto = ?");
+
+            //Adiciono os parâmetros ao meu comando SQL
+            instrucaoSQL.setString(1, id);
+
+            //Mando executar a instrução SQL
+            int linhasAfetadas = instrucaoSQL.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            retorno = false;
+        } finally {
+
+            //Libero os recursos da memória
+            try {
+                if (instrucaoSQL != null) {
+                    instrucaoSQL.close();
+                }
+                conexao.close();
+
+            } catch (SQLException ex) {
+            }
+        }
+
+        return retorno;
+    }
 }

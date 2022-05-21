@@ -1,4 +1,4 @@
-<%-- 
+ <%-- 
     Document   : perfilCliente
     Created on : 24/04/2022, 18:08:07
     Author     : Gabriel Lima
@@ -103,11 +103,11 @@
                         <li class="list-group-item">${enderecos.uf}</li>
                     </ul>
                     <div class="d-flex flex-column">
-                        <button class="btn bg-white my-auto flex-fill border" data-toggle="modal" data-target="#adicionarEndereco" data-toggle="tooltip" title="Editar endereço">
+                    <!--<button class="btn bg-white my-auto flex-fill border" data-toggle="modal" data-target="#adicionarEndereco" data-toggle="tooltip" title="Editar endereço">
                             <i class="fa fa-pen" aria-hidden="true"></i>
-                        </button>
-                        <div class="bg-white my-auto border text-center py-1" data-toggle="tooltip" title="Endereço principal">
-                            <input type="radio" name="optradio" checked>
+                        </button> -->
+                        <div class="bg-white my-auto border text-center p-2 flex-fill" data-toggle="tooltip" title="Endereço principal">
+                            <input type="radio" name="optradio" checked style="bottom: -55px; position: relative">
                         </div>
                     </div>
                 </div>
