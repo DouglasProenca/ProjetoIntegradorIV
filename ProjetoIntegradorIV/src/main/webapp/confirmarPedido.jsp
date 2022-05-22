@@ -33,8 +33,10 @@
         </header>
         <div class="container-fluid bg-dark shadow" style="height: 250px"></div>
         <div class="container shadow border bg-light p-5 mb-sm-5" style="top: -50px; position: relative; border-radius: 15px;">
+            <a href="protegido/cliente/Carrinho.jsp" class="btn btn-lg" data-toggle="tooltip" title="Voltar"><i class="fas fa-angle-left"></i></a>
+            <h1 class="display-4 text-center mb-sm-5">Método de pagamento</h1>
             <div class="border-bottom border-top p-5">
-                <h1 class="display-4 text-center mb-sm-5">Método de pagamento</h1>
+                <h3>Número do pedido <small>#0001</small></h3>
                 <div class="form-check mt-5">
                     <label class="form-check-label" for="radio1">
                         <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" data-toggle="modal" data-target="#boleto""><h3>Boleto</h3>
@@ -46,7 +48,7 @@
                     </label>
                 </div>
                 <div class="text-center mt-5">
-                    <button type="submit" class="btn bg-primary text-white">Finalizar compra</button>
+                    <a class="btn btn-lg bg-primary text-white" href="resumoPedido.jsp">Continuar</a>
                 </div>
             </div>
         </div>
@@ -94,15 +96,15 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <div class="m-sm-3 text-center">
-                            <button type="button" class="btn bg-primary text-white">Gerar boleto</button>
+                        <div class="m-sm-5 text-center">
+                            <button type="button" class="btn btn-lg bg-primary text-white">Gerar boleto</button>
                         </div>
-                        <div class="m-sm-3 text-center">
-                            <h3>Código do boleto aqui</h3>
+                        <div class="m-sm-5 text-center">
+                            <h3>"Código do boleto aqui!"</h3>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn bg-primary text-white">Confirmar</button>
+                        <button type="submit" class="btn btn-lg bg-primary text-white">Confirmar</button>
                     </div>
                 </div>
             </div>

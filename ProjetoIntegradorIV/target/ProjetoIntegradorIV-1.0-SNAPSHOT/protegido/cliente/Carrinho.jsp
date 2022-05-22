@@ -103,8 +103,8 @@
                         <h3>Total</h3>
                         <h5>${total}</h5>
                         <div class="d-flex align-self-sm-end align-self-center">
-                            <div class="mt-sm-0 mt-4">
-                                <button class="btn btn-lg bg-primary text-white">Comfirmar pedido</button>
+                            <div class="mt-sm-3 mt-4">
+                                <a class="btn btn-lg bg-primary text-white" href="/ProjetoIntegradorIV/confirmarPedido.jsp">Continuar</a>
                             </div>
                         </div>
                     </div>
