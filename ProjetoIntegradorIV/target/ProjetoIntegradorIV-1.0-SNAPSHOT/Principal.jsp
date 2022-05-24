@@ -43,8 +43,8 @@
                             Produtos
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Celulares Apple</a>
-                            <a class="dropdown-item" href="#">Celulares Samsung</a>
+                            <a class="dropdown-item" href="produtosApple.jsp">Celulares Apple</a>
+                            <a class="dropdown-item" href="produtosSamsung.jsp">Celulares Samsung</a>
                         </div>
                     </li>
                     <c:if test="${sessionScope.cliente.nome == null}">
@@ -92,13 +92,13 @@
         <div class="container mt-4 p-4" style="background-color: white; border-radius: 20px">
             <ul class="list-group">
                 <li class="list-group-item bg-dark font-weight-bold" style="color: lightgray">Celulares</li>
-                <a href="#" class="list-group-item list-group-item-action">Apple</a>
-                <a href="#" class="list-group-item list-group-item-action">Samsung</a>
+                <a href="produtosApple.jsp" class="list-group-item list-group-item-action">Apple</a>
+                <a href="produtosSamsung.jsp" class="list-group-item list-group-item-action">Samsung</a>
             </ul>
         </div>
 
         <div class="container mt-4 p-4" style="background-color: white; border-radius: 20px">
-            <h2 class="display-4">Destaques</h2>
+            <h2 class="display-4 text-center">Destaques</h2>
 
             <div class="mx-auto" style="width: 70%">
                 <div id="carrosel" class="carousel slide" data-ride="carousel">
@@ -248,7 +248,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Samsung Galaxy S22 Ultra <small>R$4000.00</small></h4>
+                                <h4 class="card-title">Galaxy S22 Ultra <small>R$4000.00</small></h4>
                                 <p class="card-text"></p>
                                 <a href="protegido/produto/VisualizarServlet?id=3" class="btn btn-dark">Ir para o produto</a>
                             </div>
