@@ -59,7 +59,7 @@
                     </c:if>
                     <c:if test="${sessionScope.cliente.nome != null}">
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="protegido/cliente/Pedidos.jsp">Pedidos</a>
+                            <a class="nav-link" href="pedidosServlet?CPFCliente=${cliente.cpf}">Pedidos</a>
                         </li>
                     </c:if>
                     <li class="nav-item mx-3">

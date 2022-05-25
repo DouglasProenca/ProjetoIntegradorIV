@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -80,16 +81,17 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                     ProdutosCarrinho = CarrinhoDAO.ProdutosCarrinho(id);
                 }
                 double total = 0;
-                for (Produto p : ProdutosCarrinho) {
-                    total = total + p.getValor();
-                }
+                    for (Produto p : ProdutosCarrinho) {
+                        total = total + p.getValor();
+                    }
+                
                 req.setAttribute("listaCarrinho", ProdutosCarrinho);
                 req.setAttribute("total", total);
                 req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
 
             } else if ("2".equals(ope)) {
                 if (!req.getParameter("id_cliente").equals("")) {
-                CarrinhoDAO.excluir(id_produto);
+                    CarrinhoDAO.excluir(id_produto);
                 } else {
                     ProdutosCarrinho.remove(0);
                 }

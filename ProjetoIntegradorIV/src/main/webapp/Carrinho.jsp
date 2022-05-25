@@ -104,16 +104,21 @@
                         <h5>${total}</h5>
                         <div class="d-flex align-self-sm-end align-self-center">
                             <div class="mt-sm-3 mt-4">
-                                <a class="btn btn-lg bg-primary text-white" href="/ProjetoIntegradorIV/confirmarPedido.jsp">Continuar</a>
+                                <c:if test="${sessionScope.cliente.nome != null}">
+                                    <a class="btn btn-lg bg-primary text-white" href="/ProjetoIntegradorIV/protegido/cliente/confirmarPedido.jsp">Continuar</a>
+                                </c:if>
+                                 <c:if test="${sessionScope.cliente.nome == null}">
+                                     <a class="btn btn-lg bg-primary text-white" href="../../loginCliente.jsp">Continuar</a>
+                                </c:if>    
                             </div>
                         </div>
                     </div>
                 </div>
             </div>            
         </div> 
-               <script type="text/javascript">
+        <script type="text/javascript">
             //máscara do cep
             $("#cep").inputmask({"mask": "99999-999"});
-            </script>
+        </script>
     </body>
 </html>

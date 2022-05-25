@@ -33,7 +33,7 @@
         </header>
         <div class="container-fluid bg-dark shadow" style="height: 250px"></div>
         <div class="container shadow border bg-light p-5 mb-sm-5" style="top: -50px; position: relative; border-radius: 15px;">
-            <a href="protegido/cliente/Carrinho.jsp" class="btn btn-lg" data-toggle="tooltip" title="Voltar"><i class="fas fa-angle-left"></i></a>
+            <a href="../../protegido/produto/CadastroCarrinhoServlet?ope=1&id_cliente=${cliente.id}" class="btn btn-lg" data-toggle="tooltip" title="Voltar"><i class="fas fa-angle-left"></i></a>
             <h1 class="display-4 text-center mb-sm-5">Método de pagamento</h1>
             <div class="border-bottom border-top p-5">
                 <h3>Número do pedido <small>#0001</small></h3>
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <form class="modal" id="cartao" action="CadastroClienteServlet" method="POST">
+        <form class="modal" id="cartao">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -83,12 +83,12 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn bg-primary text-white">Confirmar</button>
+                        <button class="btn bg-primary text-white">Confirmar</button>
                     </div>
                 </div>
             </div>
         </form>
-        <form class="modal" id="boleto" action="CadastroClienteServlet" method="POST">
+        <form class="modal" id="boleto">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-lg bg-primary text-white">Confirmar</button>
+                        <button class="btn btn-lg bg-primary text-white">Confirmar</button>
                     </div>
                 </div>
             </div>
