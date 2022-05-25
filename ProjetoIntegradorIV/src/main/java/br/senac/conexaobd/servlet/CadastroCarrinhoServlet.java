@@ -69,7 +69,7 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                 }
                 req.setAttribute("listaCarrinho", ProdutosCarrinho);
                 req.setAttribute("total", total);
-                req.getRequestDispatcher("/protegido/cliente/Carrinho.jsp").forward(req, resp);
+                req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
 
             } else if ("2".equals(ope)) {
                 CarrinhoDAO.excluir(id_produto);
@@ -78,6 +78,5 @@ public class CadastroCarrinhoServlet extends HttpServlet {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 }

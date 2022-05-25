@@ -2,6 +2,7 @@
     Document   : visualizar
     Created on : 26/03/2022, 17:25:19
     Author     : Camil
+onclick="location.href='../../loginCliente.jsp'
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -68,16 +69,9 @@
                             <a class="nav-link" href="protegido/cliente/Pedidos.jsp">Pedidos</a>
                         </li>
                     </c:if>
-                    <c:if test="${sessionScope.cliente.nome == null}">
-                        <li class="nav-item mx-3">
-                            <a class="nav-link" href="../../loginCliente.jsp"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
-                        </li>
-                    </c:if>
-                    <c:if test="${sessionScope.cliente.nome != null}">
                         <li class="nav-item mx-3">
                             <a class="nav-link" href="../produto/CadastroCarrinhoServlet?ope=1&id_cliente=${cliente.id}"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
                         </li>
-                    </c:if>
                 </ul>
             </div> 
         </nav>
@@ -101,16 +95,11 @@
                 <div class="mx-auto bg-light text-center" style="max-width: 600px; padding: 100px">
                     <h1 class="display-4 font-weight-normal">${Produto.nome}</h1>
                     <p class="lead font-weight-normal">${Produto.descricao}</p>
-                    <c:if test="${sessionScope.cliente.nome != null}">
                         <form action="CadastroCarrinhoServlet" method="POST">
                             <input type="hidden" name="id_cliente" value="${cliente.id}" class="form-control"/>
                             <input type="hidden" name="id_produto" value="${Produto.codigo}" class="form-control"/>
                             <button class="btn btn-outline-secondary bg-primary text-white mt-sm-5" type="submit">Adicionar ao carrinho</button>
                         </form>
-                    </c:if>
-                    <c:if test="${sessionScope.cliente.nome == null}">
-                         <button class="btn btn-outline-secondary bg-primary text-white mt-sm-5" onclick="location.href='../../loginCliente.jsp';">Adicionar ao carrinho</button>
-                    </c:if>   
                 </div>
             </div>
             <div class="container mt-4 p-4" style="background-color: white; border-radius: 20px">

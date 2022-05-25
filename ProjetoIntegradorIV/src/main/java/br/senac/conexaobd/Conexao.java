@@ -19,7 +19,7 @@ public class Conexao {
         String SERVER = "localhost";
         String DATABASE = "projetointegrador4";           
         String LOGIN = "root";                         
-        String SENHA = "k0dakluiz@2809";        //k0dakluiz@2809
+        String SENHA = "1234";        //k0dakluiz@2809
         String URL = "";
         Connection CONEXAO = null;
 
