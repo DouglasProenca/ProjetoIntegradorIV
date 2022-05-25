@@ -88,7 +88,11 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                 req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
 
             } else if ("2".equals(ope)) {
+                if (!req.getParameter("id_cliente").equals("")) {
                 CarrinhoDAO.excluir(id_produto);
+                } else {
+                    ProdutosCarrinho.remove(0);
+                }
                 resp.sendRedirect(req.getContextPath() + "/Principal.jsp");
             }
         } catch (ClassNotFoundException | SQLException ex) {
