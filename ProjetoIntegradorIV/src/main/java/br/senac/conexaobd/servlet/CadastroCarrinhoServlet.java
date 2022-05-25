@@ -1,12 +1,14 @@
 package br.senac.conexaobd.servlet;
 
 import br.senac.conexaobd.dao.CarrinhoDAO;
+import br.senac.conexaobd.dao.ProdutoDAO;
 import br.senac.conexaobd.entidades.Carrinho;
 import br.senac.conexaobd.entidades.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,7 +26,8 @@ import javax.servlet.http.HttpServletResponse;
 public class CadastroCarrinhoServlet extends HttpServlet {
 
     private List<Produto> ProdutosCarrinho;
-    
+    private List<Produto> produtoList = new ArrayList<>();
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -49,9 +52,11 @@ public class CadastroCarrinhoServlet extends HttpServlet {
         } else {
             try {
                 if (!request.getParameter("id_cliente").equals("")) {
-                CarrinhoDAO.inserirProduto(carrinho);
-                } else{
-                    
+                    CarrinhoDAO.inserirProduto(carrinho);
+                } else {
+                    Produto produto = CarrinhoDAO.ProdutosCarrinhosemid(request.getParameter("id_produto"));
+                    produtoList.add(produto);
+                    ProdutosCarrinho = produtoList;
                 }
             } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(CadastroCarrinhoServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,7 +77,7 @@ public class CadastroCarrinhoServlet extends HttpServlet {
         try {
             if ("1".equals(ope)) {
                 if (!req.getParameter("id_cliente").equals("")) {
-                ProdutosCarrinho = CarrinhoDAO.ProdutosCarrinho(id);
+                    ProdutosCarrinho = CarrinhoDAO.ProdutosCarrinho(id);
                 }
                 double total = 0;
                 for (Produto p : ProdutosCarrinho) {
@@ -85,7 +90,6 @@ public class CadastroCarrinhoServlet extends HttpServlet {
             } else if ("2".equals(ope)) {
                 CarrinhoDAO.excluir(id_produto);
                 resp.sendRedirect(req.getContextPath() + "/Principal.jsp");
-
             }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(CadastroUsuarioServlet.class

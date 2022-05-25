@@ -87,8 +87,42 @@ public class CarrinhoDAO {
         }
         return Produtos;
     }
+    
+    public static Produto ProdutosCarrinhosemid(String id) throws ClassNotFoundException, SQLException {
+        Produto produto = null;
+        String query = "select p.código\n"
+                + "                	 , p.nome\n"
+                + "                     , p.descricao\n"
+                + "                     , p.valor\n"
+                + "                     , i.caminho\n"
+                + "		        , p.quantidade\n"
+                + "                 from produto p \n"
+                + "                 inner join imagem i \n"
+                + "                  on i.codigo_produto = p.código \n"
+                + "                where p.código = ? \n"
+                + "                group by p.nome";
 
-     public static boolean excluir(String id) {
+        Connection con = Conexao.abrirConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                produto = new Produto();
+                produto.setCodigo(rs.getInt("código"));
+                produto.setNome(rs.getString("nome"));
+                produto.setQuantidade(rs.getInt("quantidade"));
+                produto.setValor(rs.getDouble("valor"));
+                produto.setCaminho(rs.getString("caminho"));
+   
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return produto;
+    }
+
+    public static boolean excluir(String id) {
         boolean retorno = false;
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
