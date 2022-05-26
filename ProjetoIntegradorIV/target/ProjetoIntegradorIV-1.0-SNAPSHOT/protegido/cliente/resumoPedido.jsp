@@ -5,6 +5,7 @@
 --%>
 
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -43,10 +44,19 @@
                 <h5>Iphone 13 <small>R$ 4000.00</small></h5>
                 <h5>Samsung Galaxy S21 <small>R$ 4000.00</small></h5>
                 <br>
-                <h3>Endereço de entrega:</h3>
-                <h5>Rua Santo Alberto, 325</h5>
-                <h5>Campo Grande - São Paulo, SP</h5>
-                <h5>04676-041</h5>
+                <div class="d-flex">
+                    <div>
+                        <h3>Endereço de entrega:</h3>
+                        <h5>Rua Santo Alberto, 325</h5>
+                        <h5>Campo Grande - São Paulo, SP</h5>
+                        <h5>04676-041</h5>
+                    </div>
+                    <div class="align-self-center p-5">
+                        <button class="btn bg-light rounded-circle" data-toggle="modal" data-target="#endereco" data-toggle="tooltip" title="Mudar endereço de entrega">
+                            <i class="fas fa-pen" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
                 <br>
                 <h3>Frete <small>R$10.00</small></h3>
                 <br>
@@ -60,6 +70,45 @@
                 <button type="submit" class="btn btn-lg bg-primary text-white">Finalizar pedido</button>
             </div>
         </div>
+        <form class="modal" id="endereco">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Seus endereços</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <c:forEach var="enderecos" items="${listaEnderecos}">
+                            <div class="d-flex justify-content-between mb-3">
+                                <ul class="list-group flex-fill">
+                                    <li class="list-group-item">${enderecos.CEP}</li>
+                                        <c:if test="${not empty enderecos.complemento}">
+                                        <li class="list-group-item">${enderecos.complemento}</li>
+                                        </c:if>
+                                        <c:if test="${empty enderecos.complemento}">
+                                        <li class="list-group-item">"Complemento"</li>
+                                        </c:if>
+                                    <li class="list-group-item">${enderecos.cidade}</li>
+                                </ul>
+                                <ul class="list-group flex-fill">
+                                    <li class="list-group-item">${enderecos.rua}</li>
+                                    <li class="list-group-item">${enderecos.bairro}</li>
+                                    <li class="list-group-item">${enderecos.uf}</li>
+                                </ul>
+                                <div class="d-flex flex-column">
+                                    <div class="bg-white my-auto border text-center p-2 flex-fill" data-toggle="tooltip" title="Endereço principal">
+                                        <input type="radio" name="optradio" checked style="bottom: -55px; position: relative">
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-lg bg-primary text-white">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </body>
 </html>
 

@@ -36,27 +36,39 @@
             <h1 class="display-4 text-center mb-sm-5">Pedidos</h1>
             <div class="container p-sm-5 border-bottom border-top mt-sm-3">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-1 mx-auto">
                         <h3>#0001</h3>
                     </div>
-                    <div class="col">
-                        <h3>Iphone 13 - Preto</h3>
+                    <div class="col-4 mx-auto">
+                        <h3 class="text-center"><small>26/05/2022</small></h3>
                     </div>
-                    <div class="col">
-                        <h3>Status: <small>Entregue</small></h3>
+                    <div class="col-2 mx-auto">
+                        <h3 class="text-center"><small>4010.00</small></h3>
+                    </div>
+                    <div class="col-3 mx-auto">
+                        <h3 class="text-center">Status: <small>Entregue</small></h3>
+                    </div>
+                    <div class="col-2 mx-auto">
+                        <a href="detalhesPedido.jsp" class="btn bg-primary text-white">Detalhes</a>
                     </div>
                 </div>
             </div>
             <div class="container p-sm-5 border-bottom border-top mt-sm-3">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-1 mx-auto">
                         <h3>#0002</h3>
                     </div>
-                    <div class="col">
-                        <h3>Iphone 13 - Preto</h3>
+                    <div class="col-4 mx-auto">
+                        <h3 class="text-center"><small>26/05/2022</small></h3>
                     </div>
-                    <div class="col">
-                        <h3>Status: <small>Em trânsito</small></h3>
+                    <div class="col-2 mx-auto">
+                        <h3 class="text-center"><small>8010.00</small></h3>
+                    </div>
+                    <div class="col-3 mx-auto">
+                        <h3 class="text-center">Status: <small>Entregue</small></h3>
+                    </div>
+                    <div class="col-2 mx-auto">
+                        <a href="detalhesPedido.jsp" class="btn bg-primary text-white">Detalhes</a>
                     </div>
                 </div>
             </div>

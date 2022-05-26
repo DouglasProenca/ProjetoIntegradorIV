@@ -63,13 +63,6 @@
                     </button>
                 </li>
                 <li class="list-group-item d-flex justify-content-between pb-0">
-                    <h4 class="flex-fill">Seu e-mail</h4>
-                    <p>${clienteAtualizacao.email}</p>
-                    <button class="btn bg-transparent pt-0 rounded-circle" data-toggle="modal" data-target="#mudarEmail" data-toggle="tooltip" title="Editar e-mail">
-                        <i class="fa fa-pen" aria-hidden="true"></i>
-                    </button>
-                </li>
-                <li class="list-group-item d-flex justify-content-between pb-0">
                     <h4 class="flex-fill">Sua senha</h4>
                     <p>*****</p>
                     <button class="btn bg-transparent pt-0 rounded-circle" data-toggle="modal" data-target="#mudarSenha" data-toggle="tooltip" title="Mudar senha">
@@ -77,11 +70,18 @@
                     </button>
                 </li>
                 <li class="list-group-item d-flex justify-content-between pb-0">
+                    <h4 class="flex-fill">Seu e-mail</h4>
+                    <p>${clienteAtualizacao.email}</p>
+                    <!-- <button class="btn bg-transparent pt-0 rounded-circle" data-toggle="modal" data-target="#mudarEmail" data-toggle="tooltip" title="Editar e-mail">
+                        <i class="fa fa-pen" aria-hidden="true"></i>
+                    </button> -->
+                </li>
+                <li class="list-group-item d-flex justify-content-between pb-0">
                     <h4 class="flex-fill">Seu CPF</h4>
                     <p>${clienteAtualizacao.cpf}</p>
-                    <button class="btn bg-transparent pt-0 rounded-circle" data-toggle="modal" data-target="#mudarCPF" data-toggle="tooltip" title="Editar CPF">
+                    <!-- <button class="btn bg-transparent pt-0 rounded-circle" data-toggle="modal" data-target="#mudarCPF" data-toggle="tooltip" title="Editar CPF">
                         <i class="fa fa-pen" aria-hidden="true"></i>
-                    </button>
+                    </button> -->
                 </li>
             </ul>
             <h2 class="ml-sm-3">Seus endereços</h2>
