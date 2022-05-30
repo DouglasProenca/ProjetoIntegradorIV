@@ -59,13 +59,6 @@ cidade varchar(100),
 uf char(2)
 );
 
-create table carrinho(
-id int primary key auto_increment,
-id_cliente int,
-id_produto int,
-quantidade int,
-data_carrinho datetime
-);
 
 create table pedido(
  id_cliente int,
@@ -306,19 +299,19 @@ end $
 delimiter ;
 
 -- ------------------------------------------------------Inserts--------------------------------------------------
-
 insert into categoria values(null,'administrador'),
 							(null,'estoquista');
 
 insert into usuario values(null,'Douglas Proença Rolim de Souza','(11)95436-0397','Douglasp.r.desouza@gmail.com','1998-04-04',1,'488.654.963-78','$2a$08$fH2uvGnb70vzY7jS.vSn4OLEjjRE6u7J.Zpwh7Oa8FfQjyVCz6Qoq',1),
 						  (null,'Rafael Gomes Camilo','(11)94002-8922','Rafa.gomes@gmail.com','1986-04-04',2,'488.654.963-70','$2a$08$1BdA7ANRBwhdnpWeE4UBM.38Iej0g8SAGCJALeEoOwTDFshQJlo8W',1);
+
                             
-insert into produto values (1,'Samsung Galaxy S21',10,5,4000,1,'O Galaxy S21 Ultra 5G é extraordinário em cada detalhe.'),
-						   (2,'Samsung Galaxy S22',10,5,4000,1,'O Samsung Galaxy S22 5G é um smartphone Android de bom nível, ótimo para fotos, que pode satisfazer até o mais exigente dos usuários.'),
-						   (3,'Samsung Galaxy S22 Ultra',10,5,4000,1,'Smartphone Samsung Galaxy S22 Ultra com 256GB, 12GB ram e Tela Infinita de 6,8.'),
-						   (4,'Apple Iphone 11',10,5,4000,1,'É o IPhone com preço mais baixo da décima terceira geração, sucedendo ao IPhone XR.'),
-						   (5,'Apple Iphone 13',10,5,4000,1,'IPhone 13. O sistema de câmera dupla mais avançado em um iPhone.'),
-						   (6,'Apple Iphone 12',10,5,4000,1,'A14 Bionic, o chip mais rápido em um smartphone. Tela OLED de ponta a ponta.');
+insert into produto values (1,'Samsung Galaxy S21',10,5,40000,1,'O Galaxy S21 Ultra 5G é extraordinário em cada detalhe.'),
+						   (2,'Samsung Galaxy S22',10,5,40000,1,'O Samsung Galaxy S22 5G é um smartphone Android de bom nível, ótimo para fotos, que pode satisfazer até o mais exigente dos usuários.'),
+						   (3,'Samsung Galaxy S22 Ultra',10,5,40000,1,'Smartphone Samsung Galaxy S22 Ultra com 256GB, 12GB ram e Tela Infinita de 6,8.'),
+						   (4,'Apple Iphone 11',10,5,40000,1,'É o IPhone com preço mais baixo da décima terceira geração, sucedendo ao IPhone XR.'),
+						   (5,'Apple Iphone 13',10,5,40000,1,'IPhone 13. O sistema de câmera dupla mais avançado em um iPhone.'),
+						   (6,'Apple Iphone 12',10,5,40000,1,'A14 Bionic, o chip mais rápido em um smartphone. Tela OLED de ponta a ponta.');
                             
 insert into imagem values (1,'s21-rosa.jpg','Resources/s21-rosa.jpg'),
                           (1,'s21-violeta.jpg','Resources/s21-violeta.jpg'),
