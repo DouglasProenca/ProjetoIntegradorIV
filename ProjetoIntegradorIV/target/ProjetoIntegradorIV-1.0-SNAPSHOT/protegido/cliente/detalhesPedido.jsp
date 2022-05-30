@@ -34,27 +34,48 @@
         </header>
         <div class="container-fluid bg-dark shadow" style="height: 250px"></div>
         <div class="container shadow border bg-light p-5 mb-sm-5" style="top: -50px; position: relative; border-radius: 15px;">
-            <a href="pedidosServlet?CPFCliente=${cliente.cpf}" class="btn btn-lg" data-toggle="tooltip" title="Voltar"><i class="fas fa-angle-left"></i></a>
             <h1 class="display-4 text-center mb-5">Detalhes do pedido</h1>
             <div class="container p-sm-5 border-bottom border-top mt-sm-3">
                 <h3>Número do pedido <small>#0001</small></h3>
                 <br>
                 <h3>Produtos:</h3>
-                <h5>Iphone 13 <small>R$ 4000.00</small></h5>
-                <h5>Samsung Galaxy S21 <small>R$ 4000.00</small></h5>
+                <div class="d-flex px-5">
+                    <h5 class="flex-fill">Iphone 13</h5>
+                    <h6 class="align-self-end">R$4000.00</h6>
+                </div>
+                <div class="d-flex px-5">
+                    <h6 class="flex-fill">Quantidade: 2</h6>
+                    <h5 class="text-center">R$8000.00</h5>
+                </div>
+                <br>
+                <div class="d-flex px-5">
+                    <h5 class="flex-fill">Samsung Galaxy S21</h5>
+                    <h6 class="align-self-end">R$4000.00</h6>
+                </div>
+                <div class="d-flex px-5">
+                    <h6 class="flex-fill">Quantidade: 1</h6>
+                    <h5 class="text-center">R$4000.00</h5>
+                </div>
                 <br>
                 <h3>Endereço de entrega:</h3>
-                <h5>Rua Santo Alberto, 325</h5>
-                <h5>Campo Grande - São Paulo, SP</h5>
-                <h5>04676-041</h5>
                 <br>
-                <h3>Frete <small>R$10.00</small></h3>
+                <div class="pl-5">
+                    <h5>Rua Santo Alberto, 325</h5>
+                    <h5>Campo Grande - São Paulo, SP</h5>
+                    <h5>04676-041</h5>
+                </div>
+                <br>
+                <h3>Frete</h3>
+                <div class="d-flex px-5">
+                    <h5 class="flex-fill">Normal</h5>
+                    <h6 class="align-self-end">R$10.00</h6>
+                </div>                
                 <br>
                 <h3>Método de pagamento:</h3>
-                <h5>Cartão</h5>
+                <h5 class="pl-5">Cartão</h5>
                 <br>
                 <h3>Total:</h3>
-                <h4>R$8010.00</h4>
+                <h4 class="pl-5">R$12010.00</h4>
             </div>
         </div>
     </body>

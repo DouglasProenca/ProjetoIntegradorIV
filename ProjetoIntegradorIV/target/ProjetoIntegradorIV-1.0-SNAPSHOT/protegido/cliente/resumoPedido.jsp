@@ -41,15 +41,32 @@
                 <h3>Número do pedido <small>#0001</small></h3>
                 <br>
                 <h3>Produtos:</h3>
-                <h5>Iphone 13 <small>R$ 4000.00</small></h5>
-                <h5>Samsung Galaxy S21 <small>R$ 4000.00</small></h5>
+                <div class="d-flex px-5">
+                    <h5 class="flex-fill">Iphone 13</h5>
+                    <h6 class="align-self-end">R$4000.00</h6>
+                </div>
+                <div class="d-flex px-5">
+                    <h6 class="flex-fill">Quantidade: 2</h6>
+                    <h5 class="text-center">R$8000.00</h5>
+                </div>
                 <br>
+                <div class="d-flex px-5">
+                    <h5 class="flex-fill">Samsung Galaxy S21</h5>
+                    <h6 class="align-self-end">R$4000.00</h6>
+                </div>
+                <div class="d-flex px-5">
+                    <h6 class="flex-fill">Quantidade: 1</h6>
+                    <h5 class="text-center">R$4000.00</h5>
+                </div>
+                <br>
+                <h3>Endereço de entrega:</h3>
                 <div class="d-flex">
-                    <div>
-                        <h3>Endereço de entrega:</h3>
-                        <h5>Rua Santo Alberto, 325</h5>
-                        <h5>Campo Grande - São Paulo, SP</h5>
-                        <h5>04676-041</h5>
+                    <div class="align-self-center">
+                        <div class="pl-5">
+                            <h5>Rua Santo Alberto, 325</h5>
+                            <h5>Campo Grande - São Paulo, SP</h5>
+                            <h5>04676-041</h5>
+                        </div>
                     </div>
                     <div class="align-self-center p-5">
                         <button class="btn bg-light rounded-circle" data-toggle="modal" data-target="#endereco" data-toggle="tooltip" title="Mudar endereço de entrega">
@@ -58,13 +75,17 @@
                     </div>
                 </div>
                 <br>
-                <h3>Frete <small>R$10.00</small></h3>
+                <h3>Frete</h3>
+                <div class="d-flex px-5">
+                    <h5 class="flex-fill">Normal</h5>
+                    <h6 class="align-self-end">R$10.00</h6>
+                </div>                
                 <br>
                 <h3>Método de pagamento:</h3>
-                <h5>Cartão</h5>
+                <h5 class="pl-5">Cartão</h5>
                 <br>
                 <h3>Total:</h3>
-                <h4>R$8010.00</h4>
+                <h4 class="pl-5">R$12010.00</h4>
             </div>
             <div class="text-center mt-5">
                 <button type="submit" class="btn btn-lg bg-primary text-white">Finalizar pedido</button>
