@@ -24,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 public class CadastroCarrinhoServlet extends HttpServlet {
 
     private List<Produto> produtoList;
+    int contador = 0;
+    boolean jaTem = false;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -49,8 +51,18 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                     produtoList = new ArrayList<>();
                 }
                 Produto produto = CarrinhoDAO.ProdutosCarrinhosemid(request.getParameter("id_produto"));
+                contador = 0;
+                for (Produto p : produtoList) {
+                    if (p.getCodigo() == Integer.parseInt(request.getParameter("id_produto"))) {
+                        p.setQuantidade(p.getQuantidade() + 1);
+                        produtoList.set(contador, p);
+                        jaTem = true;
+                    }
+                    contador++;
+                }
+                if(!jaTem){
                 produtoList.add(produto);
-
+                }
             } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(CadastroCarrinhoServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -62,19 +74,19 @@ public class CadastroCarrinhoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String ope = req.getParameter("ope");
         String id_produto = null;
-        int contador = 0;
         id_produto = req.getParameter("id_produto");
         //OPE = 1 => Atualização
         if ("1".equals(ope)) {
             double total = 0;
             for (Produto p : produtoList) {
-                total = total + p.getValor();
+                total = total+(p.getValor()*p.getQuantidade());
             }
             req.setAttribute("listaCarrinho", produtoList);
             req.setAttribute("total", total);
             req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
         } else if ("2".equals(ope)) {
             try {
+                contador = 0;
                 for (Produto p : produtoList) {
                     if (p.getCodigo() == Integer.parseInt(id_produto)) {
                         produtoList.remove(contador);

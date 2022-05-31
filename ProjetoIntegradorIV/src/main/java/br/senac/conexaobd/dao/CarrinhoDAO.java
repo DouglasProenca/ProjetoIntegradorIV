@@ -111,7 +111,6 @@ public class CarrinhoDAO {
                 produto = new Produto();
                 produto.setCodigo(rs.getInt("código"));
                 produto.setNome(rs.getString("nome"));
-                produto.setQuantidade(rs.getInt("quantidade"));
                 produto.setValor(rs.getDouble("valor"));
                 produto.setCaminho(rs.getString("caminho"));
    

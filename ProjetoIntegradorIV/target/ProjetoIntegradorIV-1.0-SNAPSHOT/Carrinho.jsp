@@ -51,12 +51,12 @@
                                 <label>Quantidade:</label>
                                 <br>
                                 <!-- Nota: Aqui, tu pode fazer a quantidade options conforme a disponibilidade do estoque -->
-                                <select class="form-control float-right text-center" id="sel1" name="sellist1" style="max-width: 100px">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <select class="form-control float-right text-center" id="sel1" value="${produto.quantidade}" name="sellist1" style="max-width: 100px">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="">5</option>
                                 </select>
                             </div>
                         </div>
