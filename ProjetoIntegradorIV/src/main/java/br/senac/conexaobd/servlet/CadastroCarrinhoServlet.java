@@ -85,13 +85,10 @@ public class CadastroCarrinhoServlet extends HttpServlet {
             req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
         } else if ("2".equals(ope)) {
             try {
-                contador = 0;
-                for (Produto p : produtoList) {
-                    if (p.getCodigo() == Integer.parseInt(id_produto)) {
+                for (int i = 0; i< produtoList.toArray().length; i++) {
+                    if (produtoList.get(i).getCodigo() == Integer.parseInt(id_produto)) {
                         produtoList.remove(contador);
-                        total = total - p.getValor();
                     }
-                    contador++;
                 }
             } catch (ConcurrentModificationException e) {
                 req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
