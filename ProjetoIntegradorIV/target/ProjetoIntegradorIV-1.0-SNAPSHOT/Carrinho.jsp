@@ -47,13 +47,14 @@
                             </div>
                             <div class="col-sm text-right">
                                 <div class="">
-                                    <a class="btn bg-transparent text-danger" href="CadastroCarrinhoServlet?ope=2&id_produto=${produto.codigo}&id_cliente=${sessionScope.cliente.id}">Excluir</a>
+                                    <a class="btn bg-transparent text-danger" href="CadastroCarrinhoServlet?ope=2&id_produto=${produto.codigo}">Excluir</a>
                                 </div>
                                 <h2>${produto.valor}</h2>
                                 <label>Quantidade:</label>
                                 <br>
                                 <!-- Nota: Aqui, tu pode fazer a quantidade options conforme a disponibilidade do estoque -->
-                                <select class="form-control float-right text-center" id="sel1" value="${produto.quantidade}" name="sellist1" style="max-width: 100px">
+                                <select class="form-control float-right text-center" onblur="location.href = 'CadastroCarrinhoServlet?ope=1&id_produto=${produto.codigo}&quantidade=${produto.quantidade}'" 
+                                        id="sel1" value="${produto.quantidade}" name="sellist1" style="max-width: 100px">
                                     <option <c:if test="${produto.quantidade == 1}">selected</c:if> value="1">1</option>
                                     <option <c:if test="${produto.quantidade == 2}">selected</c:if> value="2">2</option>
                                     <option <c:if test="${produto.quantidade == 3}">selected</c:if> value="3">3</option>
@@ -79,21 +80,6 @@
                                 <div class="form-group">
                                     <input class="form-control" type="text" id="cep" name="cep" placeholder="_____-___">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm mt-4">
-                            <!-- Quando o endereço já estiver selecionado, tornar essa div d-flex com as informações respectivas do endereço -->
-                            <div class="container d-none">
-                                <ul class="list-group text-center" style="width: 200px">
-                                    <li class="list-group-item" id="rua" name="rua">Rua</li>
-                                    <li class="list-group-item">Bairro</li>
-                                    <li class="list-group-item">Cidade</li>
-                                </ul>
-                                <ul class="list-group text-center" style="width: 200px">
-                                    <li class="list-group-item">Numero</li>
-                                    <li class="list-group-item">CEP</li>
-                                    <li class="list-group-item">UF</li>
-                                </ul>
                             </div>
                         </div>
                     </div>

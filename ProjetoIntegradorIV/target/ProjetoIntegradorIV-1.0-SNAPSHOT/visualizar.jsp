@@ -70,7 +70,7 @@ onclick="location.href='../../loginCliente.jsp'
                         </li>
                     </c:if>
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="../produto/CadastroCarrinhoServlet?ope=1&id_cliente=${cliente.id}"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
+                            <a class="nav-link" href="../produto/CadastroCarrinhoServlet?ope=1"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
                         </li>
                 </ul>
             </div> 
@@ -96,7 +96,6 @@ onclick="location.href='../../loginCliente.jsp'
                     <h1 class="display-4 font-weight-normal">${Produto.nome}</h1>
                     <p class="lead font-weight-normal">${Produto.descricao}</p>
                         <form action="CadastroCarrinhoServlet" method="POST">
-                            <input type="hidden" name="id_cliente" value="${cliente.id}" class="form-control"/>
                             <input type="hidden" name="id_produto" value="${Produto.codigo}" class="form-control"/>
                             <button class="btn btn-outline-secondary bg-primary text-white mt-sm-5" type="submit">Adicionar ao carrinho</button>
                         </form>
