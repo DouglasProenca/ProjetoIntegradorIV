@@ -52,11 +52,11 @@
                                 <br>
                                 <!-- Nota: Aqui, tu pode fazer a quantidade options conforme a disponibilidade do estoque -->
                                 <select class="form-control float-right text-center" id="sel1" value="${produto.quantidade}" name="sellist1" style="max-width: 100px">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="">5</option>
+                                    <option <c:if test="${produto.quantidade == 1}">selected</c:if> value="1">1</option>
+                                    <option <c:if test="${produto.quantidade == 2}">selected</c:if> value="2">2</option>
+                                    <option <c:if test="${produto.quantidade == 3}">selected</c:if> value="3">3</option>
+                                    <option <c:if test="${produto.quantidade == 4}">selected</c:if> value="4">4</option>
+                                    <option <c:if test="${produto.quantidade == 5}">selected</c:if> value="">5</option>
                                 </select>
                             </div>
                         </div>

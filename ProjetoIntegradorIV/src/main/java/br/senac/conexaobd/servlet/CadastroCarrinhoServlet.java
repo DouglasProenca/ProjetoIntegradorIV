@@ -25,11 +25,12 @@ public class CadastroCarrinhoServlet extends HttpServlet {
 
     private List<Produto> produtoList;
     int contador = 0;
-    boolean jaTem = false;
+    double total = 0;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        boolean jaTem = false;
         String ope = request.getParameter("ope");
         Carrinho carrinho = new Carrinho();
         carrinho.setId_produto(Integer.parseInt(request.getParameter("id_produto")));
@@ -52,14 +53,13 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                 }
                 Produto produto = CarrinhoDAO.ProdutosCarrinhosemid(request.getParameter("id_produto"));
                 contador = 0;
-                for (Produto p : produtoList) {
-                    if (p.getCodigo() == Integer.parseInt(request.getParameter("id_produto"))) {
-                        p.setQuantidade(p.getQuantidade() + 1);
-                        produtoList.set(contador, p);
+                for (int i = 0; i< produtoList.toArray().length; i++) { 
+                    if (produtoList.get(i).getCodigo() == Integer.parseInt(request.getParameter("id_produto"))) {
+                        produtoList.get(i).setQuantidade(produtoList.get(i).getQuantidade() + 1);
                         jaTem = true;
                     }
-                    contador++;
                 }
+                System.out.println(jaTem);
                 if(!jaTem){
                 produtoList.add(produto);
                 }
@@ -75,11 +75,10 @@ public class CadastroCarrinhoServlet extends HttpServlet {
         String ope = req.getParameter("ope");
         String id_produto = null;
         id_produto = req.getParameter("id_produto");
-        //OPE = 1 => Atualização
+
         if ("1".equals(ope)) {
-            double total = 0;
-            for (Produto p : produtoList) {
-                total = total+(p.getValor()*p.getQuantidade());
+            for (int i = 0; i< produtoList.toArray().length; i++) { 
+                produtoList.get(i).setValor(produtoList.get(i).getValor()*produtoList.get(i).getQuantidade());
             }
             req.setAttribute("listaCarrinho", produtoList);
             req.setAttribute("total", total);
@@ -90,6 +89,7 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                 for (Produto p : produtoList) {
                     if (p.getCodigo() == Integer.parseInt(id_produto)) {
                         produtoList.remove(contador);
+                        total = total - p.getValor();
                     }
                     contador++;
                 }
