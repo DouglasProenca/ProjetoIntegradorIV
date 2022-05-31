@@ -17,8 +17,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
         <title>Carrinho</title>
     </head>
     <body class="" style="background-color: #006C75">
@@ -57,11 +59,11 @@
                                     <option <c:if test="${produto.quantidade == 3}">selected</c:if> value="3">3</option>
                                     <option <c:if test="${produto.quantidade == 4}">selected</c:if> value="4">4</option>
                                     <option <c:if test="${produto.quantidade == 5}">selected</c:if> value="">5</option>
-                                </select>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
             </c:forEach>
             <div class="d-flex flex-column text-sm-right text-center my-sm-4">
                 <h3>Sub-total</h3>
@@ -83,7 +85,7 @@
                             <!-- Quando o endereço já estiver selecionado, tornar essa div d-flex com as informações respectivas do endereço -->
                             <div class="container d-none">
                                 <ul class="list-group text-center" style="width: 200px">
-                                    <li class="list-group-item">Rua</li>
+                                    <li class="list-group-item" id="rua" name="rua">Rua</li>
                                     <li class="list-group-item">Bairro</li>
                                     <li class="list-group-item">Cidade</li>
                                 </ul>
@@ -107,8 +109,8 @@
                                 <c:if test="${sessionScope.cliente.nome != null}">
                                     <a class="btn btn-lg bg-primary text-white" href="/ProjetoIntegradorIV/protegido/cliente/confirmarPedido.jsp">Continuar</a>
                                 </c:if>
-                                 <c:if test="${sessionScope.cliente.nome == null}">
-                                     <a class="btn btn-lg bg-primary text-white" href="../../loginCliente.jsp">Continuar</a>
+                                <c:if test="${sessionScope.cliente.nome == null}">
+                                    <a class="btn btn-lg bg-primary text-white" href="../../loginCliente.jsp">Continuar</a>
                                 </c:if>    
                             </div>
                         </div>
@@ -119,6 +121,39 @@
         <script type="text/javascript">
             //máscara do cep
             $("#cep").inputmask({"mask": "99999-999"});
+
+            $("#cep").focusout(function () {
+                //Início do Comando AJAX
+                $.ajax({
+                    //O campo URL diz o caminho de onde virá os dados
+                    //É importante concatenar o valor digitado no CEP
+                    url: 'https://viacep.com.br/ws/' + $(this).val() + '/json/',
+                    //Aqui você deve preencher o tipo de dados que será lido,
+                    //no caso, estamos lendo JSON.
+                    dataType: 'json',
+                    //SUCESS é referente a função que será executada caso
+                    //ele consiga ler a fonte de dados com sucesso.
+                    //O parâmetro dentro da função se refere ao nome da variável
+                    //que você vai dar para ler esse objeto.
+                    success: function (resposta) {
+                        //Agora basta definir os valores que você deseja preencher
+                        //automaticamente nos campos acima.
+                        if (!("erro" in resposta)) {
+                            $("#rua").val(resposta.logradouro);
+                            $("#complemento").val(resposta.complemento);
+                            $("#bairro").val(resposta.bairro);
+                            $("#cidade").val(resposta.localidade);
+                            $("#uf").val(resposta.uf);
+                            //Vamos incluir para que o Número seja focado automaticamente
+                            //melhorando a experiência do usuário
+                            $("#numero").focus();
+                        } else {
+                            //CEP não Encontrado.
+                            alert("CEP não encontrado.");
+                        }
+                    }
+                });
+            });
         </script>
     </body>
 </html>

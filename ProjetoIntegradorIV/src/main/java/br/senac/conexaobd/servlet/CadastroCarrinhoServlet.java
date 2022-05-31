@@ -53,15 +53,16 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                 }
                 Produto produto = CarrinhoDAO.ProdutosCarrinhosemid(request.getParameter("id_produto"));
                 contador = 0;
-                for (int i = 0; i< produtoList.toArray().length; i++) { 
+                for (int i = 0; i < produtoList.toArray().length; i++) {
                     if (produtoList.get(i).getCodigo() == Integer.parseInt(request.getParameter("id_produto"))) {
                         produtoList.get(i).setQuantidade(produtoList.get(i).getQuantidade() + 1);
+                        produtoList.get(i).setValor(produtoList.get(i).getValor() * produtoList.get(i).getQuantidade());
                         jaTem = true;
                     }
                 }
                 System.out.println(jaTem);
-                if(!jaTem){
-                produtoList.add(produto);
+                if (!jaTem) {
+                    produtoList.add(produto);
                 }
             } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(CadastroCarrinhoServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,17 +76,18 @@ public class CadastroCarrinhoServlet extends HttpServlet {
         String ope = req.getParameter("ope");
         String id_produto = null;
         id_produto = req.getParameter("id_produto");
-
+        total = 0;
+        for (int i = 0; i < produtoList.toArray().length; i++) {
+            total = total + produtoList.get(i).getValor();
+        }
+        
         if ("1".equals(ope)) {
-            for (int i = 0; i< produtoList.toArray().length; i++) { 
-                produtoList.get(i).setValor(produtoList.get(i).getValor()*produtoList.get(i).getQuantidade());
-            }
             req.setAttribute("listaCarrinho", produtoList);
             req.setAttribute("total", total);
             req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
         } else if ("2".equals(ope)) {
             try {
-                for (int i = 0; i< produtoList.toArray().length; i++) {
+                for (int i = 0; i < produtoList.toArray().length; i++) {
                     if (produtoList.get(i).getCodigo() == Integer.parseInt(id_produto)) {
                         produtoList.remove(contador);
                     }
