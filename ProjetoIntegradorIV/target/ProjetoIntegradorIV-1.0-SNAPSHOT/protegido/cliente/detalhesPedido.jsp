@@ -69,6 +69,8 @@
             <div class="d-flex align-self-sm-end align-self-center">
                 <div class="mt-sm-3 mt-4">
                     <form Action="CadastroPedidoServlet" method="POST">
+                        <input type="text" name="id_cliente" id="id_cliente" hidden value="${sessionScope.cliente.id}">
+                        <input type="text" name="forma_pg" id="forma_pg" hidden value="${forma_pagamento}">
                         <button class="btn btn-lg bg-primary text-white" type="submit">Continuar</a>  
                     </form>
                 </div>

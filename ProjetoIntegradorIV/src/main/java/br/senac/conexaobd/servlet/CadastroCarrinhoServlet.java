@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CadastroCarrinhoServlet extends HttpServlet {
 
     public static List<Produto> produtoList;
-    public static double frete;
+    public static double frete=0;
     double subtotal = 0;
     public static double total = 0;
 
@@ -58,7 +58,7 @@ public class CadastroCarrinhoServlet extends HttpServlet {
             String ope = req.getParameter("ope");
             String id_produto = null;
             id_produto = req.getParameter("id_produto");
-            frete = 10;
+            frete = 0;
             total = 0;
             subtotal=0;
             for (int i = 0; i < produtoList.toArray().length; i++) {
@@ -79,7 +79,7 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                     }
                     for (int j = 0; j < produtoList.toArray().length; j++) {
                         subtotal = subtotal + produtoList.get(j).getValor();
-                        total = subtotal;
+                        total = subtotal+frete;
                     }
                 }
                 req.setAttribute("listaCarrinho", produtoList);
@@ -93,6 +93,7 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                     }
                 }
             } else if ("3".equals(ope)) {
+                frete = 10;
                 total = frete + subtotal;
                 req.setAttribute("listaCarrinho", produtoList);
                 req.setAttribute("total", total);

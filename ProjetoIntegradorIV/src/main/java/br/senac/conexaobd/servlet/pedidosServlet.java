@@ -1,7 +1,14 @@
 package br.senac.conexaobd.servlet;
 
+import br.senac.conexaobd.dao.CarrinhoDAO;
+import br.senac.conexaobd.dao.ProdutoDAO;
+import br.senac.conexaobd.entidades.Pedido;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,11 +29,17 @@ public class pedidosServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String cpf = req.getParameter("CPFCliente");
+        String id = req.getParameter("id");
 
-        //req.setAttribute("listaCarrinho", ProdutosCarrinho);
-        //req.setAttribute("total", total);
-        req.getRequestDispatcher("/protegido/cliente/Pedidos.jsp").forward(req, resp);
-
+        try {
+            List<Pedido> pedidos = CarrinhoDAO.getPedido(Integer.parseInt(id));
+            req.setAttribute("ListaPedidos", pedidos);
+            // RequestDispatcher reaproveita os objetos Request e Response
+            String url = "/protegido/cliente/Pedidos.jsp";
+            req.getRequestDispatcher(url).forward(req, resp);
+        } catch (ClassNotFoundException | SQLException ex) {
+            resp.sendRedirect(req.getContextPath() + "/protegido/uteis/erro.jsp");
+            Logger.getLogger(ListarProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -4,6 +4,7 @@
     Author     : Gabriel Lima
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -34,44 +35,27 @@
         <div class="container-fluid bg-dark shadow" style="height: 250px"></div>
         <div class="container shadow border bg-light p-5 mb-sm-5" style="top: -50px; position: relative; border-radius: 15px;">
             <h1 class="display-4 text-center mb-sm-5">Pedidos</h1>
+            <c:forEach var="pedidos" items="${ListaPedidos}">
             <div class="container p-sm-5 border-bottom border-top mt-sm-3">
                 <div class="row">
                     <div class="col-1 mx-auto">
-                        <h3>#0001</h3>
+                        <h3>${pedidos.id}</h3>
                     </div>
                     <div class="col-4 mx-auto">
-                        <h3 class="text-center"><small>26/05/2022</small></h3>
+                        <h3 class="text-center"><small>${pedidos.data}</small></h3>
                     </div>
                     <div class="col-2 mx-auto">
-                        <h3 class="text-center"><small>4010.00</small></h3>
+                        <h3 class="text-center"><small>${pedidos.valor}</small></h3>
                     </div>
                     <div class="col-3 mx-auto">
-                        <h3 class="text-center">Status: <small>Entregue</small></h3>
+                        <h3 class="text-center">Status: <small>${pedidos.status}</small></h3>
                     </div>
                     <div class="col-2 mx-auto">
                         <a href="detalhesPedido.jsp" class="btn bg-primary text-white">Detalhes</a>
                     </div>
                 </div>
             </div>
-            <div class="container p-sm-5 border-bottom border-top mt-sm-3">
-                <div class="row">
-                    <div class="col-1 mx-auto">
-                        <h3>#0002</h3>
-                    </div>
-                    <div class="col-4 mx-auto">
-                        <h3 class="text-center"><small>26/05/2022</small></h3>
-                    </div>
-                    <div class="col-2 mx-auto">
-                        <h3 class="text-center"><small>8010.00</small></h3>
-                    </div>
-                    <div class="col-3 mx-auto">
-                        <h3 class="text-center">Status: <small>Entregue</small></h3>
-                    </div>
-                    <div class="col-2 mx-auto">
-                        <a href="detalhesPedido.jsp" class="btn bg-primary text-white">Detalhes</a>
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </body>
 </html>

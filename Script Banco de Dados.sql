@@ -61,10 +61,13 @@ uf char(2)
 
 
 create table pedido(
- id_cliente int,
- id_endereco int,
- forma_pagamento varchar(100),
- frete double
+ id int primary key auto_increment,
+ id_cliente int not null,
+ id_endereco int not null,
+ forma_pagamento varchar(100) not null,
+ frete double not null,
+ valor double not null,
+ status varchar(100) not null
 );
 
 -- ---------------------------------------------------Constraints-------------------------------------------
