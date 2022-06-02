@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CadastroCarrinhoServlet extends HttpServlet {
 
     private List<Produto> produtoList;
+    double subtotal =0;
     double total = 0;
 
     @Override
@@ -55,9 +56,11 @@ public class CadastroCarrinhoServlet extends HttpServlet {
         String ope = req.getParameter("ope");
         String id_produto = null;
         id_produto = req.getParameter("id_produto");
+        double frete =10;
         total = 0;
         for (int i = 0; i < produtoList.toArray().length; i++) {
-            total = total + produtoList.get(i).getValor();
+            subtotal = subtotal + produtoList.get(i).getValor();
+            total = subtotal;
         }
 
         if ("1".equals(ope)) {
@@ -71,11 +74,13 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                     }
                 }
                 for (int j = 0; j < produtoList.toArray().length; j++) {
-                    total = total + produtoList.get(j).getValor();
+                    subtotal = subtotal + produtoList.get(j).getValor();
+                    total = subtotal;
                 }
             }
             req.setAttribute("listaCarrinho", produtoList);
             req.setAttribute("total", total);
+            req.setAttribute("subtotal", subtotal);
             req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
         } else if ("2".equals(ope)) {
             for (int i = 0; i < produtoList.toArray().length; i++) {
@@ -83,6 +88,13 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                     produtoList.remove(i);
                 }
             }
+        } else if ("3".equals(ope)) {
+            total = total+frete+subtotal;
+            req.setAttribute("listaCarrinho", produtoList);
+            req.setAttribute("total", total);
+            req.setAttribute("subtotal", subtotal);
+            req.setAttribute("frete", frete);
+            req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
         }
         resp.sendRedirect(req.getContextPath() + "/Principal.jsp");
     }

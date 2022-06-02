@@ -73,7 +73,7 @@
             </c:forEach>
             <div class="d-flex flex-column text-sm-right text-center my-sm-4">
                 <h3>Sub-total</h3>
-                <h5>${total}</h5>
+                <h5>${subtotal}</h5>
             </div>
             <div class="row">
                 <div class="col-sm">
@@ -83,7 +83,7 @@
                             <div class="container" style="max-width: 250px">
                                 <h4 class="">Calcule seu frete</h4>
                                 <div class="form-group">
-                                    <input class="form-control" type="text" id="cep" name="cep" placeholder="_____-___">
+                                    <input class="form-control" type="text" id="cep" name="cep" placeholder="_____-___" onblur="location.href='CadastroCarrinhoServlet?ope=3'">
                                 </div>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                 <div class="col-sm">
                     <div class="d-flex flex-column text-sm-right text-center mt-4">
                         <h3 class="">Frete</h3>
-                        <h5>R$10.00</h5>
+                        <h5>${frete}</h5>
                         <h3>Total</h3>
                         <h5>${total}</h5>
                         <div class="d-flex align-self-sm-end align-self-center">
