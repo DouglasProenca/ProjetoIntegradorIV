@@ -22,6 +22,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
         <title>Carrinho</title>
+        <script type="text/javascript">
+            function AlterarQuantidade(id_produto,quantidade) {
+                location.href="CadastroCarrinhoServlet?ope=1&id_produto="+id_produto+"&quantidade="+quantidade;
+            }
+        </script>
     </head>
     <body class="" style="background-color: #006C75">
         <header class="fixed-top bg-dark pb-3">
@@ -53,13 +58,13 @@
                                 <label>Quantidade:</label>
                                 <br>
                                 <!-- Nota: Aqui, tu pode fazer a quantidade options conforme a disponibilidade do estoque -->
-                                <select class="form-control float-right text-center" onblur="location.href = 'CadastroCarrinhoServlet?ope=1&id_produto=${produto.codigo}&quantidade=${produto.quantidade}'" 
-                                        id="sel1" value="${produto.quantidade}" name="sellist1" style="max-width: 100px">
+                                <select class="form-control float-right text-center" onblur="AlterarQuantidade(${produto.codigo},this.value)" 
+                                        id="sellist1" value="${produto.quantidade}" name="sellist1" style="max-width: 100px">
                                     <option <c:if test="${produto.quantidade == 1}">selected</c:if> value="1">1</option>
                                     <option <c:if test="${produto.quantidade == 2}">selected</c:if> value="2">2</option>
                                     <option <c:if test="${produto.quantidade == 3}">selected</c:if> value="3">3</option>
                                     <option <c:if test="${produto.quantidade == 4}">selected</c:if> value="4">4</option>
-                                    <option <c:if test="${produto.quantidade == 5}">selected</c:if> value="">5</option>
+                                    <option <c:if test="${produto.quantidade == 5}">selected</c:if> value="5">5</option>
                                     </select>
                                 </div>
                             </div>

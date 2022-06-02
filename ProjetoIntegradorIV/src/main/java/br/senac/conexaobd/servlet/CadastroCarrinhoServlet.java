@@ -28,7 +28,7 @@ public class CadastroCarrinhoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         boolean jaTem = false;
-        
+
         try {
             if (produtoList == null) {
                 produtoList = new ArrayList<>();
@@ -50,9 +50,8 @@ public class CadastroCarrinhoServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath() + "/Principal.jsp");
     }
 
-
-@Override
-        protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String ope = req.getParameter("ope");
         String id_produto = null;
         id_produto = req.getParameter("id_produto");
@@ -62,6 +61,19 @@ public class CadastroCarrinhoServlet extends HttpServlet {
         }
 
         if ("1".equals(ope)) {
+            if (req.getParameter("quantidade") != null) {
+                total = 0;
+                for (int i = 0; i < produtoList.toArray().length; i++) {
+                    if (produtoList.get(i).getCodigo() == Integer.parseInt(req.getParameter("id_produto"))) {
+                        produtoList.get(i).setValor(produtoList.get(i).getValor()/produtoList.get(i).getQuantidade());
+                        produtoList.get(i).setQuantidade(Integer.parseInt(req.getParameter("quantidade")));
+                        produtoList.get(i).setValor(produtoList.get(i).getValor() * produtoList.get(i).getQuantidade());
+                    }
+                }
+                for (int j = 0; j < produtoList.toArray().length; j++) {
+                    total = total + produtoList.get(j).getValor();
+                }
+            }
             req.setAttribute("listaCarrinho", produtoList);
             req.setAttribute("total", total);
             req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
@@ -71,7 +83,7 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                     produtoList.remove(i);
                 }
             }
-        } 
+        }
         resp.sendRedirect(req.getContextPath() + "/Principal.jsp");
     }
 }
