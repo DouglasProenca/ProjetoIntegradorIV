@@ -18,7 +18,17 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
+        <script type="text/javascript">
+            function FormadePagamento() {
+                var formaPagamento;
+                if (document.querySelector('#radio1').checked){
+                    formaPagamento = "boleto";
+                } else {
+                    formaPagamento = "cartao";
+                }
+                location.href="CadastroPedidoServlet?forma_pagemento="+formaPagamento;
+            }
+        </script>
         <title>Carrinho</title>
     </head>
     <body class="" style="background-color: #006C75">
@@ -33,22 +43,22 @@
         </header>
         <div class="container-fluid bg-dark shadow" style="height: 250px"></div>
         <div class="container shadow border bg-light p-5 mb-sm-5" style="top: -50px; position: relative; border-radius: 15px;">
-            <a href="../../protegido/produto/CadastroCarrinhoServlet?ope=1&id_cliente=${cliente.id}" class="btn btn-lg" data-toggle="tooltip" title="Voltar"><i class="fas fa-angle-left"></i></a>
+            <a href="../../protegido/produto/CadastroCarrinhoServlet?ope=1&id_cliente=${cliente.id}" classradio1="btn btn-lg" data-toggle="tooltip" title="Voltar"><i class="fas fa-angle-left"></i></a>
             <h1 class="display-4 text-center mb-sm-5">Método de pagamento</h1>
-            <div class="border-bottom border-top p-5">
-                <h3>Número do pedido <small>#0001</small></h3>
+            <form class="border-bottom border-top p-5">
+                <h3>Forma de Pagamento</h3>
                 <div class="form-check mt-5">
                     <label class="form-check-label" for="radio1">
-                        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" data-toggle="modal" data-target="#boleto""><h3>Boleto</h3>
+                        <input type="radio" class="form-check-input" id="radio1" name="radio1" value="boleto" data-toggle="modal" data-target="#boleto""><h3>Boleto</h3>
                     </label>
                 </div>
                 <div class="form-check mt-sm-3">
                     <label class="form-check-label" for="radio2">
-                        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2" data-toggle="modal" data-target="#cartao"><h3>Cartão de crédito/débito</h3>
+                        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="cartao" data-toggle="modal" data-target="#cartao"><h3>Cartão de crédito/débito</h3>
                     </label>
                 </div>
                 <div class="text-center mt-5">
-                    <a class="btn btn-lg bg-primary text-white" href="resumoPedido.jsp">Continuar</a>
+                    <a class="btn btn-lg bg-primary text-white" onclick="FormadePagamento()">Continuar</a>
                 </div>
             </div>
         </div>
@@ -69,45 +79,51 @@
                         <div class="d-sm-inline m-sm-3">
                             <input class="form-control" type="text" required id="codigoCartao" name="cvv" placeholder="CVV">
                         </div>
-                        <div class="m-4s">
-                            <div class="form-check-inline">
-                                <label class="form-check-label" for="radio1">
-                                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Crédito
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <label class="form-check-label" for="radio2">
-                                    <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Débito
-                                </label>
-                            </div>
-                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn bg-primary text-white">Confirmar</button>
+                        <button data-dismiss="modal" class="btn btn-lg bg-primary text-white">Confirmar</button>
                     </div>
                 </div>
             </div>
         </form>
-        <form class="modal" id="boleto">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4>Boleto</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="m-sm-5 text-center">
-                            <button type="button" class="btn btn-lg bg-primary text-white">Gerar boleto</button>
-                        </div>
-                        <div class="m-sm-5 text-center">
-                            <h3>"Código do boleto aqui!"</h3>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-lg bg-primary text-white">Confirmar</button>
-                    </div>
+        <form action="" >
+            <div class="m-4s">
+                <div class="form-check-inline">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Crédito
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label" for="radio2">
+                        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Débito
+                    </label>
                 </div>
             </div>
-        </form>
-    </body>
+        </div>
+        <div class="modal-footer">
+            <button class="btn bg-primary text-white">Confirmar</button>
+        </div>
+    </form>
+    <form class="modal" id="boleto">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Boleto</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="m-sm-5 text-center">
+                        <button type="button" class="btn btn-lg bg-primary text-white">Gerar boleto</button>
+                    </div>
+                    <div class="m-sm-5 text-center">
+                        <h3>"Código do boleto aqui!"</h3>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-lg bg-primary text-white">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
 </html>
