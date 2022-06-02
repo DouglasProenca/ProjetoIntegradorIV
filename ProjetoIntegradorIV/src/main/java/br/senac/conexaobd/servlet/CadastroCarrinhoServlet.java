@@ -60,7 +60,7 @@ public class CadastroCarrinhoServlet extends HttpServlet {
             id_produto = req.getParameter("id_produto");
             frete = 0;
             total = 0;
-            subtotal=0;
+            subtotal= 0;
             for (int i = 0; i < produtoList.toArray().length; i++) {
                 subtotal = subtotal + produtoList.get(i).getValor();
                 total = subtotal;

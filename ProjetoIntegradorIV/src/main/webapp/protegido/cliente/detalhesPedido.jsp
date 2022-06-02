@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-        <title>Detalhes</title>
+        <title>Carrinho</title>
     </head>
     <body style="background-color: #006C75">
         <header class="fixed-top bg-dark pb-3">
@@ -35,7 +35,7 @@
         </header>
         <div class="container-fluid bg-dark shadow" style="height: 250px"></div>
         <div class="container shadow border bg-light p-5 mb-sm-5" style="top: -50px; position: relative; border-radius: 15px;">
-            <h1 class="display-4 text-center mb-5">Detalhes do pedido</h1>
+            <h1 class="display-4 text-center mb-5">Resumo do pedido</h1>
             <div class="container p-sm-5 border-bottom border-top mt-sm-3">
                 <br>
                 <h3>Produtos:</h3>
@@ -71,7 +71,7 @@
                     <form Action="CadastroPedidoServlet" method="POST">
                         <input type="text" name="id_cliente" id="id_cliente" hidden value="${sessionScope.cliente.id}">
                         <input type="text" name="forma_pg" id="forma_pg" hidden value="${forma_pagamento}">
-                        <button class="btn btn-lg bg-primary text-white" type="submit">Continuar</a>  
+                        <button class="btn btn-lg bg-primary text-white" type="submit">Finalizar pedido</button>  
                     </form>
                 </div>
             </div>

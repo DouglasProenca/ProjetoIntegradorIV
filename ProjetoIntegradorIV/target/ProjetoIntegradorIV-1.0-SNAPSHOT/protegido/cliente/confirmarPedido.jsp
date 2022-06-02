@@ -21,12 +21,12 @@
         <script type="text/javascript">
             function FormadePagamento() {
                 var formaPagamento;
-                if (document.querySelector('#radio1').checked){
+                if (document.querySelector('#radio1').checked) {
                     formaPagamento = "boleto";
                 } else {
                     formaPagamento = "cartao";
                 }
-                location.href="../../CadastroPedidoServlet?forma_pagemento="+formaPagamento;
+                location.href = "../../CadastroPedidoServlet?forma_pagemento=" + formaPagamento;
             }
         </script>
         <title>Carrinho</title>
@@ -45,11 +45,11 @@
         <div class="container shadow border bg-light p-5 mb-sm-5" style="top: -50px; position: relative; border-radius: 15px;">
             <a href="../../protegido/produto/CadastroCarrinhoServlet?ope=1&id_cliente=${cliente.id}" classradio1="btn btn-lg" data-toggle="tooltip" title="Voltar"><i class="fas fa-angle-left"></i></a>
             <h1 class="display-4 text-center mb-sm-5">Método de pagamento</h1>
-            <form class="border-bottom border-top p-5">
+            <div class="border-bottom border-top p-5">
                 <h3>Forma de Pagamento</h3>
                 <div class="form-check mt-5">
                     <label class="form-check-label" for="radio1">
-                        <input type="radio" class="form-check-input" id="radio1" name="radio1" value="boleto" data-toggle="modal" data-target="#boleto""><h3>Boleto</h3>
+                        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="boleto" data-toggle="modal" data-target="#boleto"><h3>Boleto</h3>
                     </label>
                 </div>
                 <div class="form-check mt-sm-3">
@@ -85,45 +85,44 @@
                     </div>
                 </div>
             </div>
+            <form>
+                <div class="m-4s">
+                    <div class="form-check-inline">
+                        <label class="form-check-label" for="radio1">
+                            <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Crédito
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label" for="radio2">
+                            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Débito
+                        </label>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button class="btn bg-primary text-white">Confirmar</button>
+            </div>
         </form>
-        <form action="" >
-            <div class="m-4s">
-                <div class="form-check-inline">
-                    <label class="form-check-label" for="radio1">
-                        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Crédito
-                    </label>
-                </div>
-                <div class="form-check-inline">
-                    <label class="form-check-label" for="radio2">
-                        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Débito
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn bg-primary text-white">Confirmar</button>
-        </div>
-    </form>
-    <form class="modal" id="boleto">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4>Boleto</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="m-sm-5 text-center">
-                        <button type="button" class="btn btn-lg bg-primary text-white">Gerar boleto</button>
+        <form class="modal" id="boleto">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Boleto</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <div class="m-sm-5 text-center">
-                        <h3>"Código do boleto aqui!"</h3>
+                    <div class="modal-body">
+                        <div class="m-sm-5 text-center">
+                            <button type="button" class="btn btn-lg bg-primary text-white">Gerar boleto</button>
+                        </div>
+                        <div class="m-sm-5 text-center">
+                            <h3>"Código do boleto aqui!"</h3>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-lg bg-primary text-white">Confirmar</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-lg bg-primary text-white">Confirmar</button>
-                </div>
             </div>
-        </div>
-    </form>
-</body>
+        </form>
+    </body>
 </html>
