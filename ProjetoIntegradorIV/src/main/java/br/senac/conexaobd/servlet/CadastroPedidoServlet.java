@@ -26,7 +26,12 @@ public class CadastroPedidoServlet extends HttpServlet {
         String forma_pg = request.getParameter("forma_pg");
         try {
             CarrinhoDAO.inserirPedido(Integer.parseInt(id_cliente),
-                    CadastroCarrinhoServlet.frete, CadastroCarrinhoServlet.total, forma_pg); 
+                    CadastroCarrinhoServlet.frete, CadastroCarrinhoServlet.total, forma_pg);
+            for (int i = 0; i < CadastroCarrinhoServlet.produtoList.toArray().length; i++) {
+                CarrinhoDAO.inserirCarrinho(CadastroCarrinhoServlet.produtoList.get(i).getCodigo(),
+                        CadastroCarrinhoServlet.produtoList.get(i).getQuantidade(),
+                        CadastroCarrinhoServlet.produtoList.get(i).getValor());
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(CadastroPedidoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

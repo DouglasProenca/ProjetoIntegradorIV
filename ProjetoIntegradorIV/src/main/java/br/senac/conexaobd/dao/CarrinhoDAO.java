@@ -67,6 +67,18 @@ public class CarrinhoDAO {
         ps.execute();
     }
     
+    public static void inserirCarrinho(int id_produto, int quantidade, double valor)
+            throws SQLException, ClassNotFoundException {
+        String query = "insert into lista values((select max(id) from pedido),?,?,?)";
+        Connection con = Conexao.abrirConexao();
+        PreparedStatement ps;
+        ps = con.prepareStatement(query);
+        ps.setInt(1, id_produto);
+        ps.setInt(2, quantidade);
+        ps.setDouble(3, valor);
+        ps.execute();
+    }
+    
      public static List<Pedido> getPedido(int id) throws ClassNotFoundException, SQLException {
 
         List<Pedido> pedidos = new ArrayList<>();
