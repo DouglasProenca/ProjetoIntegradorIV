@@ -5,6 +5,7 @@
 --%>
 
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -36,26 +37,14 @@
         <div class="container shadow border bg-light p-5 mb-sm-5" style="top: -50px; position: relative; border-radius: 15px;">
             <h1 class="display-4 text-center mb-5">Detalhes do pedido</h1>
             <div class="container p-sm-5 border-bottom border-top mt-sm-3">
-                <h3>Número do pedido <small>#0001</small></h3>
                 <br>
                 <h3>Produtos:</h3>
+                <c:forEach var="produto" items="${listaCarrinho}">
                 <div class="d-flex px-5">
-                    <h5 class="flex-fill">Iphone 13</h5>
-                    <h6 class="align-self-end">R$4000.00</h6>
+                    <h5 class="flex-fill">${produto.nome}</h5>
+                    <h6 class="align-self-end">${produto.valor}</h6>
                 </div>
-                <div class="d-flex px-5">
-                    <h6 class="flex-fill">Quantidade: 2</h6>
-                    <h5 class="text-center">R$8000.00</h5>
-                </div>
-                <br>
-                <div class="d-flex px-5">
-                    <h5 class="flex-fill">Samsung Galaxy S21</h5>
-                    <h6 class="align-self-end">R$4000.00</h6>
-                </div>
-                <div class="d-flex px-5">
-                    <h6 class="flex-fill">Quantidade: 1</h6>
-                    <h5 class="text-center">R$4000.00</h5>
-                </div>
+                </c:forEach>
                 <br>
                 <h3>Endereço de entrega:</h3>
                 <br>
@@ -68,14 +57,14 @@
                 <h3>Frete</h3>
                 <div class="d-flex px-5">
                     <h5 class="flex-fill">Normal</h5>
-                    <h6 class="align-self-end">R$10.00</h6>
+                    <h6 class="align-self-end">R$${frete}</h6>
                 </div>                
                 <br>
                 <h3>Método de pagamento:</h3>
-                <h5 class="pl-5">Cartão</h5>
+                <h5 class="pl-5">${forma_pagamento}</h5>
                 <br>
                 <h3>Total:</h3>
-                <h4 class="pl-5">R$12010.00</h4>
+                <h4 class="pl-5">R$${total}</h4>
             </div>
         </div>
     </body>

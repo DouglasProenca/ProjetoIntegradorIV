@@ -9,6 +9,7 @@ C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\ma
 C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\conexaobd\Conexao.java
 C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\conexaobd\entidades\EnderecoCliente.java
 C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\conexaobd\servlet\BuscaProduto.java
+C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\conexaobd\servlet\CadastroPedidoServlet.java
 C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\conexaobd\dao\ProdutoDAO.java
 C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\conexaobd\servlet\CadastroCarrinhoServlet.java
 C:\Users\Douglas\Documents\GitHub\ProjetoIntegradorIV\ProjetoIntegradorIV\src\main\java\br\senac\conexaobd\servlet\ListarProdutoServlet.java

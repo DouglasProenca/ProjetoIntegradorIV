@@ -26,7 +26,7 @@
                 } else {
                     formaPagamento = "cartao";
                 }
-                location.href="CadastroPedidoServlet?forma_pagemento="+formaPagamento;
+                location.href="../../CadastroPedidoServlet?forma_pagemento="+formaPagamento;
             }
         </script>
         <title>Carrinho</title>

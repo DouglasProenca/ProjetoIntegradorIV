@@ -21,9 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CadastroCarrinhoServlet", urlPatterns = {"/protegido/produto/CadastroCarrinhoServlet"})
 public class CadastroCarrinhoServlet extends HttpServlet {
 
-    private List<Produto> produtoList;
+    public static List<Produto> produtoList;
+    public static double frete;
     double subtotal = 0;
-    double total = 0;
+    public static double total = 0;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -57,7 +58,7 @@ public class CadastroCarrinhoServlet extends HttpServlet {
             String ope = req.getParameter("ope");
             String id_produto = null;
             id_produto = req.getParameter("id_produto");
-            double frete = 10;
+            frete = 10;
             total = 0;
             subtotal=0;
             for (int i = 0; i < produtoList.toArray().length; i++) {
