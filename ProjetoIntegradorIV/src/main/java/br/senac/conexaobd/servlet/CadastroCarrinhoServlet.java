@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CadastroCarrinhoServlet extends HttpServlet {
 
     private List<Produto> produtoList;
-    double subtotal =0;
+    double subtotal = 0;
     double total = 0;
 
     @Override
@@ -53,49 +53,55 @@ public class CadastroCarrinhoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String ope = req.getParameter("ope");
-        String id_produto = null;
-        id_produto = req.getParameter("id_produto");
-        double frete =10;
-        total = 0;
-        for (int i = 0; i < produtoList.toArray().length; i++) {
-            subtotal = subtotal + produtoList.get(i).getValor();
-            total = subtotal;
-        }
+        try {
+            String ope = req.getParameter("ope");
+            String id_produto = null;
+            id_produto = req.getParameter("id_produto");
+            double frete = 10;
+            total = 0;
+            subtotal=0;
+            for (int i = 0; i < produtoList.toArray().length; i++) {
+                subtotal = subtotal + produtoList.get(i).getValor();
+                total = subtotal;
+            }
 
-        if ("1".equals(ope)) {
-            if (req.getParameter("quantidade") != null) {
-                total = 0;
-                for (int i = 0; i < produtoList.toArray().length; i++) {
-                    if (produtoList.get(i).getCodigo() == Integer.parseInt(req.getParameter("id_produto"))) {
-                        produtoList.get(i).setValor(produtoList.get(i).getValor()/produtoList.get(i).getQuantidade());
-                        produtoList.get(i).setQuantidade(Integer.parseInt(req.getParameter("quantidade")));
-                        produtoList.get(i).setValor(produtoList.get(i).getValor() * produtoList.get(i).getQuantidade());
+            if ("1".equals(ope)) {
+                if (req.getParameter("quantidade") != null) {
+                    total = 0;
+                    subtotal = 0;
+                    for (int i = 0; i < produtoList.toArray().length; i++) {
+                        if (produtoList.get(i).getCodigo() == Integer.parseInt(req.getParameter("id_produto"))) {
+                            produtoList.get(i).setValor(produtoList.get(i).getValor() / produtoList.get(i).getQuantidade());
+                            produtoList.get(i).setQuantidade(Integer.parseInt(req.getParameter("quantidade")));
+                            produtoList.get(i).setValor(produtoList.get(i).getValor() * produtoList.get(i).getQuantidade());
+                        }
+                    }
+                    for (int j = 0; j < produtoList.toArray().length; j++) {
+                        subtotal = subtotal + produtoList.get(j).getValor();
+                        total = subtotal;
                     }
                 }
-                for (int j = 0; j < produtoList.toArray().length; j++) {
-                    subtotal = subtotal + produtoList.get(j).getValor();
-                    total = subtotal;
+                req.setAttribute("listaCarrinho", produtoList);
+                req.setAttribute("total", total);
+                req.setAttribute("subtotal", subtotal);
+                req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
+            } else if ("2".equals(ope)) {
+                for (int i = 0; i < produtoList.toArray().length; i++) {
+                    if (produtoList.get(i).getCodigo() == Integer.parseInt(id_produto)) {
+                        produtoList.remove(i);
+                    }
                 }
+            } else if ("3".equals(ope)) {
+                total = total + frete + subtotal;
+                req.setAttribute("listaCarrinho", produtoList);
+                req.setAttribute("total", total);
+                req.setAttribute("subtotal", subtotal);
+                req.setAttribute("frete", frete);
+                req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
             }
-            req.setAttribute("listaCarrinho", produtoList);
-            req.setAttribute("total", total);
-            req.setAttribute("subtotal", subtotal);
-            req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
-        } else if ("2".equals(ope)) {
-            for (int i = 0; i < produtoList.toArray().length; i++) {
-                if (produtoList.get(i).getCodigo() == Integer.parseInt(id_produto)) {
-                    produtoList.remove(i);
-                }
-            }
-        } else if ("3".equals(ope)) {
-            total = total+frete+subtotal;
-            req.setAttribute("listaCarrinho", produtoList);
-            req.setAttribute("total", total);
-            req.setAttribute("subtotal", subtotal);
-            req.setAttribute("frete", frete);
-            req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
+            resp.sendRedirect(req.getContextPath() + "/Principal.jsp");
+        } catch (NullPointerException ex) {
+            resp.sendRedirect(req.getContextPath() + "/Carrinho.jsp");
         }
-        resp.sendRedirect(req.getContextPath() + "/Principal.jsp");
     }
 }
