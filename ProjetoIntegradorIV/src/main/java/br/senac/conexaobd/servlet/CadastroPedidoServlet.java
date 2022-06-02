@@ -19,6 +19,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "CadastroPedidoServlet", urlPatterns = {"/CadastroPedidoServlet"})
 public class CadastroPedidoServlet extends HttpServlet {
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+                    response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
+                
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -93,7 +93,7 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                     }
                 }
             } else if ("3".equals(ope)) {
-                total = total + frete + subtotal;
+                total = frete + subtotal;
                 req.setAttribute("listaCarrinho", produtoList);
                 req.setAttribute("total", total);
                 req.setAttribute("subtotal", subtotal);
