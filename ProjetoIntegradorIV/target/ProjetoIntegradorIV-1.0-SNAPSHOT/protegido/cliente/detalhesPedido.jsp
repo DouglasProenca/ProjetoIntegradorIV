@@ -40,9 +40,13 @@
                 <br>
                 <h3>Produtos:</h3>
                 <c:forEach var="produto" items="${listaCarrinho}">
+
                     <div class="d-flex px-5">
                         <h5 class="flex-fill">${produto.nome}</h5>
-                        <h6 class="align-self-end">${produto.valor}</h6>
+                    </div>
+                    <div class="d-flex px-5">
+                        <h6 class="flex-fill">Quantidade: ${produto.quantidade}</h6>
+                        <h5 class="text-center">R$${produto.valor}</h5>
                     </div>
                 </c:forEach>
                 <br>
