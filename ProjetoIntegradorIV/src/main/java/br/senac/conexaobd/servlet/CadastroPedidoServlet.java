@@ -32,6 +32,7 @@ public class CadastroPedidoServlet extends HttpServlet {
                         CadastroCarrinhoServlet.produtoList.get(i).getQuantidade(),
                         CadastroCarrinhoServlet.produtoList.get(i).getValor());
             }
+            CadastroCarrinhoServlet.produtoList.clear();
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(CadastroPedidoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
