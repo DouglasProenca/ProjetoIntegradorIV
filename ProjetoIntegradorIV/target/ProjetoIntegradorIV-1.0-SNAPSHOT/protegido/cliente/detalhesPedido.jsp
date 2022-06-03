@@ -52,10 +52,19 @@
                 <br>
                 <h3>Endereço de entrega:</h3>
                 <br>
-                <div class="pl-5">
-                    <h5>Rua Santo Alberto, 325</h5>
-                    <h5>Campo Grande - São Paulo, SP</h5>
-                    <h5>04676-041</h5>
+                <div class="d-flex">
+                    <div class="align-self-center">
+                        <div class="pl-5">
+                            <h5>Rua Santo Alberto, 325</h5>
+                            <h5>Campo Grande - São Paulo, SP</h5>
+                            <h5>04676-041</h5>
+                        </div>
+                    </div>
+                    <div class="align-self-center p-5">
+                        <button class="btn bg-light rounded-circle" data-toggle="modal" data-target="#endereco" data-toggle="tooltip" title="Mudar endereço de entrega">
+                            <i class="fas fa-pen" aria-hidden="true"></i>
+                        </button>
+                    </div>
                 </div>
                 <br>
                 <h3>Frete</h3>
