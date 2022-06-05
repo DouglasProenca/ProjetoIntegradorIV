@@ -7,6 +7,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<a href="detalhesPedido.jsp"></a>
 <!DOCTYPE html>
 <html>
     <head>
@@ -84,7 +85,9 @@
                     <form Action="CadastroPedidoServlet" method="POST">
                         <input type="text" name="id_cliente" id="id_cliente" hidden value="${sessionScope.cliente.id}">
                         <input type="text" name="forma_pg" id="forma_pg" hidden value="${forma_pagamento}">
-                        <button class="btn btn-lg bg-primary text-white" type="submit">Finalizar pedido</button>  
+                        <div class="text-center mt-5">
+                            <button class="btn btn-lg bg-primary text-white" type="submit">Finalizar pedido</button> 
+                        </div>
                     </form>
                 </div>
             </div>

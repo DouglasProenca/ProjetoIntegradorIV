@@ -2,6 +2,7 @@ package br.senac.conexaobd.servlet;
 
 import br.senac.conexaobd.dao.CarrinhoDAO;
 import br.senac.conexaobd.dao.ProdutoDAO;
+import br.senac.conexaobd.entidades.Lista;
 import br.senac.conexaobd.entidades.Pedido;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,11 +33,24 @@ public class pedidosServlet extends HttpServlet {
         String id = req.getParameter("id");
 
         try {
-            List<Pedido> pedidos = CarrinhoDAO.getPedido(Integer.parseInt(id));
-            req.setAttribute("ListaPedidos", pedidos);
-            // RequestDispatcher reaproveita os objetos Request e Response
-            String url = "/protegido/cliente/Pedidos.jsp";
-            req.getRequestDispatcher(url).forward(req, resp);
+            if (req.getParameter("idPedido") != null) {
+                List<Lista> pedidos = CarrinhoDAO.getPedidoDetalhe(Integer.parseInt(req.getParameter("idPedido")));
+                int frete = pedidos.get(0).getFrete();
+                String forma_pagamento = pedidos.get(0).getForma_pagamento();
+                
+                req.setAttribute("id_pedido", req.getParameter("idPedido"));
+                req.setAttribute("forma", forma_pagamento);
+                req.setAttribute("frete", frete);
+                req.setAttribute("ListaPedidos", pedidos);
+                String url = "/protegido/cliente/resumoPedido.jsp";
+                req.getRequestDispatcher(url).forward(req, resp);
+            } else {
+                List<Pedido> pedidos = CarrinhoDAO.getPedido(Integer.parseInt(id));
+                req.setAttribute("ListaPedidos", pedidos);
+                // RequestDispatcher reaproveita os objetos Request e Response
+                String url = "/protegido/cliente/Pedidos.jsp";
+                req.getRequestDispatcher(url).forward(req, resp);
+            }
         } catch (ClassNotFoundException | SQLException ex) {
             resp.sendRedirect(req.getContextPath() + "/protegido/uteis/erro.jsp");
             Logger.getLogger(ListarProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);

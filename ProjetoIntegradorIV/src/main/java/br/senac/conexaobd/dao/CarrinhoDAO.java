@@ -1,6 +1,7 @@
 package br.senac.conexaobd.dao;
 
 import br.senac.conexaobd.Conexao;
+import br.senac.conexaobd.entidades.Lista;
 import br.senac.conexaobd.entidades.Pedido;
 import br.senac.conexaobd.entidades.Produto;
 import java.sql.Connection;
@@ -66,7 +67,7 @@ public class CarrinhoDAO {
         ps.setString(6, "Aguardando Envio");
         ps.execute();
     }
-    
+
     public static void inserirCarrinho(int id_produto, int quantidade, double valor)
             throws SQLException, ClassNotFoundException {
         String query = "insert into lista values((select max(id) from pedido),?,?,?)";
@@ -78,8 +79,8 @@ public class CarrinhoDAO {
         ps.setDouble(3, valor);
         ps.execute();
     }
-    
-     public static List<Pedido> getPedido(int id) throws ClassNotFoundException, SQLException {
+
+    public static List<Pedido> getPedido(int id) throws ClassNotFoundException, SQLException {
 
         List<Pedido> pedidos = new ArrayList<>();
         String query = "select * from pedido where id_cliente = ?";
@@ -95,6 +96,44 @@ public class CarrinhoDAO {
                 endereco.setData(rs.getDate("data"));
                 endereco.setValor(rs.getDouble("valor"));
                 endereco.setId(rs.getInt("id"));
+                pedidos.add(endereco);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return pedidos;
+    }
+
+    public static List<Lista> getPedidoDetalhe(int id) throws ClassNotFoundException, SQLException {
+
+        List<Lista> pedidos = new ArrayList<>();
+        String query = "select l.id_pedido\n"
+                + "	 , l.quantidade\n"
+                + "     , p.nome\n"
+                + "     , l.valor\n"
+                + "     , ped.forma_pagamento\n"
+                + "     , ped.frete\n"
+                + "from lista l\n"
+                + "inner join produto p\n"
+                + "	on p.código = l.id_produto\n"
+                + "inner join pedido ped\n"
+                + "    on ped.id = l.id_pedido\n"
+                + "where l.id_pedido = ?";
+        Connection con = Conexao.abrirConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Lista endereco = new Lista();
+                endereco.setId_pedido(rs.getInt("id_pedido"));
+                endereco.setQuantidade(rs.getInt("quantidade"));
+                endereco.setNome(rs.getString("nome"));
+                endereco.setValor(rs.getDouble("valor"));
+                endereco.setForma_pagamento(rs.getString("forma_pagamento"));
+                endereco.setFrete(rs.getInt("frete"));
                 pedidos.add(endereco);
             }
 

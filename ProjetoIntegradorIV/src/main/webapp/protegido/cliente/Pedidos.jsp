@@ -51,7 +51,7 @@
                         <h3 class="text-center">Status: <small>${pedidos.status}</small></h3>
                     </div>
                     <div class="col-2 mx-auto">
-                        <a href="detalhesPedido.jsp" href="perfilCliente.jsp" class="btn bg-primary text-white">Detalhes</a>
+                        <a href="pedidosServlet?id=${sessionScope.cliente.id}&idPedido=${pedidos.id}" class="btn bg-primary text-white">Detalhes</a>
                     </div>
                 </div>
             </div>
