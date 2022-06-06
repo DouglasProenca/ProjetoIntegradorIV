@@ -76,8 +76,13 @@
                         <div class="d-sm-inline flex-fill m-sm-3">
                             <input class="form-control" type="text" required id="numeroCartao" name="numero" placeholder="Número">
                         </div>
-                        <div class="d-sm-inline m-sm-3">
-                            <input class="form-control" type="text" required id="codigoCartao" name="cvv" placeholder="CVV">
+                        <div class="d-flex">
+                            <div class="d-sm-inline flex-fill">
+                                <input class="form-control" type="text" required id="codigoCartao" name="cvv" placeholder="Validade">
+                            </div>
+                            <div class="d-sm-inline flex-fill">
+                                <input class="form-control" type="text" required id="codigoCartao" name="cvv" placeholder="CVV">
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">

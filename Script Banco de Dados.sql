@@ -67,7 +67,15 @@ create table pedido(
  forma_pagamento varchar(100) not null,
  frete double not null,
  valor double not null,
+ data date not null,
  status varchar(100) not null
+);
+
+create table lista(
+id_pedido int not null,
+id_produto int not null,
+quantidade int not null,
+valor double not null
 );
 
 -- ---------------------------------------------------Constraints-------------------------------------------
@@ -77,12 +85,6 @@ references categoria(id);
 
 alter table endereco_cliente add constraint fk_endereco_cliente_cliente 
 foreign key endereco_cliente(id_cliente) references cliente(id);
-
-alter table carrinho add constraint  fk_carrinho_cliente foreign key carrinho(id_cliente) 
-references cliente(id);
-
-alter table carrinho add constraint  fk_carrinho_produto foreign key carrinho(id_produto) 
-references produto(código);
 
 alter table pedido add constraint  fk_pedido_cliente foreign key pedido(id_cliente) 
 references cliente(id);

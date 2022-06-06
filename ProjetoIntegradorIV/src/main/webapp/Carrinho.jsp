@@ -23,8 +23,8 @@
         <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
         <title>Carrinho</title>
         <script type="text/javascript">
-            function AlterarQuantidade(id_produto,quantidade) {
-                location.href="CadastroCarrinhoServlet?ope=1&id_produto="+id_produto+"&quantidade="+quantidade;
+            function AlterarQuantidade(id_produto, quantidade) {
+                location.href = "CadastroCarrinhoServlet?ope=1&id_produto=" + id_produto + "&quantidade=" + quantidade;
             }
         </script>
     </head>
@@ -58,7 +58,7 @@
                                 <label>Quantidade:</label>
                                 <br>
                                 <!-- Nota: Aqui, tu pode fazer a quantidade options conforme a disponibilidade do estoque -->
-                                <select class="form-control float-right text-center" onblur="AlterarQuantidade(${produto.codigo},this.value)" 
+                                <select class="form-control float-right text-center" onblur="AlterarQuantidade(${produto.codigo}, this.value)" 
                                         id="sellist1" value="${produto.quantidade}" name="sellist1" style="max-width: 100px">
                                     <option <c:if test="${produto.quantidade == 1}">selected</c:if> value="1">1</option>
                                     <option <c:if test="${produto.quantidade == 2}">selected</c:if> value="2">2</option>
@@ -77,14 +77,57 @@
             </div>
             <div class="row">
                 <div class="col-sm">
-                    <div class="row">
-                        <!-- Quando tiver que inserir o CEP, tornar essa div d-flex -->
-                        <div class="col-sm mt-4 d-flex">
-                            <div class="container" style="max-width: 250px">
-                                <h4 class="">Calcule seu frete</h4>
-                                <div class="form-group">
-                                    <input class="form-control" type="text" id="cep" name="cep" placeholder="_____-___" onblur="location.href='CadastroCarrinhoServlet?ope=3'">
+                    <div>
+                        <ul class="nav nav-tabs justify-content-between" role="tablist">
+                            <li class="nav-item flex-fill">
+                                <a class="nav-link active text-center" data-toggle="tab" href="#novo">Novo endereço</a>
+                            </li>
+                            <c:if test="${sessionScope.cliente.nome != null}">
+                                <li class="nav-item flex-fill">
+                                    <a class="nav-link text-center" data-toggle="tab" href="#salvos">Seus endereços</a>
+                                </li>
+                            </c:if>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="novo" class="container tab-pane active"><br>
+                                <div class="col-sm mt-4 d-flex">
+                                    <div>
+                                        <h4 class="">Calcule seu frete</h4>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="cep" name="cep" placeholder="_____-___" onblur="location.href = 'CadastroCarrinhoServlet?ope=3'">
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                            <div id="salvos" class="container tab-pane fade"><br>
+                                <h2 class="ml-sm-3">Seus endereços</h2>
+                                <c:forEach var="enderecos" items="${listaEnderecos}">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <ul class="list-group flex-fill">
+                                            <li class="list-group-item">${enderecos.CEP}</li>
+                                                <c:if test="${not empty enderecos.complemento}">
+                                                <li class="list-group-item">${enderecos.complemento}</li>
+                                                </c:if>
+                                                <c:if test="${empty enderecos.complemento}">
+                                                <li class="list-group-item">"Complemento"</li>
+                                                </c:if>
+                                            <li class="list-group-item">${enderecos.cidade}</li>
+                                        </ul>
+                                        <ul class="list-group flex-fill">
+                                            <li class="list-group-item">${enderecos.rua}</li>
+                                            <li class="list-group-item">${enderecos.bairro}</li>
+                                            <li class="list-group-item">${enderecos.uf}</li>
+                                        </ul>
+                                        <div class="d-flex flex-column">
+                                            <!--<button class="btn bg-white my-auto flex-fill border" data-toggle="modal" data-target="#adicionarEndereco" data-toggle="tooltip" title="Editar endereço">
+                                                    <i class="fa fa-pen" aria-hidden="true"></i>
+                                                </button> -->
+                                            <div class="bg-white my-auto border text-center p-2 flex-fill" data-toggle="tooltip" title="Endereço principal">
+                                                <input type="radio" name="optradio" checked style="bottom: -55px; position: relative">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>
@@ -92,6 +135,7 @@
                 <div class="col-sm">
                     <div class="d-flex flex-column text-sm-right text-center mt-4">
                         <h3 class="">Frete</h3>
+                        <h6>Padrão</h6>
                         <h5>${frete}</h5>
                         <h3>Total</h3>
                         <h5>${total}</h5>
@@ -107,8 +151,8 @@
                         </div>
                     </div>
                 </div>
-            </div>            
-        </div> 
+            </div>           
+        </div>
         <script type="text/javascript">
             //máscara do cep
             $("#cep").inputmask({"mask": "99999-999"});

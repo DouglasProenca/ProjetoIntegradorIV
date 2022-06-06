@@ -39,6 +39,12 @@
                         </div>
                     </li>
                 </c:if>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pedidos</a>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item"><a href="#">Status dos pedidos</a></button>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>

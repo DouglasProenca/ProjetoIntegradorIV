@@ -36,7 +36,7 @@
         <div class="container-fluid bg-dark shadow" style="height: 250px"></div>
         <div class="container shadow border bg-light p-5 mb-sm-5" style="top: -50px; position: relative; border-radius: 15px;">
             <a href="${pageContext.request.contextPath}/pedidosServlet?id=${sessionScope.cliente.id}" class="btn btn-lg" data-toggle="tooltip" title="Voltar"><i class="fas fa-angle-left"></i></a>
-            <h1 class="display-4 text-center mb-5">Resumo do pedido</h1>
+            <h1 class="display-4 text-center mb-5">Detalhes do pedido</h1>
             <div class="container p-sm-5 border-bottom border-top mt-sm-3">
                 <h3>Número do pedido <small>${id_pedido}</small></h3>
                 <br>
@@ -68,16 +68,11 @@
                             <h5>04676-041</h5>
                         </div>
                     </div>
-                    <div class="align-self-center p-5">
-                        <button class="btn bg-light rounded-circle" data-toggle="modal" data-target="#endereco" data-toggle="tooltip" title="Mudar endereço de entrega">
-                            <i class="fas fa-pen" aria-hidden="true"></i>
-                        </button>
-                    </div>
                 </div>
                 <br>
                 <h3>Frete</h3>
                 <div class="d-flex px-5">
-                    <h5 class="flex-fill">Normal</h5>
+                    <h5 class="flex-fill">Padrão</h5>
                     <h6 class="align-self-end">R$${frete}</h6>
                 </div>                
                 <br>
@@ -88,45 +83,6 @@
                 <h4 class="pl-5">R$12010.00</h4>
             </div>
         </div>
-        <form class="modal" id="endereco">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4>Seus endereços</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <c:forEach var="enderecos" items="${listaEnderecos}">
-                            <div class="d-flex justify-content-between mb-3">
-                                <ul class="list-group flex-fill">
-                                    <li class="list-group-item">${enderecos.CEP}</li>
-                                        <c:if test="${not empty enderecos.complemento}">
-                                        <li class="list-group-item">${enderecos.complemento}</li>
-                                        </c:if>
-                                        <c:if test="${empty enderecos.complemento}">
-                                        <li class="list-group-item">"Complemento"</li>
-                                        </c:if>
-                                    <li class="list-group-item">${enderecos.cidade}</li>
-                                </ul>
-                                <ul class="list-group flex-fill">
-                                    <li class="list-group-item">${enderecos.rua}</li>
-                                    <li class="list-group-item">${enderecos.bairro}</li>
-                                    <li class="list-group-item">${enderecos.uf}</li>
-                                </ul>
-                                <div class="d-flex flex-column">
-                                    <div class="bg-white my-auto border text-center p-2 flex-fill" data-toggle="tooltip" title="Endereço principal">
-                                        <input type="radio" name="optradio" checked style="bottom: -55px; position: relative">
-                                    </div>
-                                </div>
-                            </div>
-                        </c:forEach>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-lg bg-primary text-white">Confirmar</button>
-                    </div>
-                </div>
-            </div>
-        </form>
     </body>
 </html>
 
