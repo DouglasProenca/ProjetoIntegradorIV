@@ -179,4 +179,30 @@ public class CarrinhoDAO {
         }
         return endereco;
     }
+    
+    public static List<Pedido> getAllPedidos(int ope) throws ClassNotFoundException, SQLException {
+
+        List<Pedido> clientes = new ArrayList<>();
+        String query = "call sp_getPedidos(?)";
+        Connection con = Conexao.abrirConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, ope);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Pedido pedido = new Pedido();
+                pedido.setId(rs.getInt("id"));
+                pedido.setStatus(rs.getString("status"));
+                pedido.setData(rs.getDate("data"));
+                pedido.setValor(rs.getDouble("valor"));
+                pedido.setId(rs.getInt("id"));
+                clientes.add(pedido);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return clientes;
+    }
 }

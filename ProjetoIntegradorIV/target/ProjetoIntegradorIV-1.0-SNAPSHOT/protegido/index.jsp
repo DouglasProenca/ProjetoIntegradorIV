@@ -39,12 +39,14 @@
                         </div>
                     </li>
                 </c:if>
+                 <c:if test="${sessionScope.usuario.isEST()}">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pedidos</a>
                     <div class="dropdown-menu">
-                        <button class="dropdown-item"><a href="#">Status dos pedidos</a></button>
+                        <button class="dropdown-item"><a href="../protegido/produto/StatusPedidoServlet?ope=0">Status dos pedidos</a></button>
                     </div>
                 </li>
+                </c:if>
             </ul>
         </div>
     </nav>

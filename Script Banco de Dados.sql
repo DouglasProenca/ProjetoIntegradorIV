@@ -86,6 +86,12 @@ references categoria(id);
 alter table endereco_cliente add constraint fk_endereco_cliente_cliente 
 foreign key endereco_cliente(id_cliente) references cliente(id);
 
+alter table carrinho add constraint  fk_carrinho_cliente foreign key carrinho(id_cliente) 
+references cliente(id);
+
+alter table carrinho add constraint  fk_carrinho_produto foreign key carrinho(id_produto) 
+references produto(código);
+
 alter table pedido add constraint  fk_pedido_cliente foreign key pedido(id_cliente) 
 references cliente(id);
 
@@ -298,6 +304,95 @@ begin
 insert into cliente values(null,email,nome,cpf,Nascimento,Genero,Senha);
 
 insert into endereco_cliente values(null,(select max(id) from cliente),cep,rua,numero,complemento,bairro,cidade,uf);
+
+end $
+
+delimiter ;
+
+delimiter $
+
+CREATE PROCEDURE sp_getPedidos(contador int)
+begin
+
+if contador = 0
+then
+
+select u.id
+       ,u.nome
+       ,u.telefone
+       ,u.nascimento
+       ,c.categoria
+       ,u.cpf
+       ,u.email
+       ,u.senha
+       , case when u.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo
+from usuario u
+inner join categoria c
+on c.id = u.id_categoria
+order by u.nome
+LIMIT 10;
+
+end if;
+
+if contador = 1
+then
+
+select u.id
+       ,u.nome
+       ,u.telefone
+       ,u.nascimento
+       ,c.categoria
+       ,u.email
+       ,u.cpf
+       ,u.senha
+       , case when u.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo
+from usuario u
+inner join categoria c
+on c.id = u.id_categoria
+order by u.nome
+LIMIT 10,10;
+
+end if;
+
+if contador = 2
+then
+
+select u.id
+       ,u.nome
+       ,u.telefone
+       ,u.nascimento
+       ,c.categoria
+       ,u.email
+       ,u.cpf
+       ,u.senha
+       , case when u.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo
+from usuario u
+inner join categoria c
+on c.id = u.id_categoria
+order by u.nome
+LIMIT 20,10;
+
+end if;
+
+if contador = 3
+then
+
+select u.id
+       ,u.nome
+       ,u.telefone
+       ,u.nascimento
+       ,c.categoria
+       ,u.email
+       ,u.cpf
+       ,u.senha
+       , case when u.ativo = 1 then 'Ativo' else 'Não Ativo' end ativo
+from usuario u
+inner join categoria c
+on c.id = u.id_categoria
+order by u.nome
+LIMIT 30,10;
+
+end if;
 
 end $
 
