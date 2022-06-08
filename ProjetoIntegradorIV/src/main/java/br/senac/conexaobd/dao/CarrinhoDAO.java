@@ -205,4 +205,20 @@ public class CarrinhoDAO {
         }
         return clientes;
     }
+    
+    public static boolean updateStatusPedido(Pedido pedido) throws ClassNotFoundException, SQLException {
+        boolean ok = true;
+        String query = "update pedido set status=? where id=?";
+        Connection con = Conexao.abrirConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, pedido.getStatus());
+            ps.setInt(2, pedido.getId());
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ok = false;
+        }
+        return ok;
+    }
 }

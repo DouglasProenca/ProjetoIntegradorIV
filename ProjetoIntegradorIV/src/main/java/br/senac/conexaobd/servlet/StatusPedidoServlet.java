@@ -29,6 +29,25 @@ import javax.servlet.http.HttpServletResponse;
 public class StatusPedidoServlet extends HttpServlet {
 
     @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Pedido pedido = new Pedido();
+        pedido.setId(Integer.parseInt(request.getParameter("nomeUsuario")));
+        pedido.setStatus(request.getParameter("emailUsuario"));
+        
+        try {
+            CarrinhoDAO.updateStatusPedido(pedido);
+            List<Pedido> pedidos = CarrinhoDAO.getAllPedidos(0);
+            request.setAttribute("listaPedidos", pedidos);
+            // RequestDispatcher reaproveita os objetos Request e Response
+            String url = "/protegido/statusPedido.jsp";
+        } catch (SQLException | ClassNotFoundException ex) {
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
+            Logger.getLogger(CadastroUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {

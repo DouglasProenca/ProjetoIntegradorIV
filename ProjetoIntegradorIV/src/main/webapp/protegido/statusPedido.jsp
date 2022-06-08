@@ -33,12 +33,9 @@
             </button>
         </nav>
         <br><br><br><br>
-        <!-- <div class="col-lg-12" style="text-align: right;">
-            <a class="btn btn-primary" href="../produto/cadastro.jsp" role="button">+</a>
-        </div> -->
         <br><br>
         <div id="alerta" class="alert alert-success" role="alert" style="display:none">
-            Produto alterado com sucesso!
+            Status alterado com sucesso!
         </div>
         <br><br><br><br>
     <fildset>
@@ -68,7 +65,7 @@
     </nav>
 </body>
 <a href="${pageContext.request.contextPath}/protegido/index.jsp">Voltar</a>
-<form class="modal" id="editar">
+<form class="modal" id="editar" action="StatusPedidoServlet" method="POST">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -77,16 +74,16 @@
             </div>
             <div class="modal-body">
                 <select class="form-control my-3" id="sel1" name="sellist1">
-                    <option>Aguardando pagamento</option>
-                    <option>Pagamento rejeitado</option>
-                    <option>Pagamento aprovado</option>
-                    <option>Aguardando retirada</option>
-                    <option>Em trânsito</option>
-                    <option>Entregue</option>
+                    <option <c:if test="${produto.quantidade == 'Aguardando pagamento'}">selected</c:if> value="Aguardando pagamento">Aguardando pagamento</option>
+                    <option <c:if test="${produto.quantidade == 'Pagamento rejeitado'}">selected</c:if> value="Pagamento rejeitado">Pagamento rejeitado</option>
+                    <option <c:if test="${produto.quantidade == 'Pagamento aprovado'}">selected</c:if> value="Pagamento aprovado">Pagamento aprovado</option>
+                    <option <c:if test="${produto.quantidade == 'Aguardando Envio'}">selected</c:if>value="Aguardando Envio">Aguardando Envio</option>
+                    <option <c:if test="${produto.quantidade == 'Em trânsito'}">selected</c:if>value="Em trânsito">Em trânsito</option>
+                    <option <c:if test="${produto.quantidade == 'Entregue'}">selected</c:if>value="Entregue">Entregue</option>
                 </select>
             </div>
             <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-lg bg-primary text-white">Salvar</button>
+                <button type="submit" class="btn btn-lg bg-primary text-white">Salvar</button>
             </div>
         </div>
     </div>
