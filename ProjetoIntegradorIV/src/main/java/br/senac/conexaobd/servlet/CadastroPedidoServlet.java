@@ -1,6 +1,7 @@
 package br.senac.conexaobd.servlet;
 
 import br.senac.conexaobd.dao.CarrinhoDAO;
+import static br.senac.conexaobd.servlet.CadastroCarrinhoServlet.enderecos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -43,7 +44,18 @@ public class CadastroPedidoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String forma_pagamento = req.getParameter("forma_pagemento");
+        
+        if (req.getParameter("CEP") != null) {
+         CadastroCarrinhoServlet.CEP = req.getParameter("CEP");
+        }
 
+        for (int i = 0; i < CadastroCarrinhoServlet.enderecos.toArray().length; i++) {
+            if (CadastroCarrinhoServlet.CEP.equals(CadastroCarrinhoServlet.enderecos.get(i).getCEP())) {
+                req.setAttribute("endereco", CadastroCarrinhoServlet.enderecos.get(i));
+            }
+        }
+        req.setAttribute("CEP", CadastroCarrinhoServlet.CEP);
+        req.setAttribute("listaEnderecos", CadastroCarrinhoServlet.enderecos);
         req.setAttribute("listaCarrinho", CadastroCarrinhoServlet.produtoList);
         req.setAttribute("total", CadastroCarrinhoServlet.total);
         req.setAttribute("frete", CadastroCarrinhoServlet.frete);

@@ -57,9 +57,9 @@
                 <div class="d-flex">
                     <div class="align-self-center">
                         <div class="pl-5">
-                            <h5>Rua Santo Alberto, 325</h5>
-                            <h5>Campo Grande - São Paulo, SP</h5>
-                            <h5>04676-041</h5>
+                            <h5>${endereco.rua}, 325</h5>
+                            <h5>${endereco.bairro} - ${endereco.cidade}, ${endereco.uf}</h5>
+                            <h5>${endereco.CEP}</h5>
                         </div>
                     </div>
                     <div class="align-self-center p-5">
@@ -120,14 +120,11 @@
                                 </ul>
                                 <div class="d-flex flex-column">
                                     <div class="bg-white my-auto border text-center p-2 flex-fill" data-toggle="tooltip" title="Endereço principal">
-                                        <input type="radio" name="optradio" checked style="bottom: -55px; position: relative">
+                                        <input type="radio" name="optradio" onclick="location.href='CadastroPedidoServlet?forma_pagemento=${forma_pagamento}&CEP=${enderecos.CEP}'" <c:if test="${CEP == enderecos.CEP}">checked</c:if> style="bottom: -55px; position: relative">
                                     </div>
                                 </div>
                             </div>
                         </c:forEach>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-lg bg-primary text-white">Confirmar</button>
                     </div>
                 </div>
             </div>

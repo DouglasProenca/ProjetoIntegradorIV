@@ -1,6 +1,8 @@
 package br.senac.conexaobd.servlet;
 
 import br.senac.conexaobd.dao.CarrinhoDAO;
+import br.senac.conexaobd.dao.ClienteDAO;
+import br.senac.conexaobd.entidades.EnderecoCliente;
 import br.senac.conexaobd.entidades.Produto;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -25,6 +27,8 @@ public class CadastroCarrinhoServlet extends HttpServlet {
     public static double frete = 0;
     double subtotal = 0;
     public static double total = 0;
+    public static List<EnderecoCliente> enderecos;
+    public static String CEP;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -58,6 +62,9 @@ public class CadastroCarrinhoServlet extends HttpServlet {
             String ope = req.getParameter("ope");
             String id_produto = null;
             id_produto = req.getParameter("id_produto");
+            if (req.getParameter("cpf") != null) {
+                enderecos = ClienteDAO.getEnderecoCliente(req.getParameter("cpf"));
+            }
             total = 0;
             subtotal = 0;
             for (int i = 0; i < produtoList.toArray().length; i++) {
@@ -81,6 +88,7 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                         total = subtotal + frete;
                     }
                 }
+                req.setAttribute("listaEnderecos", enderecos);
                 req.setAttribute("listaCarrinho", produtoList);
                 req.setAttribute("total", total);
                 req.setAttribute("frete", frete);
@@ -94,14 +102,18 @@ public class CadastroCarrinhoServlet extends HttpServlet {
                         produtoList.remove(i);
                     }
                 }
+                req.setAttribute("listaEnderecos", enderecos);
                 req.setAttribute("listaCarrinho", produtoList);
                 req.setAttribute("total", total);
                 req.setAttribute("subtotal", subtotal);
                 req.setAttribute("frete", frete);
                 req.getRequestDispatcher("/Carrinho.jsp").forward(req, resp);
             } else if ("3".equals(ope)) {
+                CEP = req.getParameter("CEP"); 
                 frete = 10;
                 total = frete + subtotal;
+                req.setAttribute("CEP", CEP);
+                req.setAttribute("listaEnderecos", enderecos);
                 req.setAttribute("listaCarrinho", produtoList);
                 req.setAttribute("total", total);
                 req.setAttribute("subtotal", subtotal);
@@ -110,6 +122,8 @@ public class CadastroCarrinhoServlet extends HttpServlet {
             }
         } catch (NullPointerException ex) {
             resp.sendRedirect(req.getContextPath() + "/Carrinho.jsp");
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(CadastroCarrinhoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

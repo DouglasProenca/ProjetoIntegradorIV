@@ -54,6 +54,7 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        CadastroCarrinhoServlet.enderecos.clear();
         HttpSession sessao = request.getSession();
         sessao.invalidate();
         response.sendRedirect(request.getContextPath() + "Login.jsp");

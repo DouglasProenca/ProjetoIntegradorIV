@@ -63,7 +63,7 @@
                         </li>
                     </c:if>
                     <li class="nav-item mx-3">
-                        <a class="nav-link" href="protegido/produto/CadastroCarrinhoServlet?ope=1&id_cliente=${cliente.id}"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
+                        <a class="nav-link" href="protegido/produto/CadastroCarrinhoServlet?ope=1&id_cliente=${cliente.id}&cpf=${cliente.cpf}"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
                     </li> 
                 </ul>
             </div> 

@@ -78,23 +78,23 @@
             <div class="row">
                 <div class="col-sm">
                     <div>
-                        <ul class="nav nav-tabs justify-content-between" role="tablist">
-                            <li class="nav-item flex-fill">
-                                <a class="nav-link active text-center" data-toggle="tab" href="#novo">Novo endereço</a>
-                            </li>
-                            <c:if test="${sessionScope.cliente.nome != null}">
+                        <c:if test="${sessionScope.cliente.nome != null}">
+                            <ul class="nav nav-tabs justify-content-between" role="tablist">
+                                <li class="nav-item flex-fill">
+                                    <a class="nav-link active text-center" data-toggle="tab" href="#novo">Novo endereço</a>
+                                </li>
                                 <li class="nav-item flex-fill">
                                     <a class="nav-link text-center" data-toggle="tab" href="#salvos">Seus endereços</a>
                                 </li>
-                            </c:if>
-                        </ul>
+                            </ul>
+                        </c:if>
                         <div class="tab-content">
                             <div id="novo" class="container tab-pane active"><br>
                                 <div class="col-sm mt-4 d-flex">
                                     <div>
                                         <h4 class="">Calcule seu frete</h4>
                                         <div class="form-group">
-                                            <input class="form-control" type="text" id="cep" name="cep" placeholder="_____-___" onblur="location.href = 'CadastroCarrinhoServlet?ope=3'">
+                                            <input class="form-control" type="text" id="cep" name="cep" placeholder="_____-___" onblur="location.href = 'CadastroCarrinhoServlet?ope=3&CEP='this.value">
                                         </div>
                                     </div>
                                 </div>
@@ -119,11 +119,8 @@
                                             <li class="list-group-item">${enderecos.uf}</li>
                                         </ul>
                                         <div class="d-flex flex-column">
-                                            <!--<button class="btn bg-white my-auto flex-fill border" data-toggle="modal" data-target="#adicionarEndereco" data-toggle="tooltip" title="Editar endereço">
-                                                    <i class="fa fa-pen" aria-hidden="true"></i>
-                                                </button> -->
                                             <div class="bg-white my-auto border text-center p-2 flex-fill" data-toggle="tooltip" title="Endereço principal">
-                                                <input type="radio" name="optradio" checked style="bottom: -55px; position: relative">
+                                                <input type="radio" <c:if test="${CEP == enderecos.CEP}">checked</c:if> name="optradio" onclick="location.href='CadastroCarrinhoServlet?ope=3&CEP=${enderecos.CEP}'" style="bottom: -55px; position: relative">
                                             </div>
                                         </div>
                                     </div>
