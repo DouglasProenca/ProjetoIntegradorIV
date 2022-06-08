@@ -45,13 +45,13 @@
             </thead>
             <tbody>
                 <c:forEach var="pedido" items="${listaPedidos}">
-                <tr>
-                    <td>${pedido.id}</td>
-                    <td>${pedido.data}</td>
-                    <td>${pedido.valor}</td>
-                    <td>${pedido.status}</td>
-                    <td><button class="btn text-primary bg-transparent" data-toggle="modal" data-target="#editar">Editar pedido</button></td>
-                </tr>
+                    <tr>
+                        <td>${pedido.id}</td>
+                        <td>${pedido.data}</td>
+                        <td>${pedido.valor}</td>
+                        <td>${pedido.status}</td>
+                        <td><button class="btn text-primary bg-transparent" value="${pedido.id}|${pedido.status}" name="btnEditar" id="btnEditar" data-toggle="modal" data-target="#editar">Editar pedido</button></td>
+                    </tr>
                 </c:forEach>
             </tbody>
         </table>
@@ -73,13 +73,14 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <select class="form-control my-3" id="sel1" name="sellist1">
-                    <option <c:if test="${produto.quantidade == 'Aguardando pagamento'}">selected</c:if> value="Aguardando pagamento">Aguardando pagamento</option>
-                    <option <c:if test="${produto.quantidade == 'Pagamento rejeitado'}">selected</c:if> value="Pagamento rejeitado">Pagamento rejeitado</option>
-                    <option <c:if test="${produto.quantidade == 'Pagamento aprovado'}">selected</c:if> value="Pagamento aprovado">Pagamento aprovado</option>
-                    <option <c:if test="${produto.quantidade == 'Aguardando Envio'}">selected</c:if>value="Aguardando Envio">Aguardando Envio</option>
-                    <option <c:if test="${produto.quantidade == 'Em trânsito'}">selected</c:if>value="Em trânsito">Em trânsito</option>
-                    <option <c:if test="${produto.quantidade == 'Entregue'}">selected</c:if>value="Entregue">Entregue</option>
+            <input type="text" hidden value="${pedido.id}" id="id" name="id">
+                <select class="form-control my-3" id="sel1" name="sel1">
+                    <option <c:if test="${pedido.status == 'Aguardando pagamento'}">selected</c:if> value="Aguardando pagamento">Aguardando pagamento</option>
+                    <option <c:if test="${pedido.status == 'Pagamento rejeitado'}">selected</c:if> value="Pagamento rejeitado">Pagamento rejeitado</option>
+                    <option <c:if test="${pedido.status == 'Pagamento aprovado'}">selected</c:if> value="Pagamento aprovado">Pagamento aprovado</option>
+                    <option <c:if test="${pedido.status == 'Aguardando Envio'}">selected</c:if>value="Aguardando Envio">Aguardando Envio</option>
+                    <option <c:if test="${pedido.status == 'Em trânsito'}">selected</c:if>value="Em trânsito">Em trânsito</option>
+                    <option <c:if test="${pedido.status == 'Entregue'}">selected</c:if>value="Entregue">Entregue</option>
                 </select>
             </div>
             <div class="modal-footer">
@@ -88,4 +89,15 @@
         </div>
     </div>
 </form>
+<script type="text/javascript">
+    $(document).on("click", "#btnEditar", function () {
+        var info = $(this).attr('value');
+        var str = info.split('|');
+        var meuid = str[0];
+        var minhadata = str[1];
+        $(".modal-body #id").val(meuid);
+        $(".modal-body #sell").val(minhadata);
+        $("#sell").val( $('option:contains("'+minhadata+'")').val() );
+    });
+</script>
 </html>

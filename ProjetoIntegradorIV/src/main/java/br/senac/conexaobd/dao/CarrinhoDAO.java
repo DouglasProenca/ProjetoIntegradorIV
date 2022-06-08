@@ -179,7 +179,7 @@ public class CarrinhoDAO {
         }
         return endereco;
     }
-    
+
     public static List<Pedido> getAllPedidos(int ope) throws ClassNotFoundException, SQLException {
 
         List<Pedido> clientes = new ArrayList<>();
@@ -205,15 +205,16 @@ public class CarrinhoDAO {
         }
         return clientes;
     }
-    
+
     public static boolean updateStatusPedido(Pedido pedido) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "update pedido set status=? where id=?";
+        String query = "update pedido p set p.status=? where p.id=?";
         Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, pedido.getStatus());
             ps.setInt(2, pedido.getId());
+            ps.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
