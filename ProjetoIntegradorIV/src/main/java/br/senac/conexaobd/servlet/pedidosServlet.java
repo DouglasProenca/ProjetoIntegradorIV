@@ -2,6 +2,7 @@ package br.senac.conexaobd.servlet;
 
 import br.senac.conexaobd.dao.CarrinhoDAO;
 import br.senac.conexaobd.dao.ProdutoDAO;
+import br.senac.conexaobd.entidades.EnderecoCliente;
 import br.senac.conexaobd.entidades.Lista;
 import br.senac.conexaobd.entidades.Pedido;
 import java.io.IOException;
@@ -35,11 +36,15 @@ public class pedidosServlet extends HttpServlet {
         try {
             if (req.getParameter("idPedido") != null) {
                 List<Lista> pedidos = CarrinhoDAO.getPedidoDetalhe(Integer.parseInt(req.getParameter("idPedido")));
+                EnderecoCliente endereco = CarrinhoDAO.getEnderecoPedido(Integer.parseInt(req.getParameter("idPedido")));
                 int frete = pedidos.get(0).getFrete();
+                double valor_total = pedidos.get(0).getValor_total();
                 String forma_pagamento = pedidos.get(0).getForma_pagamento();
                 
                 req.setAttribute("id_pedido", req.getParameter("idPedido"));
+                req.setAttribute("valor_total", valor_total);
                 req.setAttribute("forma", forma_pagamento);
+                req.setAttribute("ende", endereco);
                 req.setAttribute("frete", frete);
                 req.setAttribute("ListaPedidos", pedidos);
                 String url = "/protegido/cliente/resumoPedido.jsp";

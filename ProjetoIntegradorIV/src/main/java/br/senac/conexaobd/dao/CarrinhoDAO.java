@@ -1,9 +1,11 @@
 package br.senac.conexaobd.dao;
 
 import br.senac.conexaobd.Conexao;
+import br.senac.conexaobd.entidades.EnderecoCliente;
 import br.senac.conexaobd.entidades.Lista;
 import br.senac.conexaobd.entidades.Pedido;
 import br.senac.conexaobd.entidades.Produto;
+import br.senac.conexaobd.servlet.CadastroCarrinhoServlet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -55,12 +57,18 @@ public class CarrinhoDAO {
 
     public static void inserirPedido(int idCliente, double frete, double total, String forma_pagamento)
             throws SQLException, ClassNotFoundException {
-        String query = "insert into pedido values(null,?,?,?,?,?,(select date(now())),?)";
+        String query = "insert into pedido values(null,?,(select c.id \n"
+                + "from endereco_cliente c\n"
+                + "where c.CEP = ?),?,?,?,(select date(now())),?)";
         Connection con = Conexao.abrirConexao();
         PreparedStatement ps;
         ps = con.prepareStatement(query);
         ps.setInt(1, idCliente);
-        ps.setInt(2, 1);
+        for (int i = 0; i < CadastroCarrinhoServlet.enderecos.toArray().length; i++) {
+            if (CadastroCarrinhoServlet.CEP.equals(CadastroCarrinhoServlet.enderecos.get(i).getCEP())) {
+                ps.setString(2, CadastroCarrinhoServlet.enderecos.get(i).getCEP());
+            }
+        }
         ps.setString(3, forma_pagamento);
         ps.setDouble(4, frete);
         ps.setDouble(5, total);
@@ -115,6 +123,7 @@ public class CarrinhoDAO {
                 + "     , l.valor\n"
                 + "     , ped.forma_pagamento\n"
                 + "     , ped.frete\n"
+                + "     , ped.valor valor_total\n"
                 + "from lista l\n"
                 + "inner join produto p\n"
                 + "	on p.código = l.id_produto\n"
@@ -134,6 +143,7 @@ public class CarrinhoDAO {
                 endereco.setValor(rs.getDouble("valor"));
                 endereco.setForma_pagamento(rs.getString("forma_pagamento"));
                 endereco.setFrete(rs.getInt("frete"));
+                endereco.setValor_total(Double.parseDouble(rs.getString("valor_total")));
                 pedidos.add(endereco);
             }
 
@@ -142,5 +152,31 @@ public class CarrinhoDAO {
                     .getName()).log(Level.SEVERE, null, ex);
         }
         return pedidos;
+    }
+
+    public static EnderecoCliente getEnderecoPedido(int id_pedido) throws ClassNotFoundException, SQLException {
+        Connection con = Conexao.abrirConexao();
+        EnderecoCliente endereco = null;
+        String query = "select *\n"
+                + "from endereco_cliente c\n"
+                + "inner join pedido p\n"
+                + "	on p.id_endereco = c.id\n"
+                + "where p.id = ?";
+
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setString(1, String.valueOf(id_pedido));
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            endereco = new EnderecoCliente();
+            endereco.setId(rs.getInt("id_cliente"));
+            endereco.setCEP(rs.getString("CEP"));
+            endereco.setRua(rs.getString("logradouro"));
+            endereco.setCidade(rs.getString("cidade"));
+            endereco.setBairro(rs.getString("bairro"));
+            endereco.setUf(rs.getString("uf"));
+            endereco.setComplemento(rs.getString("complemento"));
+        }
+        return endereco;
     }
 }

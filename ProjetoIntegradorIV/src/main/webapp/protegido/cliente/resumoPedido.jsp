@@ -41,31 +41,25 @@
                 <h3>Número do pedido <small>${id_pedido}</small></h3>
                 <br>
                 <h3>Produtos:</h3>
+                <c:forEach var="pedidos" items="${ListaPedidos}">
                 <div class="d-flex px-5">
-                    <h5 class="flex-fill">Iphone 13</h5>
-                    <h6 class="align-self-end">R$4000.00</h6>
+                    <h5 class="flex-fill">${pedidos.nome}</h5>
+                    <h6 class="align-self-end">R$${pedidos.valor}</h6>
                 </div>
                 <div class="d-flex px-5">
-                    <h6 class="flex-fill">Quantidade: 2</h6>
-                    <h5 class="text-center">R$8000.00</h5>
+                    <h6 class="flex-fill">Quantidade: ${pedidos.quantidade}</h6>
+                    <h5 class="text-center">R$${pedidos.valor}</h5>
                 </div>
                 <br>
-                <div class="d-flex px-5">
-                    <h5 class="flex-fill">Samsung Galaxy S21</h5>
-                    <h6 class="align-self-end">R$4000.00</h6>
-                </div>
-                <div class="d-flex px-5">
-                    <h6 class="flex-fill">Quantidade: 1</h6>
-                    <h5 class="text-center">R$4000.00</h5>
-                </div>
+                </c:forEach>
                 <br>
                 <h3>Endereço de entrega:</h3>
                 <div class="d-flex">
                     <div class="align-self-center">
                         <div class="pl-5">
-                            <h5>Rua Santo Alberto, 325</h5>
-                            <h5>Campo Grande - São Paulo, SP</h5>
-                            <h5>04676-041</h5>
+                            <h5>${ende.rua}, 325</h5>
+                            <h5>${ende.bairro} - ${ende.cidade}, ${ende.uf}</h5>
+                            <h5>${ende.CEP}</h5>
                         </div>
                     </div>
                 </div>
@@ -80,7 +74,7 @@
                 <h5 class="pl-5">${forma}</h5>
                 <br>
                 <h3>Total:</h3>
-                <h4 class="pl-5">R$12010.00</h4>
+                <h4 class="pl-5">R$${valor_total}</h4>
             </div>
         </div>
     </body>
